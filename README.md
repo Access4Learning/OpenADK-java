@@ -213,8 +213,63 @@ GitHub provides the ability for a Pull Request to be automatically merged. If yo
 2. Tag (annotated) the _master_ branch with an appropriate release number and share it with the [OpenADK-java][8] repository.
 
     ```dos
+    c:\dev\OpenADK-java> git checkout master
     c:\dev\OpenADK-java> git tag -a X.X.X -m MESSAGE
     c:\dev\OpenADK-java> git push origin X.X.X
+    ```
+
+### Creating a hotfix ###
+
+The following steps need to be performed within your remote repository. __Care should be taken as these steps operate directory on the _master_ branch.__
+
+1. Create a new _topic_ branch within your remote repository for the hotfix.
+
+    ```dos
+    c:\dev\OpenADK-java> git checkout -b HOTFIX_XXX master
+    ```
+
+2. Apply your changes to the *HOTFIX_XXX* branch.
+
+3. Commit your changes.
+
+    ```dos
+    c:\dev\OpenADK-java> git commit -a -m MESSAGE
+    ```
+
+4. Push your local changes to your remote repository.
+
+    ```dos
+    c:\dev\OpenADK-java> git push origin HOTFIX_XXX
+    ```
+
+5. Browse to your remote (forked) repository on the GitHub site.
+
+6. Swith to the *HOTFIX_XXX* branch and press the "Pull Request" button.
+
+7. Review the Pull Request details and provide a meaningful title (with issue number if appropriate) and description of your change. It is important to ensure that the _base branch_ is set to _master_ and the _head branch_ is set to *HOTFIX_XXX*.
+
+8. Press the "Send pull request" button.
+
+The following steps need to be performed within the [OpenADK-java][8] repository.
+
+9. Browse to the [OpenADK-java][8] repository on the GitHub site.
+
+10. Find the Pull Request and merge it (using the "Merge pull request" button).
+
+11. Tag (annotated) the _master_ branch with an appropriate release number and share it with the [OpenADK-java][8] repository. With a hotfix submission, increment the third digit of the version number by 1.
+
+    ```dos
+    c:\dev\OpenADK-java> git checkout master
+    c:\dev\OpenADK-java> git tag -a X.X.X -m MESSAGE
+    c:\dev\OpenADK-java> git push origin X.X.X
+    ```
+
+3. Merge the changes into the develop branch.
+
+    ```dos
+    c:\dev\OpenADK-java> git checkout develop
+    c:\dev\OpenADK-java> git merge HOTFIX_XXX
+    c:\dev\OpenADK-java> git push origin develop
     ```
 
 [1]: http://nvie.com/posts/a-successful-git-branching-model
