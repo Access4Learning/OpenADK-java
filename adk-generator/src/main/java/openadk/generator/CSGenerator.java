@@ -136,7 +136,6 @@ public class CSGenerator extends CodeGenerator {
 			out.println();
 			out.println("namespace OpenADK.Library." + locale + "." + toProperCase(pkg));
 		} else if ( pkg != null ) {
-				out.println("using SifDtd = OpenADK.Library.us.SifDtd;");  //This is core only...
 				out.println();
 				out.println( "namespace OpenADK.Library." + toProperCase(pkg) );
 		} else {
@@ -1231,7 +1230,7 @@ public class CSGenerator extends CodeGenerator {
 			// out.println("using Edustructures.SifWorks." + locale +
 			// ".Datamodel;");
 			writeDTDClassComment(out, null);
-			out.println("public sealed partial class SifDtd : DTDInternals, ISifDtd");
+			out.println("public sealed partial class SifDtd : OpenADK.Library.SifDtd");
 			out.println("{");
 
 			// TODO: Have this write out the SifMessageType enumDef
@@ -1243,10 +1242,6 @@ public class CSGenerator extends CodeGenerator {
 			// }
 
 			// Special case
-			out.println("\t// SIF_Message mapping used internally by SIFParser");
-			out.println("\tpublic static IElementDef SIF_MESSAGE = new ElementDefImpl(null,\"SIF_Message\",null,0,\"Impl\",SifVersion.SIF11, SifVersion.LATEST );");
-			out.println("\tpublic static IElementDef SIF_MESSAGE_VERSION = new ElementDefImpl( SifDtd.SIF_MESSAGE,\"Version\",null,1,SifDtd.INFRA,(byte)(ElementDefImpl.FD_FIELD),SifVersion.SIF11, SifVersion.LATEST );");
-			out.println();
 			out.println("\t// Declare all object and field elements defined by all versions of SIF");
 			out.println("\t// supported by the class framework.");
 
@@ -1271,18 +1266,19 @@ public class CSGenerator extends CodeGenerator {
 			out.println();
 			out.println("\t// Package names that comprise the SIF Data Objects library");
 			for (String packageName : packageDB.getDefinitionFileKeysSet()) {
+				if (!(packageName.equalsIgnoreCase("infra") || packageName.equalsIgnoreCase("common") || packageName.equalsIgnoreCase("global") || packageName.equalsIgnoreCase("datamodel"))) {
 				DefinitionFile packageFile = packageDB.getDefinitionFile(packageName);
 				out.println("\t/** The name of the " + packageFile.getFriendlyName() + " package */");
 				out.println("\tpublic const string " + packageName.toUpperCase() + " = \"" + toProperCase(packageName) + "\";");
-
-				if (!(packageName.equalsIgnoreCase("infra") || packageName.equalsIgnoreCase("common") || packageName.equalsIgnoreCase("global"))) {
+					publicPackages.add(packageName);
+				} else if (packageName.equalsIgnoreCase("datamodel")) {
 					publicPackages.add(packageName);
 				}
 			}
 			
 			out.println();
 			out.println("\t// The name of the data model variant this class is defined in");
-			out.println("\tpublic string Variant { ");
+			out.println("\tpublic override string Variant { ");
 			out.println( "\t\tget{" );
 			out.println( "\t\t\treturn \"" + Main.self.fLocale.toLowerCase() + "\";" );
 			out.println( "\t\t}" );
@@ -1292,7 +1288,7 @@ public class CSGenerator extends CodeGenerator {
 
 			
 			
-			out.println( "\tpublic List<string> LoadedLibraryNames" );
+			out.println( "\tpublic override List<string> LoadedLibraryNames" );
 			out.println( "\t{" );
 			out.println( "\tget" );
 			out.println( "\t\t\t{" );
@@ -1328,11 +1324,11 @@ public class CSGenerator extends CodeGenerator {
 				slt.println("\tpublic enum SdoLibraryType : int\r\n{");
 
 				slt.println("\t/// <summary> All SDO libraries </summary>");
-				slt.println("\tAll = -1, // 0xFFFFFFFF");
+				slt.println("\tAll = IntrinsicLibraryType.All,");
 				slt.println();
 
 				slt.println("\t/// <summary> No SDO libraries </summary>");
-				slt.println("\tNone = 0x00000000,");
+				slt.println("\tNone = IntrinsicLibraryType.None,");
 				slt.println();
 
 				slt.println("\t//  These are always loaded regardless of what the user specifies.");
@@ -1340,15 +1336,15 @@ public class CSGenerator extends CodeGenerator {
 				slt.println("\t//  treated just like any other SDO package.");
 
 				slt.println("\t/// <summary>Identifies the Infrastructure Sdo library</summary>");
-				slt.println("\tGlobal = 0x40000000,");
+				slt.println("\tGlobal = IntrinsicLibraryType.Global,");
 				slt.println();
 
 				slt.println("\t/// <summary>Identifies the Infrastructure Sdo library</summary>");
-				slt.println("\tInfra = 0x20000000,");
+				slt.println("\tInfra = IntrinsicLibraryType.Infra,");
 				slt.println();
 
 				slt.println("\t/// <summary>Identifies the Infrastructure Sdo library</summary>");
-				slt.println("\tCommon = 0x10000000,");
+				slt.println("\tCommon = IntrinsicLibraryType.Common,");
 				slt.println();
 
 				int packageConst = 1;
@@ -1382,7 +1378,7 @@ public class CSGenerator extends CodeGenerator {
 				nmspc = nmspc.substring(0, nmspc.lastIndexOf('/'));
 				out.println();
 				out.println("\t/** The base xmlns for this edition of the ADK without the version */");
-				out.println("\tpublic string XMLNS_BASE {" );
+				out.println("\tpublic override string XMLNS_BASE {" );
 				out.println( "\t\tget{");
 				out.println( "\t\t\treturn \"" + nmspc + "\";" );
 				out.println( "\t\t}" );
@@ -1408,7 +1404,7 @@ public class CSGenerator extends CodeGenerator {
 				//Will not compile without something here, even if it's worthless
 				out.println(); 
 				out.println("\t/** The base xmlns for this edition of the ADK without the version */");
-				out.println("\tpublic string XMLNS_BASE {" );
+				out.println("\tpublic override string XMLNS_BASE {" );
 				out.println( "\t\tget{");
 				out.println( "\t\t\treturn \"\";" );
 				out.println( "\t\t}" );
