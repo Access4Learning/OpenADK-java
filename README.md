@@ -1,7 +1,7 @@
 OpenADK (Java version)
 ======================
 
-The ADK is licensed under the Apache 2.0 Software License. Copyright in the ADK is held by Pearson and by the community contributors to the ADK project. The license is in the file LICENSE-2.0.txt in the ADK folder after installation. Note that the Apache license does not require you to make any of your applicationÕs code available as open source software.
+The ADK is licensed under the Apache 2.0 Software License. Copyright in the ADK is held by Pearson and by the community contributors to the ADK project. The license is in the file LICENSE-2.0.txt in the ADK folder after installation. Note that the Apache license does not require you to make any of your application's code available as open source software.
 
 All files under the Apache license may be redistributed in binary and/or source form with your agent, although only a subset is actually needed by most agents (the contents of the lib directory are usually required). Note that some files may be under the same or a different open source license and subject to third-party license agreements included in the licenses directory.
 
@@ -10,7 +10,7 @@ Overview
 
 The repository for the Open ADK Java project is at: https://github.com/open-adk/OpenADK-java
 
-If a Java JDK, Maven, and Bazaar are installed, the following commands will create a branch of the OpenADK-java trunk and install the built artifact in the local repository. 
+If a Java JDK and Maven are installed, the following commands will install the built artifact in the local repository. 
 
 Note that the PROFILE may be one of AU, UK, or US.
 
@@ -30,7 +30,7 @@ The classifier is required in order to resolve the artifact that contins the des
 Eclipse IDE setup
 -----------------
 
-We`ve found that it is easier to use command line Maven with the Eclipse IDE. To prepare Eclipse for this kind of setup, the M2_REPO classpath variable must be configured first using the following steps.
+We've found that it is easier to use command line Maven with the Eclipse IDE. To prepare Eclipse for this kind of setup, the M2\_REPO classpath variable must be configured first using the following steps.
 
 1. Open Eclipse IDE
 2. Open the Eclipse >> Preferences... dialog
@@ -41,7 +41,7 @@ We`ve found that it is easier to use command line Maven with the Eclipse IDE. To
 7. Click OK in the Edit Variable Entry dialog
 8. Clock OK in the Preferences dialog
 
-Note: If you find that the M2_REPO variable is already set and unmodifiable, then you likely have m2eclipse installed. Ensure that it is using the correct local repository in this case.
+Note: If you find that the M2\_REPO variable is already set and unmodifiable, then you likely have m2eclipse installed. Ensure that it is using the correct local repository in this case.
 
 The Maven Eclipse plugin may now be used to create an Eclipse project. From the command line perform the following steps.
 
@@ -57,7 +57,7 @@ Intellij IDEA setup
 Ensure that the Maven plugins for IDEA are enabled before creating a module from the adk-library folder. To create a module in an existing project follow these steps.
 
 1. Click the File >> New Module... menu option
-2. Select `Import module from external model`
+2. Select 'Import module from external model'
 3. Click Next
 4. Select OpenADK-java/adk-library as the root search directory
 5. Deselect Import Maven project automatically
@@ -244,7 +244,7 @@ The following steps need to be performed within your remote repository. __Care s
 
 5. Browse to your remote (forked) repository on the GitHub site.
 
-6. Swith to the *HOTFIX_XXX* branch and press the "Pull Request" button.
+6. Switch to the *HOTFIX_XXX* branch and press the "Pull Request" button.
 
 7. Review the Pull Request details and provide a meaningful title (with issue number if appropriate) and description of your change. It is important to ensure that the _base branch_ is set to _master_ and the _head branch_ is set to *HOTFIX_XXX*.
 
@@ -256,7 +256,7 @@ The following steps need to be performed within the [OpenADK-java][8] repository
 
 10. Find the Pull Request and merge it (using the "Merge pull request" button).
 
-11. Tag (annotated) the _master_ branch with an appropriate release number and share it with the [OpenADK-java][8] repository. With a hotfix submission, increment the third digit of the version number by 1.
+11. __Before updating the (tag) version number, ensure that locally the code is up-to-date.__ Tag (annotated) the _master_ branch with an appropriate release number and share it with the [OpenADK-java][8] repository. With a hotfix submission, increment the third digit of the version number by 1.
 
     ```dos
     c:\dev\OpenADK-java> git checkout master
@@ -264,11 +264,12 @@ The following steps need to be performed within the [OpenADK-java][8] repository
     c:\dev\OpenADK-java> git push origin X.X.X
     ```
 
-3. Merge the changes into the develop branch.
+12. Merge the changes into the develop branch.
 
     ```dos
     c:\dev\OpenADK-java> git checkout develop
-    c:\dev\OpenADK-java> git merge HOTFIX_XXX
+    c:\dev\OpenADK-java> git fetch origin
+    c:\dev\OpenADK-java> git merge origin/master
     c:\dev\OpenADK-java> git push origin develop
     ```
 
