@@ -119,7 +119,7 @@ public class XPathRule extends Rule
 	
 	
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.tools.mapping.Rule#evaluate(com.edustructures.sifworks.tools.xpath.SIFXPathContext, com.edustructures.sifworks.SIFVersion)
+	 * @see openadk.library.tools.mapping.Rule#evaluate(openadk.library.tools.xpath.SIFXPathContext, openadk.library.SIFVersion)
 	 */
 	@Override
 	public synchronized SIFSimpleType evaluate(SIFXPathContext xpathContext, SIFVersion version) 

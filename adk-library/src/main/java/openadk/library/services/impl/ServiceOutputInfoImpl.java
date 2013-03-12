@@ -37,7 +37,7 @@ public class ServiceOutputInfoImpl implements ServiceOutputInfo {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see com.edustructures.sifworks.services.DeferredResponseInfo#getSIFMaxBufferSize()
+	 * @see openadk.library.services.DeferredResponseInfo#getSIFMaxBufferSize()
 	 */
 	public int getSIFMaxBufferSize() {
 		return fMaxBufferSize;
@@ -46,7 +46,7 @@ public class ServiceOutputInfoImpl implements ServiceOutputInfo {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see com.edustructures.sifworks.services.DeferredResponseInfo#getSIFRequestMsgId()
+	 * @see openadk.library.services.DeferredResponseInfo#getSIFRequestMsgId()
 	 */
 	public String getSIFRequestMsgId() {
 		return fSIFRequestMsgId;
@@ -55,7 +55,7 @@ public class ServiceOutputInfoImpl implements ServiceOutputInfo {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see com.edustructures.sifworks.services.DeferredResponseInfo#getSIFRequestSourceId()
+	 * @see openadk.library.services.DeferredResponseInfo#getSIFRequestSourceId()
 	 */
 	public String getSIFRequestSourceId() {
 		return fSIFRequestSourceId;
@@ -64,7 +64,7 @@ public class ServiceOutputInfoImpl implements ServiceOutputInfo {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see com.edustructures.sifworks.services.DeferredResponseInfo#getSIFVersion()
+	 * @see openadk.library.services.DeferredResponseInfo#getSIFVersion()
 	 */
 	public SIFVersion getSIFVersion() {
 		return fSIFVersion;

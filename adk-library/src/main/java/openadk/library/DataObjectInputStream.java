@@ -15,7 +15,7 @@ package openadk.library;
  * 	stream. Within the loop, call {@link #readDataObject} to obtain the next 
  * 	SIFDataObject instance from the stream. Note all SIFDataObjects in the stream 
  * 	are of the same type. To determine the type, call {@link #getObjectType} 
- * 	to retrieve an ElementDef constant from the {@linkplain com.edustructures.sifworks.SIFDTD} class.<p>
+ * 	to retrieve an ElementDef constant from the {@linkplain openadk.library.SIFDTD} class.<p>
  * 
  * 	For example,<p>
  * 

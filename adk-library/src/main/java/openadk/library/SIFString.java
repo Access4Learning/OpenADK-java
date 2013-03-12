@@ -30,7 +30,7 @@ public class SIFString extends SIFSimpleType<String> {
 
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.SIFSimpleType#getTypeConverter()
+	 * @see openadk.library.SIFSimpleType#getTypeConverter()
 	 */
 	@Override
 	public SIFTypeConverter<String> getTypeConverter() {
@@ -46,7 +46,7 @@ public class SIFString extends SIFSimpleType<String> {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.SIFSimpleType#toString()
+	 * @see openadk.library.SIFSimpleType#toString()
 	 */
 	@Override
 	public String toString()

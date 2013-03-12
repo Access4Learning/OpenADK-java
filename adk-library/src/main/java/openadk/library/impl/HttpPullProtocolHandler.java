@@ -82,7 +82,7 @@ public class HttpPullProtocolHandler extends BaseHttpProtocolHandler implements
 
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.impl.BaseHttpProtocolHandler#open(com.edustructures.sifworks.impl.ZoneImpl)
+	 * @see openadk.library.impl.BaseHttpProtocolHandler#open(openadk.library.impl.ZoneImpl)
 	 */
 	@Override
 	public void open(ZoneImpl zone) throws ADKException {

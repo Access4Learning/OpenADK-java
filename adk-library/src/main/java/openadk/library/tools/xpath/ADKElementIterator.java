@@ -43,7 +43,7 @@ class ADKElementIterator extends ADKNodeIterator {
 	 * (non-Javadoc)
 	 * 
 	 * @see custom.ADKNodeIterator#getNodePointer(custom.SIFElementPointer,
-	 *      com.edustructures.sifworks.Element)
+	 *      openadk.library.Element)
 	 */
 	@Override
 	protected NodePointer getNodePointer(SIFElementPointer parent,	Element element) {

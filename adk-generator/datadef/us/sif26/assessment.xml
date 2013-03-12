@@ -1,0 +1,1942 @@
+<!-- ======================================== -->
+<!--    Open ADK Object Definition File   -->
+<!--     Copyright (c)1998-2011 Pearson Education, Inc. or its affiliate(s)     -->
+<!--     All Rights Reserved                  -->
+<!-- ======================================== -->
+<!--    SIF 2.6 assessment objects            -->
+<!-- ======================================== -->
+<adk package="assessment" version="2.6" namespace="http://www.sifinfo.org/infrastructure/2.x"
+     sif3namespace="urn:sif3placeholder">
+    <!--sif3:Assessment object-->
+    <object name="Sif3Assessment" renderAs="sif3:Assessment" topic="true">
+        <attribute name="RefId" type="IdRefType" flags="R">
+            <desc>The GUID that uniquely identifies this object.</desc>
+        </attribute>
+        <element name="Name" type="NormalizedString" flags="M">
+            <desc>Name of the test.</desc>
+        </element>
+        <element name="AssessmentIdentifiers" type="AssessmentIdentifiers" flags="O">
+        </element>
+        <element name="AssessmentPackageRefId" type="IdRefType" flags="O"/>
+        <element name="AssessmentDescriptors" type="AssessmentDescriptors" flags="O"/>
+        <element name="AssessmentProvider" type="String" flags="O">
+            <desc>Identifies the provider or publisher of the assessment.</desc>
+        </element>
+        <element name="AssessmentItemBanks" type="AssessmentItemBanks">
+            <desc>Assessments may be part of one or more item banks.</desc>
+        </element>
+        <element name="AssessmentSubjects" type="SubjectAreaList" flags="O">
+            <desc>The assessment may be designed to measure specific subject areas. Note that grade levels are also
+                included in the Assessment Form object. Specific forms of an assessment may have more granularity.
+            </desc>
+        </element>
+        <element name="AssessmentGradeLevels" type="GradeLevels" flags="O">
+            <desc>The assessment may be designed for specific grade levels. Note that grade levels are also included in
+                the Assessment Form object. Specific forms of an assessment may have more granularity.
+            </desc>
+        </element>
+        <element name="AssessmentLanguages" type="LanguageList" flags="O">
+            <desc>The assessment may be available in multiple languages. This list will indicate which languages are
+                available.
+            </desc>
+        </element>
+        <element name="LearningStandardItemRefIds" type="LearningStandardItemRefIds" flags="O">
+            <desc>This list identifies all learning standards that may be measured by this assessment</desc>
+        </element>
+    </object>
+    <!--AssessmentItemBanks object-->
+    <object name="AssessmentItemBanks">
+        <element name="AssessmentItemBank" type="AssessmentItemBank" flags="MR">
+            <desc>A wrapper for the Item Bank elements.</desc>
+        </element>
+    </object>
+    <!--AssessmentItemBank-->
+    <object name="AssessmentItemBank">
+        <element name="AssessmentItemBankId" flags="M" type="String">
+            <desc>If the assessment is provided with an item bank, then this identifies the item bank: a unique code or
+                number used by the item banking system.
+            </desc>
+        </element>
+        <element name="AssessmentItemBankName" flags="O" type="String">
+            <desc>If the assessment is provided with an item bank, then this is the name of the item bank.</desc>
+        </element>
+    </object>
+    <!--AssessmentIdentifiers object-->
+    <object name="AssessmentIdentifiers">
+        <element name="AssessmentIdentifier" type="AssessmentIdentifier" flags="MR">
+        </element>
+        <desc>A list of all assessment identifiers that may be associated with this assessment.</desc>
+    </object>
+    <object name="AssessmentIdentifier">
+        <attribute name="AssessmentIdType" flags="M" enum="AssessmentIdType">
+            <desc>The Id Type Codes indicate the authority that maintains and/or uses the identifier.</desc>
+        </attribute>
+        <desc>The state, local or publisher unique Id for the assessment.</desc>
+    </object>
+    <!--AssessmentIdType enum-->
+    <enum name="AssessmentIdType">
+        <value name="CLIENT" value="client" desc="Assigned by the client, e.g., a state."/>
+        <value name="LOCAL" value="local" desc="Assigned by the local entity"/>
+        <value name="PUBLISHER" value="publisher" desc="Assigned by the owner of the test"/>
+        <value name="INTERNAL" value="internal" desc="Internal assessment service provider"/>
+        <value name="OTHER" value="other" desc="Custom Identifier"/>
+    </enum>
+
+    <!--Assessment object-->
+    <object name="Assessment" topic="true">
+        <attribute name="RefId" type="IdRefType" flags="R">
+            <desc>The GUID that uniquely identifies this object.</desc>
+        </attribute>
+        <element name="Name" type="NormalizedString" flags="M">
+            <desc>Name of the test.</desc>
+        </element>
+        <element name="AssessmentId" type="normalizedString" flags="O">
+            <desc>The state, local or publisher unique ID for the assessment.</desc>
+        </element>
+        <element name="AssessmentPackageRefId" type="IdRefType" flags="O"/>
+        <element name="AssessmentDescriptors" type="AssessmentDescriptors" flags="O"/>
+    </object>
+    <!--sif3:AssessmentAdministration object-->
+    <object name="Sif3AssessmentAdministration" renderAs="sif3:AssessmentAdministration" topic="true">
+        <attribute name="RefId" type="IdRefType" flags="R">
+            <desc>The GUID that uniquely identifies an instance of the object.</desc>
+        </attribute>
+        <element name="AdministrationName" type="NormalizedString" flags="O">
+            <desc>Name of the administration.</desc>
+        </element>
+        <element name="AdministrationCode" type="NormalizedString" flags="O">
+            <desc>A code associated with the administration. Typically assigned by the assessment program.</desc>
+        </element>
+        <element name="StartDateTime" type="dateTime" flags="O">
+            <desc>Date and time testing begins.</desc>
+        </element>
+        <element name="FinishDateTime" type="dateTime" flags="O">
+            <desc>Date and time testing ends.</desc>
+        </element>
+        <element name="AdministrationAssessments" type="AdministrationAssessments" flags="O">
+            <desc>A list of all assessements to be administered in this administration.</desc>
+        </element>
+        <element name="OrganizationsSif3" type="OrganizationsSif3" flags="O">
+            <desc>LEAs and/or schools that are participating in this administration. If there are restrictions on which LEAs or Schools are participating in the administration, then this list will identify those that can participate. If no list provided, all LEAs and schools can participate.</desc>
+        </element>
+    </object>
+    <!--AdministrationAssessments object-->
+    <object name="AdministrationAssessments">
+        <element name="AdministrationAssessment" type="AdministrationAssessment" flags="MR">
+            <desc>The RedId of the assessment related to this administration.</desc>
+        </element>
+    </object>
+    <!--AdministrationAssessment object-->
+    <object name="AdministrationAssessment" datatype="IdRefType"/>
+
+    <!--Organizations object-->
+    <object name="OrganizationsSif3" renderAs="Organizations">
+        <element name="OrganizationSif3" type="OrganizationSif3" flags="MR"/>
+    </object>
+    <!--Organization object-->
+    <object name="OrganizationSif3" renderAs="Organization">
+        <element name="LEAInfoRefId" type="IdRefType" flags="O">
+            <desc>Optional reference to a school district associated with the administration.</desc>
+        </element>
+        <element name="SchoolInfoRefId" type="IdRefType" flags="O">
+            <desc>Optional reference to a school associated with the administration.</desc>
+        </element>
+    </object>
+    <!--AssessmentAdministration object-->
+    <object name="AssessmentAdministration" topic="true">
+        <desc>This object represents an assessment event. It includes information related to the time of administration, place of administration, and unusual events related to the administration.</desc>
+        <attribute name="RefId" type="IdRefType" flags="R">
+            <desc>The GUID that uniquely identifies an instance of the object.</desc>
+        </attribute>
+        <attribute name="AssessmentFormRefId" type="IdRefType" flags="R">
+            <desc>The RefId of the assessment form used in the assessment administration.</desc>
+        </attribute>
+        <element name="AdministrationName" type="NormalizedString" flags="O"/>
+        <element name="SpecialConditions" type="SpecialConditions" flags="O"/>
+        <element name="AdministrationDateTime" type="DateTime" flags="O">
+            <desc>Date and time the test is scheduled to be given.</desc>
+        </element>
+        <element name="StartDateTime" type="DateTime" flags="O">
+            <desc>Date and time testing begins.</desc>
+        </element>
+        <element name="FinishDateTime" type="DateTime" flags="O">
+            <desc>Date and time testing ends.</desc>
+        </element>
+        <element name="DueDateTime" type="DateTime" flags="O">
+            <desc>Date and time test is due.</desc>
+        </element>
+        <element name="Address" type="Address" flags="O">
+            <desc>Address of the location where the administration takes place.</desc>
+        </element>
+        <element name="StaffPersonalRefId" type="IdRefType" flags="O">
+            <desc>Optional reference to a staff person associated with the administration.</desc>
+        </element>
+        <element name="LEAInfoRefId" type="IdRefType" flags="O">
+            <desc>Optional reference to a school district associated with the administration.</desc>
+        </element>
+        <element name="SchoolInfoRefId" type="IdRefType" flags="O">
+            <desc>Optional reference to a school associated with the administration.</desc>
+        </element>
+    </object>
+    <!--AssessmentDescriptor object-->
+    <object name="AssessmentDescriptor" enum="AssessmentDescriptorType"/>
+    <!--AssessmentDescriptors object-->
+    <object name="AssessmentDescriptors">
+        <element name="AssessmentDescriptor" type="AssessmentDescriptor" flags="OR"/>
+    </object>
+    <!--AssessmentDescriptorType enum-->
+    <enum name="AssessmentDescriptorType">
+        <value name="STATEWIDE" value="Statewide" desc="Statewide"/>
+        <value name="FORMATIVE" value="Formative" desc="Formative"/>
+        <value name="LOCAL_SUMMATIVE" value="Local Summative" desc="Local Summative"/>
+        <value name="DIAGNOSTIC" value="Diagnostic" desc="Diagnostic"/>
+        <value name="BENCHMARK" value="Benchmark" desc="Benchmark"/>
+    </enum>
+    <!--Sif:3AssessmentAsset-->
+    <object name="Sif3AssessmentAsset" renderAs="sif:3AssessmentAsset" topic="true">
+        <attribute name="RefId" type="IdRefType">
+            <desc>The GUID that uniquely identifies an instance of this object.</desc>
+        </attribute>
+        <element name="AssetVersion" type="String" flags="O">
+            <desc>Identifies the version of the asset that this object represents. New versions of the asset will generate new RefIds and therefore new instances of the object. The format of the version number is defined by the assessment provider.</desc>
+        </element>
+        <element name="AssetPublishDate" type="dateTime" flags="O">
+            <desc>The date that this version of the asset was published (published means made available for use). If the AssetVersion is provided, then this date should also be provided.</desc>
+        </element>
+        <element name="AssetIdentifiers" type="AssetIdentifiers" flags="O">
+            <desc>If the authoring system provides for a unique coding system for assets then this element is used to store that information.</desc>
+        </element>
+        <element name="AssetName" type="String" flags="O"/>
+        <element name="AssetType" enum="AssetType" flags="M"/>
+        <element name="AssetOwner"  type="String" flags="O">
+            <desc>The name of the owner (publisher) of the asset.</desc>
+        </element>
+        <element name="AssetSubjects" type="SubjectAreaList" flags="O">
+            <desc>This will list all subjects to which this asset can be applied.</desc>
+        </element>
+        <element name="AssestGadeLevels" type="GradeLevels" flags="O">
+            <desc>The grade levels to which this asset can be applied.</desc>
+        </element>
+        <element name="AssetLanguage" enum="NISOZ3953LanguageCodesType" flags="O">
+            <desc>The language in which this asset is written (if applicable).</desc>
+        </element>
+        <element name="AssetLearningStandards" type="AssetLearningStandards" flags="O">
+            <desc>A list of LearningStandardItem RefIds.</desc>
+        </element>
+        <element name="AssetContent" type="ContentElement" flags="M">
+            <desc>Contains the actual asset content. Content could be text, images, audio/video, interactive tools, etc.</desc>
+        </element>
+    </object>
+    <!--AssetIdentifiers object-->
+    <object name="AssetIdentifiers">
+        <element name="AssetIdentifier" type="AssetIdentifier" flags="MR">
+            <desc>The identifier for this asset</desc>
+        </element>
+    </object>
+    <!--AssetIdentifier object-->
+    <object name="AssetIdentifier" datatype="normalizedString">
+        <attribute name="AssetIdType" flags="O" enum="AssetIdType"/>
+    </object>
+    <!--AssetIdType enum-->
+    <enum name="AssetIdType">
+        <value name="CLIENT" value="client" desc="assigned by the client"/>
+        <value name="PUBLISHER" value="publisher" desc="assigned by the asset owner"/>
+        <value name="INTERNAL" value="internal" desc="provided by an internal assessment service"/>
+        <value name="OTHER" value="other" desc="custom identifier"/>
+    </enum>
+    <!--AssetType enum-->
+    <enum name="AssetType">
+        <value name="READING_PASSAGE" value="reading passage" desc="reading passage"/>
+        <value name="GRAPHIC_ART" value="graphic art" desc="graphic art"/>
+        <value name="MAP" value="map" desc="map"/>
+        <value name="FORMULA_SHEET" value="formula sheet" desc="formula street"/>
+        <value name="TABLE" value="table" desc="table"/>
+        <value name="CHART" value="chart" desc="chart"/>
+        <value name="AUDIO" value="audio" desc="audio"/>
+        <value name="VIDEO" value="video" desc="video"/>
+        <value name="SCENARIO" value="scenario" desc="scenario"/>
+        <value name="SIMULATION" value="simulation" desc="simulation"/>
+        <value name="STORY_BOARD" value="story board" desc="story board"/>
+        <value name="LAB_SET" value="lab set" desc="lab set"/>
+        <value name="PERIODIC_TABLE" value="periodic table" desc="periodic table"/>
+        <value name="TRANSLATION_DICTIONARY" value="translation dictionary" desc="translation dictionary"/>
+        <value name="BASIC_CALCULATOR" value="basic calculator" desc="basic calculator"/>
+        <value name="STANDARD_CALCULATOR" value="standard calculator" desc="standard calculator"/>
+        <value name="SCIENTIFIC_CALCULATOR" value="scientific calculator" desc="scientific calculator"/>
+        <value name="GRAPHING_CALCULATOR" value="graphic calculator" desc="graphing calculator"/>
+        <value name="PROTRACTOR" value="protractor" desc="protractor"/>
+        <value name="METRIC_RULER" value="metric ruler" desc="metric ruler"/>
+        <value name="ENGLISH_RULER" value="english ruler" desc="english ruler"/>
+        <value name="UNITS_RULER" value="units ruler" desc="units ruler"/>
+        <value name="READING_LINE" value="reading line" desc="reading line"/>
+        <value name="LINE_DRAW" value="line draw" desc="line draw"/>
+        <value name="HIGHLIGHTER" value="highlighter" desc="highlighter"/>
+        <value name="OTHER_INTERACTIVE" value="other interactive" desc="other interactive"/>
+        <value name="OTHER_NON-INTERACTIVE" value="other non-interactive" desc="other non-interactive"/>
+        <value name="OTHER" value="other" desc="other"/>
+    </enum>
+    <!--AssetLearningStandards object-->
+    <object name="AssetLearningStandards">
+        <element name="AssetLearningStandard" type="AssetLearningStandard" flags="MR">
+            <desc>The RefId of a specific learning standard for the asset. If the asset is linked to all children learning standards in a hierarchy, then the parent learning standard should also be linked.</desc>
+        </element>
+    </object>
+    <!--AssetLearningStandard object-->
+    <object name="AssetLearningStandard" datatype="IdRefType"/>
+    <!--AssessmentForm object-->
+    <object name="AssessmentForm" topic="true">
+        <attribute name="RefId" type="IdRefType" flags="R">
+            <desc>The GUID that uniquely identifies an instance of the object.</desc>
+        </attribute>
+        <attribute name="AssessmentRefId" type="IdRefType" flags="R">
+            <desc>The RefId of the assessment related to this form.</desc>
+        </attribute>
+        <element name="AssessmentType" enum="AssessmentType" flags="O">
+            <desc>Indicates whether this assessment (form) is a standard administration or alternate.</desc>
+        </element>
+        <element name="FormName" type="NormalizedString" flags="O">
+            <desc>Text description for this particular arrangement of questions, etc.</desc>
+        </element>
+        <element name="FormNumbers" type="FormNumbers" flags="O"/>
+        <element name="Level" type="Token" flags="O">
+            <desc>Indicates the level of the form.</desc>
+        </element>
+        <element name="Period" type="Token" flags="O">
+            <desc>The time period in which the form is intended to be administered.</desc>
+        </element>
+        <element name="GradeLevels" type="GradeLevels" flags="O">
+            <desc>Grade levels this assessment is designed to evaluate.</desc>
+        </element>
+        <element name="AssessmentSubTestRefIds" type="AssessmentSubTestRefIds" flags="O"/>
+    </object>
+    <!--Sif3AssessmentForm-->
+    <object name="Sif3AssessmentForm" renderAs="sif3:AssessmentForm" topic="true">
+        <desc>Represents the unique set of questions or stimuli that can be given to a set of test takers. A physical correlate of the assessment form is the test booklet given to students during an assessment. For an adaptive test, the form would become a container for the structure and pool of items that are available to be selected by the adaptive algorithm. However, this object does not contain the questions, it only contains elements that describe the form for use in scoring the questions.</desc>
+        <attribute name="RefId" type="IdRefType" flags="M">
+            <desc>The GUID that uniquely identifies an instance of the object.</desc>
+        </attribute>
+        <attribute name="AssessmentRefId" type="IdRefType" flags="R">
+            <desc>The RefId of the assessment related to this form.</desc>
+        </attribute>
+        <element name="FormVersion" type="String" flags="O">
+            <desc>This is the version of the form that this object represents. Note that new versions of forms must generate new RefIds and therefore a new form object. The format of the version numbering system is determined by the assessment provider.</desc>
+        </element>
+        <element name="FormPublishDate" type="dateTime" flags="O">
+            <desc>This is the date that this version of the form was published (published means made available for use). If a FormVersion is provided, then this element should also be provided.</desc>
+        </element>
+        <element name="AssessmentType" enum="AssessmentType" flags="O">
+            <desc>Indicates whether this assessment (form) is a standard administration or alternate.</desc>
+        </element>
+        <element name="FormName" type="NormalizedString" flags="O">
+            <desc>Text description for this particular arrangement of questions, etc.</desc>
+        </element>
+        <element name="FormIdentifiers" type="FormIdentifiers" flags="O">
+            <desc>Reference numbers for the form.</desc>
+        </element>
+        <element name="FormAccommodations" type="FormAccommodations" flags="O"/>
+        <element name="Level" type="Token" flags="O">
+            <desc>Indicates the level of the form.</desc>
+        </element>
+        <element name="Period" type="Token" flags="O">
+            <desc>The time period in which the form is intended to be administered.</desc>
+        </element>
+        <element name="GradeLevels" type="GradeLevels" flags="O">
+            <desc>Grade levels this assessment is designed to evaluate.</desc>
+        </element>
+        <element name="AssessmentFormSubjects" type="SubjectAreaList" flags="O">
+            <desc>Identifies the subject areas for which the form is designed.</desc>
+        </element>
+        <element name="AssessmentFormLanguages" type="LanguageList" flags="O">
+            <desc>This identifies the list of languages that the form was designed to support. For example, a form may include items in both English and Spanish and the delivery system provides methods for the test taker to switch between languages.</desc>
+        </element>
+        <element name="AssessmentSubTestRefIds" type="AssessmentSubTestRefIds" flags="O"/>
+        <element name="AssessmentSections" type="AssessmentSections" flags="O">
+            <desc>A list all sections that make up the assessment form. Sections support form structure and sequence. For example, a form may have section 1 being sample items, section 2 being a short placement test, section 3 being an adaptive section, and section 4 a final survey.</desc>
+        </element>
+        <element name="AssessmentPlatforms" type="AssessmentPlatforms" flags="O">
+            <desc>A list of all delivery platforms that this form design will support.</desc>
+        </element>
+        <element name="AssessmentAssetRefIds" type="AssessmentAssetRefIds" flags="O">
+            <desc>A list of all assets used on the assessment form that are not related to any specific section or item. These are assets that are �global� to the form. Examples of form assets may include headers/footers, navigation tools, formula sheets, etc. that are available to the test taker at all times. This list should not duplicate any section or item level assets if possible.</desc>
+        </element>
+    </object>
+    <!--FormIdentifiers object-->
+    <object name="FormIdentifiers">
+        <element name="FormIdentifier" type="FormIdentifier" flags="MR">
+            <desc>Reference number for the form.</desc>
+        </element>
+    </object>
+    <!--FormIdentifier object-->
+    <object name="FormIdentifier">
+        <attribute name="FormIdentifierType" enum="FormIdentifierType" flags="M">
+            <desc>The Type Codes indicate the type and/or uses of the identifier.</desc>
+        </attribute>
+    </object>
+    <!--FormIdentifierType enum-->
+    <enum name="FormIdentifierType">
+        <value name="CLIENT" value="client" desc="assigned by the client"/>
+        <value name="PUBLISHER" value="publisher" desc="assigned by the asset owner"/>
+        <value name="INTERNAL" value="internal" desc="provided by an internal assessment service"/>
+        <value name="OTHER" value="other" desc="custom identifier"/>
+    </enum>
+    <!--FormAccommodations-->
+    <object name="FormAccommodations">
+        <element name="FormAccommodation" type="FormAccommodation" flags="MR">
+            <desc>This list is one or more of the specific accommodations available. If no accommodations are provided, then this list will not be present.</desc>
+        </element>
+    </object>
+    <!--FormAccomodation object-->
+    <object name="FormAccommodation" enum="FormAccommodationType"/>
+    <!--FormAccommodationType enum-->
+    <enum name="FormAccommodationType">
+        <value name="BRAILLE" value="braille" desc="braille"/>
+        <value name="TEXT_TO_SPEECH" value="text-to-speech" desc="text to speech"/>
+        <value name="AUDIO" value="audio" desc="audio"/>
+        <value name="SIGN_LANGUAGE" value="signLanguage" desc="signLanguage"/>
+        <value name="ALTERNATE_LANGUAGE" value="alternateLanguage" desc="alternageLanguage"/>
+        <value name="SIMPLIFIED_LANGUAGE" value="simplifiedLanguage" desc="simplifiedLanguage"/>
+    </enum>
+    <!--AssessmentSections object-->
+    <object name="AssessmentSections">
+        <element name="AssessmentSection" type="AssessmentSection" flags="MR">
+            <desc>A single section</desc>
+        </element>
+    </object>
+    <!--AssessmentSection object-->
+    <object name="AssessmentSection">
+        <element name="AssessmentSectionRefId" type="IdRefType" flags="M">
+            <desc>The reference to an Assessment Section object.</desc>
+        </element>
+        <element name="AssessmentSectionSequence" type="Token" flags="M">
+            <desc>A numeric sequence in which the section will be presented to the test taker. This should be a simple integer sequence number (1,2,3, etc.) but may be other values that can be sorted into sequence (e.g., S-A, S-B, S-C, etc).</desc>
+        </element>
+    </object>
+    <!--AssessmentPlatforms object-->
+    <object name="AssessmentPlatforms">
+        <element name="AssessmentPlatform" type="AssessmentPlatform" flags="MR">
+            <desc>A delivery platform that this form design will support.</desc>
+        </element>
+    </object>
+    <!--AssessmentPlatform object-->
+    <object name="AssessmentPlatform" enum="AssessmentPlatformType"/>
+    <!--AssessmentPlatformType enum-->
+    <enum name="AssessmentPlatformType">
+        <value name="PAPER" value="paper" desc="paper"/>
+        <value name="COMPUTER" value="computer" desc="computer"/>
+        <value name="MOBILE" value="mobile" desc="mobile"/>
+        <value name="CLICKER" value="clicker" desc="clicker"/>
+        <value name="OTHER" value="other" desc="other"/>
+    </enum>
+    <!--AssessmentAssetRefIds object-->
+    <object name="AssessmentAssetRefIds">
+        <element name="AssessmentAssetRefId" type="AssessmentAssetRefId" flags="MR">
+            <desc>A reference to a specific asset used by this form.</desc>
+        </element>
+    </object>
+    <!--AssessmentAssetRefId object-->
+    <object name="AssessmentAssetRefId" datatype="IdRefType"/>
+
+    <!--AssessmentGradeLevel object-->
+    <object name="AssessmentGradeLevel">
+        <element name="Code" enum="GradeLevelCode" flags="O">
+            <desc>Code representing the grade level.</desc>
+        </element>
+        <element name="OtherCodeList" type="OtherCodeList" flags="O"/>
+    </object>
+    <!--AssessmentItem object-->
+    <object name="AssessmentItem" topic="true">
+        <attribute name="RefId" type="String" flags="R"/>
+        <attribute name="AssessmentFormRefId" type="String" flags="R">
+            <desc>This RefId points to the assessment form of which the item is a part.</desc>
+        </attribute>
+        <attribute name="ResponseType" enum="ResponseType" flags="R">
+            <desc>A value that indicates the response type for the item.</desc>
+        </attribute>
+        <element name="ItemLabel" type="String" flags="M">
+            <desc>An item number or other identifier for the item. It may be used to indicate the order or grouping of
+                items.
+            </desc>
+        </element>
+        <element name="ItemName" type="String" flags="O">
+            <desc>Name or short description of the item.</desc>
+        </element>
+        <element name="LearningStandardItems" type="LearningStandardItems" flags="O"/>
+        <element name="Stimulus" type="ContentElement" flags="O">
+            <desc>A piece of content to be used by the test taker in responding to the stem. Examples include a reading
+                passage, a video, a diagram, or a picture.
+            </desc>
+        </element>
+        <element name="Stem" type="ContentElement" flags="O">
+            <desc>The question, task, or statement that prompts a response from the test taker.</desc>
+        </element>
+        <element name="ResponseChoices" type="ResponseChoices" flags="O"/>
+        <element name="ItemScoreMaximum" type="Token" flags="O">
+            <desc>The maximum item score possible for this item.</desc>
+        </element>
+        <element name="ItemScoreMinimum" type="Token" flags="O">
+            <desc>The minimum item score possible for this item.</desc>
+        </element>
+        <element name="PerformanceLevels" type="PerformanceLevels" flags="O">
+            <desc>Performance Levels are an ordered set of categories that indicate the achievement level of a person on
+                an assessment.
+            </desc>
+        </element>
+    </object>
+    <!--Sif3AssessmentItem object-->
+    <object name="Sif3AssessmentItem" renderAs="sif3:AssessmentItem" topic="true">
+        <desc>This object is designed to allow software systems to provide item detail information such as the stem of the item, the distractors, the stimuli, etc. This initial version of the object does not deal with presentation aspects of the item. Instead it focuses on the item content and characteristics needed to enable interoperability and the usage of item-level information in the improvement of learning and instruction.</desc>
+        <attribute name="RefId" type="IdRefType" flags="M"/>
+        <attribute name="ResponseType" enum="ResponseType" flags="M">
+            <desc>A value that indicates the response type for the item.</desc>
+        </attribute>
+        <element name="ItemVersion" type="normalizedString" flags="O">
+            <desc>This will identify the version of the item that this object represents. New versions of the item will generate new RefIds and therefore new instances of the object. The format of the version number is defined by the assessment provider.</desc>
+        </element>
+        <element name="ItemPublishDate" type="dateTime" flags="O">
+            <desc>The date that this version of the item was published (published means made available for use). If the ItemVersion is provided, then this date should also be provided.</desc>
+        </element>
+        <element name="ItemName" type="String" flags="O">
+            <desc>Name or short description of the item.</desc>
+        </element>
+        <element name="AssessmentIdentifiers" type="AssessmentIdentifiers" flags="O">
+            <desc>A list of all assessment identifiers that may be associated with this assessment</desc>
+        </element>
+        <element name="AssessmentSubjects" type="SubjectAreaList" flags="O">
+            <desc>The assessment may be designed to measure specific subject areas. Note that grade levels are also
+                included in the Assessment Form object. Specific forms of an assessment may have more granularity.
+            </desc>
+        </element>
+        <element name="AssessmentGradeLevels" type="GradeLevels" flags="O">
+            <desc>The assessment may be designed for specific grade levels. Note that grade levels are also included in
+                the Assessment Form object. Specific forms of an assessment may have more granularity.
+            </desc>
+        </element>
+        <element name="AssessmentLanguages" type="LanguageList" flags="O">
+            <desc>The assessment may be available in multiple languages. This list will indicate which languages are
+                available.
+            </desc>
+        </element>
+        <element name="LearningStandardItems" type="LearningStandardItems" flags="O"/>
+        <element name="AssessmentItemAssetRefIds" type="AssessmentItemAssetRefIds" flags="O">
+            <desc>A list of all content assets that are associated with the item. Assets could include stimuli such as reading passages, charts, maps, etc. as well as supporting material such as formula sheets.</desc>
+        </element>
+        <element name="Stem" type="AbstractContentElementType" flags="O">
+            <desc>The question, task, or statement that prompts a response from the test taker.</desc>
+        </element>
+        <element name="ResponseChoices" type="ResponseChoices" flags="O"/>
+        <element name="ItemFeedbackCorrect" type="String" flags="O">
+            <desc>Feedback can be provided for the item if the item is correct.</desc>
+        </element>
+        <element name="ItemFeedbackIncorrect" type="String" flags="O">
+            <desc>Feedback can be provided for the item if the item is incorrect.</desc>
+        </element>
+        <element name="ItemFeedbackHint" type="String" flags="O">
+            <desc>A hint is provided to the test taker during testing, either on request or upon an incorrect response as determined by the test design.</desc>
+        </element>
+        <element name="ItemScoreMaximum" type="Token" flags="O">
+            <desc>The maximum item score possible for this item.</desc>
+        </element>
+        <element name="ItemScoreMinimum" type="Token" flags="O">
+            <desc>The minimum item score possible for this item.</desc>
+        </element>
+        <element name="ItemRubricIds" type="ItemRubricIds" flags="O">
+            <desc>A list of all rubric Ids for rubrics that may be used to evaluate an item response. Typically used for open ended items (such as essays).</desc>
+        </element>
+        <element name="AssessmentItemBanks" type="AssessmentItemBanks">
+            <desc>Assessments may be part of one or more item banks.</desc>
+        </element>
+        <element name="AssessmentItemPlatforms" type="AssessmentItemPlatforms" flags="O"/>
+    </object>
+    <!--AssessmentItemAssetRefIds-->
+    <object name="AssessmentItemAssetRefIds">
+        <element name="AssessmentItemAssetRefId" type="AssessmentItemAssetRefId" flags="MR">
+            <desc>Reference to an asset used by this item.</desc>
+        </element>
+    </object>
+    <!--AssessmentItemAssetRefId object-->
+    <object name="AssessmentItemAssetRefId" datatype="IdRefType"/>
+    <!--AssessmentPackage object-->
+    <object name="AssessmentPackage" topic="true">
+        <attribute name="RefId" type="IdRefType" flags="R">
+            <desc>
+                The GUID that uniquely identifies an object instance in a zone.
+            </desc>
+        </attribute>
+        <element name="XMLData" type="XMLData" flags="O"/>
+    </object>
+    <!--ItemRubricIds object-->
+    <object name="ItemRubricIds">
+        <element name="ItemRubricId" type="ItemRubricId" flags="MR">
+            <desc>If this item is scored using a rubric, this will identify the specific rubric used.</desc>
+        </element>
+    </object>
+    <!--ItemRubricId object-->
+    <object name="ItemRubricId" datatype="IdRefType"/>
+    <!--AssessmentItemPlatforms-->
+    <object name="AssessmentItemPlatforms">
+        <element name="AssessmentItemPlatform" enum="AssessmentPlatformType">
+            <desc>The specific delivery platform that this item will support.</desc>
+        </element>
+    </object>
+    <!--Sif3AssessmentItemAssociation object-->
+    <object name="Sif3AssessmentItemAssociation" renderAs="sif3:AssessmentItemAssociation" topic="true">
+        <attribute name="RefId" type="IdRefType" flags="M">
+            <desc>The GUID that uniquely identifies an instance of this object.</desc>
+        </attribute>
+        <element name="AssessmentItemRefId" type="IdRefType" flags="M">
+            <desc>The first item in the association.</desc>
+        </element>
+        <element name="TargetAssessmentItemRefId" type="IdRefType" flags="M">
+            <desc>The item being associated to the first item.</desc>
+        </element>
+        <element name="AssociationType" enum="AssociationType" flags="M">
+            <desc>Indicates the type of association.</desc>
+        </element>
+    </object>
+    <!--AssociationType enum-->
+    <enum name="AssociationType">
+        <value name="ENEMY" value="enemy" desc="Indicates that the two items are enemies and should not appear on the same test together."/>
+        <value name="DERIVATIVE" value="derivative" desc="Indicates that the two items were derived from one another (such as language translation)."/>
+    </enum>
+    <!--AssessmentRegistration object-->
+    <object name="AssessmentRegistration" topic="true">
+        <attribute name="RefId" type="IdRefType" flags="R">
+            <desc>The GUID that uniquely identifies an instance of the object.</desc>
+        </attribute>
+        <attribute name="StudentPersonalRefId" type="IdRefType" flags="R">
+            <desc>The student associated with the registration.</desc>
+        </attribute>
+        <attribute name="AssessmentAdministrationRefId" type="IdRefType" flags="R">
+            <desc>The assessment administration associated with the registration.</desc>
+        </attribute>
+        <element name="CreationDateTime" type="DateTime" flags="O">
+            <desc>Date/time assignment is made.</desc>
+        </element>
+        <element name="StudentSpecialConditions" type="StudentSpecialConditions" flags="O"/>
+        <element name="StudentGradeLevel" type="GradeLevel" flags="O">
+            <desc>Grade level of the student at the time of testing.</desc>
+        </element>
+        <element name="AssessmentGradeLevel" type="GradeLevel" flags="O">
+            <desc>The grade or level at which the student is to be tested. This element should be omitted unless the
+                student is being tested out-of-level.
+            </desc>
+        </element>
+        <element name="AssessmentStudentSnapshot" type="AssessmentStudentSnapshot" flags="O"/>
+        <element name="LEAInfoRefId" type="IdRefType" flags="O">
+            <desc>Optional reference to a district associated with the registration.</desc>
+        </element>
+        <element name="SchoolInfoRefId" type="IdRefType" flags="O">
+            <desc>Optional reference to a school associated with the registration.</desc>
+        </element>
+        <element name="StaffPersonalRefId" type="IdRefType" flags="O">
+            <desc>Optional reference to a staff person associated with the registration.</desc>
+        </element>
+        <element name="SectionInfoRefId" type="IdRefType" flags="O">
+            <desc>Optional reference to a section (or class) associated with the registration.</desc>
+        </element>
+    </object>
+    <!--Sif3AssessmentRegistration object-->
+    <object name="Sif3AssessmentRegistration" renderAs="sif3:AssessmentRegistration" topic="true">
+        <desc>This object represents the assignment of a specific assessment to be taken by a student. A student will have multiple registrations if a given assessment is attempted more than once. This object will also track testing status information after the student has tested.</desc>
+        <attribute name="RefId" type="IdRefType" flags="M">
+            <desc>The GUID that uniquely identifies an instance of the object.</desc>
+        </attribute>
+        <attribute name="StudentPersonalRefId" type="IdRefType" flags="M">
+            <desc>The student associated with the registration.</desc>
+        </attribute>
+        <attribute name="AssessmentRefId" type="IdRefType" flags="M">
+            <desc>The assessment that is to be taken by the student.</desc>
+        </attribute>
+        <element name="AssessmentAdministrationRefId" type="IdRefType" flags="O">
+            <desc>The assessment administration associated with the registration.</desc>
+        </element>
+        <element name="AssessmentSessionRefId" type="IdRefType" flags="O">
+            <desc>Identifies the AssessmentSession that contains the location and scheduled time the assessment will/has been delivered. The session is likely identified at some time after the registration is initially created.</desc>
+        </element>
+        <element name="CreationDateTime" type="dateTime" flags="M">
+            <desc>Date/time assignment is made.</desc>
+        </element>
+        <element name="StartDateTime" type="dateTime" flags="O">
+            <desc>Date/time the assignment actually started. Typically considered the login time. For paper-based tests, this would typically be the date of testing for this student. Note: if the student �pauses� or otherwise logs in/out of a test after starting, this only records the first event. If further detailed analysis is required, refer to the item level details.</desc>
+        </element>
+        <element name="EndDateTime" type="dateTime" flags="O">
+            <desc>Date/time the assignment actually ended. Typically considered the time the test has been submitted for scoring by the test taker. Likely used for online tests only.</desc>
+        </element>
+        <element name="AssessmentPlatform" type="AssessmentPlatform" flags="O">
+            <desc>Indicates if the registration is for a specific assessment delivery platform. Should be updated post-test with the actual platform used.</desc>
+        </element>
+        <element name="DaysOfInstruction" type="int" flags="O">
+            <desc>This indicates the number of days of instruction the student has taken prior to testing.</desc>
+        </element>
+        <element name="RetestIndicator" type="Token" flags="O">
+            <desc>Indicates if this registration is for a retest (retake). Retest can occur if a student failed a prior attempt and is eligible to retake. Other retest scenarios also can occur.</desc>
+        </element>
+        <element name="TestAttemptIdentifier" type="Token" flags="O">
+            <desc>If the assessment delivery system assigns a unique identifier for the test attempt, then the identifier can be provided. Examples of unique identifiers for paper-based tests are batch/stack/serial and for online tests is likely a unique internal identifier. Used to locate the original attempt.</desc>
+        </element>
+        <element name="StudentSpecialEvents" type="StudentSpecialEvents" flags="O">
+            <desc>Records student-specific special events before, during, or after the test.</desc>
+        </element>
+        <element name="TestingStatuses" type="TestingStatuses" flags="O">
+            <desc>Records student-specific special conditions before, during or after the test.</desc>
+        </element>
+        <element name="ScorePublishDate" type="dateTime" flags="O">
+            <desc>This is the date set by the testing program when the test scores are published. For formative or classroom assessments, this will likely be the date when the scoring system scored the individual test. For summative assessments, this date is likely set for a group of assessments when the processing system releases the scores.</desc>
+        </element>
+        <element name="StudentGradeLevel" type="GradeLevel" flags="O">
+            <desc>Grade level of the student at the time of testing.</desc>
+        </element>
+        <element name="AssessmentGradeLevel" type="GradeLevel" flags="O">
+            <desc>The grade or level at which the student is to be tested. This element should be omitted unless the student is being tested out-of-level.</desc>
+        </element>
+        <element name="AssessmentStudentSnapshotSif3" type="AssessmentStudentSnapshotSif3" flags="O">
+            <desc>The status of the student at the time of testing.</desc>
+        </element>
+        <element name="LEAInfoRefId" type="IdRefType" flags="O">
+            <desc>Optional reference to a district associated with the registration.</desc>
+        </element>
+        <element name="SchoolInfoRefId" type="IdRefType" flags="O">
+            <desc>Optional reference to a school associated with the registration.</desc>
+        </element>
+        <element name="StaffPersonalRefId" type="IdRefType" flags="O">
+            <desc>Optional reference to a staff person associated with the registration.</desc>
+        </element>
+        <element name="SectionInfoRefId" type="IdRefType" flags="O">
+            <desc>Optional reference to a section (or class) associated with the registration.</desc>
+        </element>
+    </object>
+    <!--Sif3AssessmentRubric object-->
+    <object name="Sif3AssessmentRubric" renderAs="sif3:AssessmentRubric">
+        <desc>This object represents the scoring rubric used to evaluate responses to open-ended items. Rubrics will define how a student response is to be evaluated and what score values should be applied based on that evaluation. Rubrics can be used by human scorers (teachers or professional scorers) or are used to train artificial intelligence engines. An individual item may have multiple rubrics that are used to evaluate different 'traits' of the response.</desc>
+        <element name="RefId" type="IdRefType" flags="M">
+            <desc>The GUID that uniquely identifies an instance of the object.</desc>
+        </element>
+        <element name="RubricVersion" type="Token" flags="O">
+            <desc>Identifies the version of the Rubric that this object represents. Note that new versions of the Rubric must generate new RefIds and therefore a new Rubric object. The format of the numbering system is determined by the assessment provider.</desc>
+        </element>
+        <element name="RubricPublishDate" type="dateTime" flags="C">
+            <desc>Identifies the date that this version of the Rubric was published (published means made available for use). If a RubricVersion is provided, then this element should also be provided.</desc>
+        </element>
+        <element name="RubricIdentifiers" type="RubricIdentifiers" flags="O">
+            <desc>If the authoring system provides for a unique coding system for subtests then this element is used to store that information.</desc>
+        </element>
+        <element name="RubricName" type="normalizedString" flags="M">
+            <desc>Text name of the subtest</desc>
+        </element>
+        <element name="ScoringGuideReference" type="String" flags="O">
+            <desc>The location where the full documentation for the Rubric can be found.</desc>
+        </element>
+        <element name="ScoresSif3Rubric" type="ScoresSif3Rubric" flags="O">
+            <desc>This list will support the score codes that make up the rubric.</desc>
+        </element>
+    </object>
+    <!--RubricIdentifiers object-->
+    <object name="RubricIdentifiers">
+        <element name="RubricIdentifier" type="RubricIdentifier" flags="MR">
+            <desc>An internal or natural identifier for the ScoreTable used by the assessment system</desc>
+        </element>
+    </object>
+    <!--RubricIdentifier object-->
+    <object name="RubricIdentifier" datatype="Token">
+        <attribute name="RubricIdentifierType" enum="RubricIdentifierType" flags="O">
+            <desc>The type of identifier that is provided for this ScoreTable.</desc>
+        </attribute>
+    </object>
+    <!--RubricIdentifierType enum-->
+    <enum name="RubricIdentifierType">
+        <value name="CLIENT" value="client" desc="assigned by the client"/>
+        <value name="PUBLISHER" value="publisher" desc="assigned by the owner"/>
+        <value name="INTERNAL" value="internal" desc="assigned by the internal assessment service provider."/>
+        <value name="CUSTOM" value="custom" desc="custom"/>
+    </enum>
+    <!--ScoresSif3Rubric object-->
+    <object name="ScoresSif3Rubric" renderAs="Scores">
+        <element name="ScoreSif3Rubric" type="ScoreSif3Rubric" flags="MR">
+            <desc>Provides a wrapper for the attributes of each score code.</desc>
+        </element>
+    </object>
+    <!--ScoreSif3Rubric object-->
+    <object name="ScoreSif3Rubric" renderAs="Score">
+        <element name="ScoreCode" type="Token" flags="O">
+            <desc>Non-numeric score code value. Examples might be: 'BL' = blank 'OT' = off-topic The values for this field are determined by the assessment program.</desc>
+        </element>
+        <element name="ScoreCodeDefinition" type="AbstractContentElementType" flags="O">
+            <desc>This provides the definition of the score code or value. For example, if the score code is OT, then this can provide the definition of 'Off Topic'.</desc>
+        </element>
+        <element name="ScoreValue" type="decimal" flags="M">
+            <desc>Numeric values for the score code. For example a 4 point rubric would typically have the values 1 through 4, plus zero for no score. The non-numeric score codes will likely have a score value of zero.</desc>
+        </element>
+        <element name="ScoreDescriptions" type="ScoreDescriptions" flags="O">
+            <desc>This list provides the statements that define the expectations to obtain the score value.</desc>
+        </element>
+        <element name="ScoreComments" type="ScoreComments" flags="O">
+            <desc>This list provides a set of comment codes that a scorer may use to provide further detail/feedback concerning the score assigned.</desc>
+        </element>
+    </object>
+    <!--ScoreDescriptions object-->
+    <object name="ScoreDescriptions">
+        <element name="ScoreDescription" type="AbstractContentElementType" flags="MR">
+            <desc>An individual statement that defines the specific expectations that the response must illustrate in order to achieve this score point. This is a complex content type in order to support math or other subjects that may require non-text representations of expectations.</desc>
+        </element>
+    </object>
+    <!--ScoreComments object-->
+    <object name="ScoreComments">
+        <element name="ScoreComment" type="ScoreComment" flags="MR">
+            <desc>Provides a wrapper for the code and description pairs for comment codes.</desc>
+        </element>
+    </object>
+    <!--ScoreComment object-->
+    <object name="ScoreComment">
+        <element name="CommentCode" type="Token" flags="M">
+            <desc>This is the comment code that is likely entered or selected by the scorer and is provided in data files or reports.</desc>
+        </element>
+        <element name="Comment" type="AbstractContentElementType" flags="M">
+            <desc>A description of the comment code. This can be used to provide additional feedback to the student for the score they received.</desc>
+        </element>
+    </object>
+    <!--Sif3AssessmentScoreTable object-->
+    <object name="Sif3AssessmentScoreTable" renderAs="sif3:AssessmentScoreTable" topic="true">
+        <desc>This object represents the score conversion tables to be used by the scoring system to derive alternate values. As an example, it is often typical for a scoring system to convert a raw score to a scale score. It is also common for a scoring system to derive a student performance level on an assessment from a total scaled score.</desc>
+        <attribute name="RefId" type="IdRefType" flags="M">
+            <desc>The GUID that uniquely identifies an instance of the object.</desc>
+        </attribute>
+        <element name="ScoreTableVersion" type="Token" flags="O">
+            <desc>The version of the score table that this object represents. Note that new versions of score tables must generate new RefIds and therefore a new score table object. The format of the numbering system is determined by the assessment provider.</desc>
+        </element>
+        <element name="TablePublishDate" type="dateTime" flags="O">
+            <desc>The date that this version of the score table was published (published means made available for use). If a ScoreTableVersion is provided, then this element should also be provided.</desc>
+        </element>
+        <element name="ScoreTableIdentifiers" type="ScoreTableIdentifiers" flags="O">
+            <desc>If the authoring system provides for a unique coding system for subtests then this element is used to store that information.</desc>
+        </element>
+        <element name="ScoreTableName" type="normalizedString" flags="M">
+            <desc>The user defined name of the score table.</desc>
+        </element>
+        <element name="ScoreValues" type="ScoreValues" flags="O"/>
+
+    </object>
+    <!--ScoreTableIdentifiers object-->
+    <object name="ScoreTableIdentifiers">
+        <element name="ScoreTableIdentifier" type="ScoreTableIdentifier" flags="MR">
+            <desc>An internal or natural identifier for the ScoreTable used by the assessment system</desc>
+        </element>
+    </object>
+    <!--ScoreTableIdentifier object-->
+    <object name="ScoreTableIdentifier" datatype="Token">
+        <attribute name="ScoreTableIdentifierType" enum="ScoreTableIdentifierType" flags="O">
+            <desc>The type of identifier that is provided for this ScoreTable.</desc>
+        </attribute>
+    </object>
+    <!--ScoreTableIdentifierType enum-->
+    <enum name="ScoreTableIdentifierType">
+        <value name="CLIENT" value="client" desc="Assigned by the client"/>
+        <value name="PUBLISHER" value="publisher" desc="Assigned by the owner"/>
+        <value name="INTERNAL" value="internal" desc="Assigned by the internal assessment service provider"/>
+        <value name="OTHER" value="other" desc="Custom"/>
+    </enum>
+    <!--ScoreValues object-->
+    <object name="ScoreValues">
+        <element name="ScoreValue" type="ScoreValue" flags="MR"/>
+    </object>
+    <!--ScoreValue object-->
+    <object name="ScoreValue">
+        <attribute name="FromScoreMetric" enum="AssessmentReportingMethod" flags="M">
+            <desc>Indicates the score metric that is being used as the source to derive another score metric. For example, if this score table is using the raw score to derive a scaled score, then this will be the raw score metric (3478).</desc>
+        </attribute>
+        <element name="LowerCut" type="Token" flags="M"/>
+        <element name="UpperCut" type="Token" flags="M"/>
+        <element name="DerivedValue" type="DerivedValue" flags="M">
+            <desc>This is the derived score value when the from-score is within the range specified. The unit used for this value should be represented in the units reported by the ToScoreMetric.</desc>
+        </element>
+        <element name="PassFailIndicator" type="Token" flags="O">
+            <desc>If Pass/Fail indicators are used, then this will indicate if this derived score value represents a Passing or Failing level.</desc>
+        </element>
+        <element name="FeedbackList" type="FeedbackList" flags="O">
+            <desc>A list of feedback that can be provided a student when they obtain this score range.</desc>
+        </element>
+    </object>
+    <!--DerivedValue object-->
+    <object name="DerivedValue" datatype="Token">
+        <attribute name="ToScoreMetric" enum="AssessmentReportingMethod" flags="M">
+            <desc>Indicates the score metric that is being derived by this table. For example, if this score table is deriving a scaled score, then this will be the scale score metric (3479).</desc>
+        </attribute>
+    </object>
+    <!--FeedbackList object-->
+    <object name="FeedbackList">
+        <element name="Feedback" type="Feedback" flags="MR">
+            <desc>This bundles the feedback elements together.</desc>
+        </element>
+    </object>
+    <!--Feedback object-->
+    <object name="Feedback">
+        <element name="DiagnosticStatement" type="String" flags="M">
+            <desc>If this derived score can also provide diagnostic statements to the student or teacher, then provide that information here.</desc>
+        </element>
+        <element name="Description" type="normalizedString" flags="O">
+            <desc>A brief additional information concerning the derived score can be provided here.</desc>
+        </element>
+        <element name="Source" type="Token" flags="O">
+            <desc>Indicates the source of this feedback. Values will be determined by the assessment program.</desc>
+        </element>
+    </object>
+    <!--Sif3AssessmentSection objects-->
+    <object name="Sif3AssessmentSection" renderAs="sif:3AssessmentSection" topic="true">
+        <attribute name="RefId" type="IdRefType" flags="M">
+            <desc>The GUID that uniquely identifies an instance of this object.</desc>
+        </attribute>
+        <element name="SectionVersion" type="normalizedString" flags="O">
+            <desc>The version of the section that this object represents. New versions of the section will generate new RefIds and therefore new instances of the object. The format of the version number is defined by the assessment provider.</desc>
+        </element>
+        <element name="SectionPublishDate" type="dateTime" flags="O">
+            <desc>The date that this version of the section was published (published means made available for use). If the SectionVersion element is provided, then this date should also be provided.</desc>
+        </element>
+        <element name="SectionIdentifiers" type="SectionIdentifiers" flags="O">
+            <desc>List of section identifiers</desc>
+        </element>
+        <element name="SectionName" type="normalizedString" flags="O">
+            <desc>If the authoring system provides for a section name then this element is used to store that information.</desc>
+        </element>
+        <element name="SectionItemSequenceType" enum="SectionItemSequenceType" flags="M">
+            <desc>Specifies how items are presented to the test taker.</desc>
+        </element>
+        <element name="ItemSelectionAlgorithmName" type="String" flags="O">
+            <desc>If the section is a Random or an Adaptive section, then this will identify the name of the algorithm used to select items.</desc>
+        </element>
+        <element name="ItemSelectionAlgorithm" type="anyURI" flags="O">
+            <desc>If this section is a Random or an Adaptive section, then this will specify the location of the Algorithm.</desc>
+        </element>
+        <element name="SectionTimeLimit" type="duration" flags="O">
+            <desc>"See http://www.w3.org/TR/2001/REC-xmlschema-2-20010502/#duration for the format of this field. See http://www.w3.org/TR/2001/REC-xmlschema-2-20010502/#duration for the format of this field."</desc>
+        </element>
+        <element name="SectionSealed" enum="SectionSealed" flags="O">
+            <desc>Indicates this section is sealed, meaning the test taker cannot enter the section until authorized by the proctor.</desc>
+        </element>
+        <element name="SectionReentry" enum="SectionReentry" flags="O">
+            <desc>Indicates that this section can be re-entered, meaning the test taker can return to this section after they have left the section. A common example of this is a two section test where one section does not allow the use of a calculator and the other does. Typically the test taker cannot return to the non-calculator section after they have used a calculator.</desc>
+        </element>
+        <element name="SectionAssets" type="SectionAssets" flags="O">
+            <desc>If this section requires any specific assets that are not defined as part of the items that make up the section and are shared by all items in the section, then they are included here. Examples may be specific tools or informational resources that need to be available to the student such as charts, maps, formulas, etc. that were not defined with any of the items in the section.</desc>
+        </element>
+    </object>
+    <!--SectionIdentifiers object-->
+    <object name="SectionIdentifiers">
+        <element name="SectionIdentifier" type="SectionIdentifier" flags="MR">
+            <desc>If the authoring system provides for a unique identification system for sections, then this element is used to store that information.</desc>
+        </element>
+    </object>
+    <!--SectionIdentifier object-->
+    <object name="SectionIdentifier" datatype="Token">
+        <attribute name="SectionIdentifierType" enum="SectionIdentifierType" flags="M">
+            <desc>Identifies the type of section identifier using a enumerated list.</desc>
+        </attribute>
+    </object>
+    <!--SectionIdentifierType enum-->
+    <enum name="SectionIdentifierType">
+        <value name="CLIENT" value="client" desc="assigned by the client; generally a smart number that indicates grade, subject, etc."/>
+        <value name="PUBLISHER" value="publisher" desc="Assigned by the owner"/>
+        <value name="INTERNAL" value="internal" desc="internal assessment provider identifier"/>
+        <value name="OTHER" value="other" desc="Custom"/>
+    </enum>
+    <!--SectionItemSequenceType enum-->
+    <enum name="SectionItemSequenceType">
+        <value name="SEQUENTIAL" value="sequential" desc="sequential"/>
+        <value name="RANDOM" value="random" desc="random"/>
+        <value name="ADAPTIVE" value="adaptive" desc="adaptive"/>
+        <value name="OTHER" value="other" desc="other"/>
+    </enum>
+    <!--SectionSealed enum-->
+    <enum name="SectionSealed">
+        <value name="Y" value="y" desc="Section is sealed"/>
+        <value name="N" value="n" desc="Section is not sealed"/>
+    </enum>
+    <!--SectionReentry enum-->
+    <enum name="SectionReentry">
+        <value name="Y" value="y" desc="Section can be re-entered"/>
+        <value name="N" value="n" desc="Section cannot be re-entered"/>
+    </enum>
+    <!--SectionAssets object-->
+    <object name="SectionAssets">
+        <element name="SectionAsset" type="SectionAsset" flags="MR">
+            <desc>An item in this section.</desc>
+        </element>
+    </object>
+    <!--SectionAsset object-->
+    <object name="SectionAsset">
+        <element name="AssessmentItemRefId" type="IdRefType" flags="M">
+            <desc>The RefId of the AssessmentItem to be included in the section.</desc>
+        </element>
+        <element name="ItemSequence" type="Token" flags="O">
+            <desc>If the section is a sequential section, then this will specify the sequence that this item will appear within the section. Should start at 1 and increment by 1.</desc>
+        </element>
+    </object>
+    <!--Sif3AssessmentSession object-->
+    <object name="Sif3AssessmentSession" renderAs="sif3:AssessmentSession" topic="true">
+        <desc>This object represents a specific assessment event that occurs in a specific location at a specific time for a group of students all taking the same test. It also includes information related to unusual events that occur during the session.</desc>
+        <attribute name="RefId" type="IdRefType" flags="M">
+            <desc>The GUID that uniquely identifies an instance of the object.</desc>
+        </attribute>
+        <element name="SessionName" type="normalizedString" flags="M">
+            <desc>Name of the Administration Session.</desc>
+        </element>
+        <element name="SessionType" enum="SessionType" flags="M">
+            <desc>Indicates the type of session that is scheduled.</desc>
+        </element>
+        <element name="UnusualEvents" type="UnusualEvents" flags="O">
+            <desc>Special conditions or unusual events related to the session.</desc>
+        </element>
+        <element name="ScheduledStartDateTime" type="dateTime" flags="O">
+            <desc>Date and time the test is scheduled to begin.</desc>
+        </element>
+        <element name="ScheduledEndDateTime" type="dateTime" flags="O">
+            <desc>Date and time the test is scheduled to end.</desc>
+        </element>
+        <element name="ActualStartDateTime" type="dateTime" flags="O">
+            <desc>Date and time the test actually began.</desc>
+        </element>
+        <element name="ActualEndDateTime" type="dateTime" flags="O">
+            <desc>Date and time the test actually ended.</desc>
+        </element>
+        <element name="Address" type="Address" flags="O">
+            <desc>Address of the location where the administration takes place.</desc>
+        </element>
+        <element name="AssessmentAdministrationRefId" type="IdRefType" flags="O">
+            <desc>Optional reference to the assessment administration event that this session is part of. If this is a local-only session, then this reference is not required.</desc>
+        </element>
+        <element name="AssessmentRefId" type="IdRefType" flags="M">
+            <desc>The RefId of the assessment object used in the assessment administration.</desc>
+        </element>
+        <element name="AssessmentFormRefId" type="IdRefType" flags="O">
+            <desc>If this is an accommodations session type, then a specific form may be selected for the session, such as a read-aloud form. This is only necessary if the session is being assigned a specific form and all students in the session must take the same form of the test.</desc>
+        </element>
+        <element name="LEAInfoRefId" type="IdRefType" flags="O">
+            <desc>Optional reference to a school district associated with the administration.</desc>
+        </element>
+        <element name="SchoolInfoRefId" type="IdRefType" flags="O">
+            <desc>Optional reference to a school associated with the administration.</desc>
+        </element>
+        <element name="StaffPersonalRefIds" type="StaffPersonalRefIds" flags="O">
+            <desc>Optional list of references to staff persons associated with the administration.</desc>
+        </element>
+    </object>
+    <!--SessionType enum-->
+    <enum name="SessionType">
+        <value name="STANDARD" value="(default)" desc="(default)"/>
+        <value name="ACCOMMODATION" value="accommodation" desc="accommodation"/>
+    </enum>
+    <!--UnusualEvents object-->
+    <object name="UnusualEvents">
+        <element name="UnusualEvent" type="UnusualEvent" flags="MR">
+            <desc>A text description of the unusual event.</desc>
+        </element>
+    </object>
+    <!--UnusualEvent object-->
+    <object name="UnusualEvent" datatype="normalizedString">
+        <attribute name="Code" type="Token" flags="O">
+            <desc>This is the identifier for the list of unusual events typically defined by the assessment program owner. Typically this is a unique code assigned to each special condition by the assessment program.</desc>
+        </attribute>
+        <attribute name="SIF_Action" enum="SIF_Action" flags="O">
+            <desc>In a Change event, this flag can be used to indicate an element has been deleted from the parent list container. At a minimum the key for the list must also be present.</desc>
+        </attribute>
+    </object>
+    <!--SIF_Action enum-->
+    <enum name="SIF_Action">
+        <value name="DELETE" value="delete" desc="delete"/>
+    </enum>
+    <!--StaffPersonalRefIds object-->
+    <object name="StaffPersonalRefIds">
+        <element name="StaffPersonalRefIdSif3" type="StaffPersonalRefIdSif3" flags="MR">
+            <desc>A StaffPersonal RefId.</desc>
+        </element>
+    </object>
+    <!--StaffPersonalRefId object-->
+    <object name="StaffPersonalRefIdSif3" renderAs="StaffPersonalRefId" datatype="IdRefType"/>
+    <!--StudentSpecialEvents objects-->
+    <object name="StudentSpecialEvents">
+        <element name="StudentSpecialEvent" type="StudentSpecialEvent" flags="MR">
+            <desc>A description of the special event. Student special event are different from special events of the test session. An example of a student special event may be 'student became ill' or 'student was detected attempting to cheat'.</desc>
+        </element>
+    </object>
+    <!--StudentSpecialEvent objects-->
+    <object name="StudentSpecialEvent" datatype="normalizedString">
+        <attribute name="Code" type="Token" flags="M">
+            <desc>A code indicating the type of special event. Code values are determined by the assessment program..</desc>
+        </attribute>
+    </object>
+    <!--TestingStatuses object-->
+    <object name="TestingStatuses">
+        <element name="TestingStatus" type="TestingStatus" flags="MR">
+            <desc>Records a single student-specific special condition before, during or after the test.</desc>
+        </element>
+    </object>
+    <!--TestingStatus object-->
+    <object name="TestingStatus">
+        <element name="TestingStatusCode" type="Token" flags="M">
+            <desc>A code that identifies the specific testing status. Code values are determined by the testing program.</desc>
+        </element>
+        <element name="TestingStatusDescription" type="normalizedString" flags="O">
+            <desc>A description of the testing status. Values might include: Did not attempt Do not score  Do not report  Duplicate test</desc>
+        </element>
+    </object>
+    <!--AssessmentStudentSnapshot object-->
+    <object name="AssessmentStudentSnapshot">
+        <element name="RaceList" type="RaceList" flags="O">
+            <desc>Person's race</desc>
+        </element>
+        <element name="HispanicLatino" enum="YesNo" flags="O"/>
+        <element name="Gender" enum="Gender" flags="O">
+            <desc>Person's gender.</desc>
+        </element>
+        <element name="BirthDate" type="Date" flags="O">
+            <desc>The person's date of birth.</desc>
+        </element>
+        <element name="Title1" enum="YesNoUnknown" flags="O"/>
+        <element name="ELL" enum="YesNoUnknown" flags="O"/>
+    </object>
+    <!--AssessmentStudentSnapshotSif3 object-->
+    <object name="AssessmentStudentSnapshotSif3" renderAs="AssessmentStudentSnapshot">
+        <element name="Name" type="Name" flags="O">
+            <desc>Name of the student</desc>
+        </element>
+        <element name="LocalId" type="String" flags="M">
+            <desc>The locally-defined identifier for this student.</desc>
+        </element>
+        <element name="StateProvinceId" type="String" flags="O">
+            <desc>The state-assigned identifier for this student.</desc>
+        </element>
+        <element name="Address" type="Address" flags="O">
+            <desc>Address of the student</desc>
+        </element>
+        <element name="RaceList" type="RaceList" flags="O">
+            <desc>Person's race</desc>
+        </element>
+        <element name="HispanicLatino" enum="YesNo" flags="O"/>
+        <element name="Gender" enum="Gender" flags="O">
+            <desc>Person's gender.</desc>
+        </element>
+        <element name="BirthDate" type="Date" flags="O">
+            <desc>The person's date of birth.</desc>
+        </element>
+        <element name="Age" type="unsignedInt" flags="O">
+            <desc>The age (in years) of the student on the date in SnapDate.</desc>
+        </element>
+        <element name="ProjectedGraduationYear" type="int" flags="O">
+            <desc>Currently projected graduation year.</desc>
+        </element>
+        <element name="OnTimeGraduationYear" type="int" flags="O">
+            <desc>First projected graduation year, usually determined when student is accepted into ninth grade.</desc>
+        </element>
+        <element name="GraduationDate" type="PartialDateType" flags="O">
+            <desc>Date student officially graduated from secondary education.</desc>
+        </element>
+        <element name="HomeEnrollmentSif3" type="HomeEnrollmentSif3" flags="M">
+            <desc>Enrollment-related information for the school that is responsible for reporting the student's membership/child accounting information. This is most likely the primary enrollment site for the student.</desc>
+        </element>
+        <element name="IDEA" enum="YesNoUnknown" flags="O"/>
+        <element name="Migrant" enum="YesNoUnknown" flags="O"/>
+        <element name="Title1" enum="YesNoUnknown" flags="O"/>
+        <element name="GiftedTalented" enum="YesNoUnknown" flags="O"/>
+        <element name="EconomicDisadvantage" enum="YesNoUnknown" flags="O"/>
+        <element name="ELL" enum="YesNoUnknown" flags="O"/>
+        <element name="Homeless" enum="YesNoUnknown" flags="O"/>
+        <element name="Section504" enum="YesNoUnknown" flags="O"/>
+        <element name="VocationalConcentrator" enum="YesNoUnknown" flags="O"/>
+        <element name="Immigrant" enum="YesNoUnknown" flags="O"/>
+        <element name="FreeAndReducedStatus" enum="FreeAndReducedStatus" flags="O"/>
+    </object>
+    <!--HomeEnrollmentSif3 object-->
+    <object name="HomeEnrollmentSif3" renderAs="HomeEnrollment">
+      <element name="StudentSchoolEnrollmentRefId" type="IdRefType" flags="O" />
+      <element name="SchoolName" type="NormalizedString" flags="O">
+        <desc>Name of the school.</desc>
+      </element>
+      <element name="SchoolInfoRefId" type="IdRefType" flags="C">
+        <desc>Provide both the HomeEnrollment/SchoolId and HomeEnrollment/LocalId elements if possible. If not, one or the other must be provided.</desc>
+      </element>
+      <element name="LocalId" type="NormalizedString" flags="C">
+        <desc>
+          The locally-defined identifier for this school.
+          Provide both the HomeEnrollment/LocalId and HomeEnrollment/SchoolId elements if possible.
+          If not, one or the other must be provided.
+        </desc>
+      </element>
+      <element name="StateProvinceId" type="String" flags="O">
+        <desc>The state or province defined identifier for this school.</desc>
+      </element>
+      <element name="Status" enum="HomeEnrollmentStatusSif3" flags="M">
+        <desc>Enrollment status as of the SnapDate.</desc>
+      </element>
+      <element name="GradeLevel" type="GradeLevel" flags="M">
+        <desc>Grade or academic level of student.</desc>
+      </element>
+      <element name="HomeroomSif3" type="HomeroomSif3" flags="O" />
+      <element name="HomeroomNumber" type="NormalizedString" flags="O">
+        <desc>The locally-defined identifier for this room.</desc>
+      </element>
+      <element name="FullYearEnrollment" enum="YesNoUnknown" flags="O">
+        <desc>An indication as to whether or not the student was enrolled for the whole school year. If the SchoolYear is in progress as of the SnapDate, use the value "Unknown".</desc>
+      </element>
+    </object>
+    <!--HomeEnrollmentStatusSif3 enum-->
+    <enum name="HomeEnrollmentStatusSif3">
+      <value name="ACTIVE" value="Active" desc="Active" />
+      <value name="INACTIVE" value="Inactive" desc="Inactive" />
+      <value name="UNREPORTED" value="Unreported" desc="Unreported" />
+    </enum>
+    <!--HomeroomSif3 object-->
+    <object name="HomeroomSif3" renderAs="Homeroom" datatype="IdRefType">
+      <desc>The GUID of the RoomInfo referenced by this enrollment.</desc>
+      <attribute name="SIF_RefObject" flags="R" key="false">
+        <desc>The name of the object referenced.</desc>
+      </attribute>
+    </object>
+    <!--FreeAndReducedStatus enum-->
+    <enum name="FreeAndReducedStatus">
+        <value name="FREE" value="free" desc="free"/>
+        <value name="REDUCED" value="reduced" desc="reduced"/>
+        <value name="NONE" value="none" desc="none"/>
+        <value name="NA" value="NA" desc="NA"/>
+    </enum>
+    <!--AssessmentSubTest object-->
+    <object name="AssessmentSubTest" topic="true">
+        <attribute name="RefId" type="IdRefType" flags="R">
+            <desc>The GUID that uniquely identifies an instance of the object.</desc>
+        </attribute>
+        <element name="Name" type="NormalizedString" flags="O">
+            <desc>Text name of the subtest.</desc>
+        </element>
+        <element name="ScoreRange" type="ScoreRange" flags="O">
+            <desc>The possible range of scores.</desc>
+        </element>
+        <element name="PerformanceLevels" type="PerformanceLevels" flags="O"/>
+        <element name="SubjectArea" type="Token" flags="O">
+            <desc>Content area covered by the score.</desc>
+        </element>
+        <element name="GradeLevels" type="GradeLevels" flags="O">
+            <desc>Grade levels for which the score is valid.</desc>
+        </element>
+        <element name="AssessmentSubTestRefIds" type="AssessmentSubTestRefIds" flags="O"/>
+        <element name="SubTestTier" type="UnsignedInt" flags="O">
+            <desc>An integer that defines the level or tier of the score in a multi-level arrangement of composite
+                scores. Zero indicates the highest or root level.
+            </desc>
+        </element>
+        <element name="LearningStandardItemRefIds" type="LearningStandardItemRefIds" flags="O"/>
+        <element name="Abbreviation" type="Token" flags="O">
+            <desc>This is the short version of the name of the assessment that is often used for quick reference and
+                used in reports.
+            </desc>
+        </element>
+        <element name="Description" type="String" flags="O">
+            <desc>The description element provides an opportunity to pass additional information about the assessment
+                and also be used for describing elements in a test hierarchy.
+            </desc>
+        </element>
+        <element name="NumberOfItems" type="UnsignedInt" flags="O">
+            <desc>This element records the number of items included on the assessment. This number may be different than
+                the possible score.
+            </desc>
+        </element>
+        <element name="ContainerOnly" type="Boolean" flags="O">
+            <desc>Indicator describing the purpose of an AssessmentSubTest as being that of a container for the child
+                AssessmentSubTests. There will be no scores within this subtest.
+            </desc>
+        </element>
+    </object>
+    <!--AssessmentSubTestRefId object-->
+    <object name="AssessmentSubTestRefId" datatype="IdRefType"/>
+    <!--AssessmentSubTestRefIds object-->
+    <object name="AssessmentSubTestRefIds">
+        <element name="AssessmentSubTestRefId" type="AssessmentSubTestRefId" flags="OR">
+            <desc>A reference to an AssessmentSubTest by RefId.</desc>
+        </element>
+    </object>
+
+    <!--Sif3AssessmentSubTest object-->
+    <object name="Sif3AssessmentSubTest" renderAs="sif3:AssessmentSubTest" topic="true">
+        <desc>A psychological construct measured by the assessment. Operationally, a subtest is a class of scores on an assessment. Some assessments may have only one subtest or type of score but most assessments measure more than one psychological construct. The subtest can be based upon items in a section or items that are empirically related. Subtests can also be composites of other subtests that are combined using a particular algorithm. Examples of subtests of an assessment are math total, reading composite, total test, and English composition.</desc>
+        <attribute name="RefId" type="IdRefType" flags="M"/>
+        <element name="SubTestVersion" type="Token" flags="O">
+            <desc>Identifies the version of the subtest that this object instance represents. Note that new versions of subtests must generate new RefIds and therefore a new subtest object instance. The format of the numbering system is determined by the assessment provider.</desc>
+        </element>
+        <element name="SubTestPublishDate" type="dateTime" flags="O">
+            <desc>Identifies the date that this version of the subtest was published (published means made available for use). If a SubTestVersion is provided, then this element should also be provided.</desc>
+        </element>
+        <element name="SubTestIdentifiers" type="SubTestIdentifiers" flags="O">
+            <desc>If the authoring system provides for a unique coding system for subtests then this element is used to store that information.</desc>
+        </element>
+        <element name="SubTestName" type="normalizedString" flags="M">
+            <desc>Text name of the subtest</desc>
+        </element>
+        <element name="ScoreReporting" type="ScoreReporting" flags="O">
+            <desc>Information about the scores reported about the subtest.</desc>
+        </element>
+        <element name="SubTestSubjectAreas" type="SubjectAreaList" flags="O">
+            <desc>Content area covered by the subtest.</desc>
+        </element>
+        <element name="SubTestGradeLevels" type="GradeLevels" flags="O">
+            <desc>Grade levels for which the subtest scores are valid.</desc>
+        </element>
+        <element name="AssessmentSubTestRefIds" type="AssessmentSubTestRefIds" flags="O">
+            <desc>References (possibly recursive) to other SIF AssessmentSubTests. This enables subtests or scores to be composites of other scores creating a parent/child hierachy. If any references are given here, the score is a composite score (it is a parent). The most common composite score is for total test score. The list must be unique. It is also important to note that composite scores may not be simple sums of the subordinate sub test scores.</desc>
+        </element>
+        <element name="ContainerOnly" type="boolean" flags="O">
+            <desc>Indicator describing the purpose of an AssessmentSubTest as being that of a container for the child AssessmentSubTests. There will be no scores within this subtest.</desc>
+        </element>
+        <element name="SubTestTier" type="unsignedInt" flags="O">
+            <desc>An integer that defines the level or tier of the score in a multi-level arrangement of composite scores. Zero indicates the highest or root level.</desc>
+        </element>
+        <element name="LearningStandardItemRefIds" type="LearningStandardItemRefIds" flags="O">
+            <desc>References to LearningStandardItems that this subtest measures. The list must be unique. If the subtest measures a higher order standard, then only the parent standard should be identified in the list.</desc>
+        </element>
+        <element name="Abbreviation" type="Token" flags="O">
+            <desc>This is the short version of the name of, or code identifying, the assessment subtest. It is often used for quick reference and used in reports.</desc>
+        </element>
+        <element name="Description" type="String" flags="O">
+            <desc>The description element provides an opportunity to pass additional information about the assessment and also be used for describing elements in a test hierarchy.</desc>
+        </element>
+        <element name="NumberOfItems" type="unsignedInt" flags="O">
+            <desc>This element records the number of items included on the assessment. This number may be different than the possible score.</desc>
+        </element>
+        <element name="AssessmentItems" type="AssessmentItems" flags="O">
+            <desc>This is a list of the items that are used to compute the sub-test score.</desc>
+        </element>
+    </object>
+    <!--SubTestIdentifiers object-->
+    <object name="SubTestIdentifiers">
+        <element name="SubTestIdentifier" type="SubTestIdentifier" flags="MR">
+            <desc>An internal or natural identifier for the SubTest used by the assessment system</desc>
+        </element>
+    </object>
+    <!--SubTestIdentifier object-->
+    <object name="SubTestIdentifier" datatype="Token">
+        <attribute name="SubTestIdentifierType" enum="SubTestIdentifierType" flags="O">
+            <desc>SubTestIdentifierType</desc>
+        </attribute>
+    </object>
+    <!--SubTestIdentifierType enum-->
+    <enum name="SubTestIdentifierType">
+        <value name="CLIENT" value="client" desc="assigned by the client"/>
+        <value name="PUBLISHER" value="publisher" desc="assigned by the owner"/>
+        <value name="INTERNAL" value="internal" desc="assigned by the internal assessment service provider"/>
+        <value name="OTHER" value="custom" desc="custom"/>
+    </enum>
+    <!--ScoreReporting object-->
+    <object name="ScoreReporting">
+        <attribute name="ScoreMetric" enum="AssessmentReportingMethod" flags="M">
+            <desc>The metric or scale used to report the scores.</desc>
+        </attribute>
+        <element name="Minimum" type="Token" flags="O">
+            <desc>Lowest possible score value.</desc>
+        </element>
+        <element name="Maximum" type="Token" flags="O">
+            <desc>Highest possible score value</desc>
+        </element>
+        <element name="ScoreTableRefId" type="IdRefType" flags="O">
+            <desc>This identifies the specific score table used by this subtest to generate the score if applicable. Note that the score metric in this object should match the �to score metric� in the score table.</desc>
+        </element>
+    </object>
+    <!--AssessmentItems object-->
+    <object name="AssessmentItems">
+        <element name="AssessmentItemSif3" type="AssessmentItemSif3" flags="MR"/>
+    </object>
+    <!--AssessmentItemSif3 object-->
+    <object name="AssessmentItemSif3" renderAs="AssessmentItem">
+        <element name="AssessmentItemRefId" type="IdRefType" flags="M">
+            <desc>This identifies the specific item that contributes to a sub-test score.</desc>
+        </element>
+        <element name="ItemWeightCorrect" type="decimal" flags="M">
+            <desc>This provides a weighting factor for how the item score is used to compute a sub-test score when the item is correct or partially correct. Item weight of 1 indicates the full item score is used. A weight of .5 would indicate the item only contributes one half of the item score to the subtest. A weight of 0 indicates the item does not affect the sub test score.</desc>
+        </element>
+        <element name="ItemWeightIncorrect" type="decimal" flags="M">
+            <desc>This provides a weighting factor for how the item score is used to compute a sub-test score when the item is attempted and incorrect. Item weight should be a negative value if the item subtracts from the score if missed.</desc>
+        </element>
+        <element name="ItemWeightNotAttempted" type="decimal" flags="M">
+            <desc>This provides a weighting factor for how the item score is used to compute a sub-test score when the item has not been attempted by the student. Item weight should be a negative value if the item subtracts from the score if not attempted.</desc>
+        </element>
+    </object>
+
+    <!--AssessmentType enum-->
+    <enum name="AssessmentType">
+        <value name="STANDARD" value="standard" desc="standard"/>
+        <value name="ALTERNATE" value="alternate" desc="alternate"/>
+    </enum>
+    <!--Choice object-->
+    <object name="Choice">
+        <element name="ChoiceLabel" type="String" flags="O">
+            <desc>A choice number or other identifier for the choice. It may be used to indicate the order or grouping
+                of the choices.
+            </desc>
+        </element>
+        <element name="ChoiceContent" type="ContentElement" flags="M">
+            <desc>The text of the choice, such as true, 27, or Important economic and social factors.</desc>
+        </element>
+        <element name="CreditValue" type="Float" flags="O">
+            <desc>A numeric value that indicates the amount of credit awarded for choosing the choice.</desc>
+        </element>
+    </object>
+    <!--ContentElement object-->
+    <object name="ContentElement">
+        <element name="XMLData" type="XMLData" flags="O"/>
+        <element name="TextData" type="TextData" flags="O">
+            <desc>Contains arbitrary text, encoded in UTF-8.</desc>
+        </element>
+        <element name="BinaryData" type="BinaryData" flags="O">
+            <desc>Contains the base64Binary encoding of binary or text data not encoded in UTF-8.</desc>
+        </element>
+        <element name="Reference" type="Reference" flags="O"/>
+    </object>
+    <!--CutScores object-->
+    <object name="CutScores">
+        <attribute name="ScoreMetric" enum="AssessmentReportingMethod" flags="R">
+            <desc>The metric or scale used to report the scores.</desc>
+        </attribute>
+        <element name="LowerCut" type="String" flags="O">
+            <desc>Lower bound for the performance level.</desc>
+        </element>
+        <element name="UpperCut" type="String" flags="O">
+            <desc>Upper bound for the performance level.</desc>
+        </element>
+    </object>
+    <!--FormNumber object-->
+    <object name="FormNumber" datatype="string"/>
+    <!--FormNumbers object-->
+    <object name="FormNumbers">
+        <element name="FormNumber" type="FormNumber" flags="OR">
+            <desc>Reference number for the form.</desc>
+        </element>
+    </object>
+    <!--Item object-->
+    <object name="Item">
+        <element name="Response" type="String" flags="O">
+            <desc>Answer selected or student work in raw format.</desc>
+        </element>
+        <element name="ResponseLocation" type="AnyUri" flags="O">
+            <desc>An optional element that contains a URL pointing to the location of the response or additional
+                response.
+            </desc>
+        </element>
+        <element name="ResponseStatus" enum="ResponseStatus" flags="O">
+            <desc>Status of the response.</desc>
+        </element>
+        <element name="ResponseTime" type="duration" flags="O">
+            <desc>The length of time the student took to respond.</desc>
+        </element>
+        <element name="ItemNumber" type="Token" flags="O">
+            <desc>Identifies the item on the assessment by number.</desc>
+        </element>
+        <element name="ItemName" type="Token" flags="O">
+            <desc>Identifies the item on the assessment by name.</desc>
+        </element>
+        <element name="DiagnosticStatement" type="String" flags="O">
+            <desc>Psychometric purpose or design-related comment about the question.</desc>
+        </element>
+        <element name="NumberOfAttempts" type="UnsignedInt" flags="O">
+            <desc>The number of times a student changes their answer or attempts a response.</desc>
+        </element>
+        <attribute name="AssessmentItemRefId" type="IdRefType" flags="O">
+            <desc>A GUID that identifies the item object associated with this student result.</desc>
+        </attribute>
+        <element name="ItemScore" type="NormalizedString" flags="O">
+            <desc>This is the score the student received on the specific item.</desc>
+        </element>
+        <element name="ItemAidSetUsed" type="String" flags="O">
+            <desc>A tool or aid set used while viewing the item</desc>
+        </element>
+    </object>
+    <!--Items object-->
+    <object name="Items">
+        <element name="Item" type="Item" flags="OR"/>
+    </object>
+    <!--PerformanceLevel object-->
+    <object name="PerformanceLevel">
+        <attribute name="LevelName" type="token" flags="M">
+            <desc>The name of the performance level.</desc>
+        </attribute>
+        <element name="CutScores" type="CutScores" flags="O">
+            <desc>Score bounds for the performance level.</desc>
+        </element>
+    </object>
+    <!--PerformanceLevels object-->
+    <object name="PerformanceLevels">
+        <element name="PerformanceLevel" type="PerformanceLevel" flags="OR"/>
+    </object>
+    <!--ResponseChoices object-->
+    <object name="ResponseChoices">
+        <element name="Choice" type="Choice" flags="MR"/>
+    </object>
+    <!--ResponseStatus enum-->
+    <enum name="ResponseStatus">
+        <value name="CORRECT" value="Correct" desc="Correct"/>
+        <value name="INCORRECT" value="Incorrect" desc="Incorrect"/>
+        <value name="COMPLETE" value="Complete" desc="Complete"/>
+        <value name="PARTIALLYCOMPLETE" value="PartiallyComplete" desc="PartiallyComplete"/>
+        <value name="VIEWED" value="Viewed" desc="Viewed"/>
+        <value name="NOTVIEWED" value="NotViewed" desc="NotViewed"/>
+        <value name="NOTANSWERED" value="NotAnswered" desc="NotAnswered"/>
+        <value name="ATTEMPTED" value="Attempted" desc="Attempted"/>
+        <value name="INCOMPLETE" value="Incomplete" desc="Incomplete"/>
+    </enum>
+    <!--ResponseType enum-->
+    <enum name="ResponseType">
+        <value name="MULTIPLECHOICE" value="multiple-choice" desc="multiple-choice"/>
+        <value name="MULTIPLEMULTIPLE_CHOICE" value="multiple-multiple choice" desc="multiple-multiple choice"/>
+        <value name="TRUEFALSE" value="true-false" desc="true-false"/>
+        <value name="FILLINTHEBLANK" value="fill-in-the-blank" desc="fill-in-the-blank"/>
+        <value name="SHORTANSWER" value="short-answer" desc="short-answer"/>
+        <value name="ESSAY" value="essay" desc="essay"/>
+    </enum>
+    <!--Scores object-->
+    <object name="Scores">
+        <element name="Score" type="Score" flags="OR"/>
+    </object>
+    <!--Score object-->
+    <object name="Score">
+        <attribute name="AssessmentSubTestRefId" type="IdRefType" flags="R">
+            <desc>References the AssessmentSubTest that defines the score.</desc>
+        </attribute>
+        <element name="ScoreValue" type="NormalizedString" flags="O">
+            <desc>The value of the score.</desc>
+        </element>
+        <element name="DiagnosticStatement" type="String" flags="O">
+            <desc>Comment created by any logical analysis of this score.</desc>
+        </element>
+        <element name="Description" type="String" flags="O">
+            <desc>This is further qualification of a Student Score.</desc>
+        </element>
+        <element name="NumberOfResponses" type="UnsignedInt" flags="O">
+            <desc>This is the number of responses that are included with the StudentScoreSet.</desc>
+        </element>
+    </object>
+    <!--ScoreRange object-->
+    <object name="ScoreRange">
+        <attribute name="ScoreMetric" enum="AssessmentReportingMethod" flags="R">
+            <desc>The metric or scale used to report the scores.</desc>
+        </attribute>
+        <element name="Minimum" type="String" flags="O">
+            <desc>Lowest possible score value.</desc>
+        </element>
+        <element name="Maximum" type="String" flags="O">
+            <desc>Highest possible score value.</desc>
+        </element>
+    </object>
+    <!--SpecialCondition object-->
+    <object name="SpecialCondition">
+        <attribute name="Code" type="Token" flags="R">
+            <desc>This is the primary key for the list of special conditions.</desc>
+        </attribute>
+        <attribute name="SIF_Action" key="false" flags="O" enum="SIFActionType">
+            <desc>In a Change event, this flag can be used to indicate an element has been deleted from the parent list
+                container. At a minimum the key for the list must also be present.
+            </desc>
+        </attribute>
+    </object>
+    <!--SpecialConditions object-->
+    <object name="SpecialConditions" superclass="SIFActionList&lt;SpecialCondition&gt;">
+        <element name="SpecialCondition" type="SpecialCondition" flags="OR">
+            <desc>A text description of the special condition.</desc>
+        </element>
+    </object>
+    <!--StudentGradeLevel object-->
+    <object name="StudentGradeLevel">
+        <element name="Code" enum="GradeLevelCode" flags="O">
+            <desc>Code representing the grade level.</desc>
+        </element>
+        <element name="OtherCodeList" type="OtherCodeList" flags="O"/>
+    </object>
+    <!--StudentResponseSet object-->
+    <object name="StudentResponseSet" topic="true">
+        <attribute name="RefId" type="IdRefType" flags="R">
+            <desc>The GUID that uniquely identifies an instance of the object.</desc>
+        </attribute>
+        <attribute name="AssessmentAdministrationRefId" type="IdRefType" flags="R">
+            <desc>The administration associated with this score set.</desc>
+        </attribute>
+        <attribute name="StudentPersonalRefId" type="IdRefType" flags="R">
+            <desc>The student associated with the response set.</desc>
+        </attribute>
+        <attribute name="AssessmentRegistrationRefId" type="IdRefType" flags="O">
+            <desc>The registration associated with the response set.</desc>
+        </attribute>
+        <element name="Items" type="Items" flags="O"/>
+    </object>
+    <!--Sif3StudentResponseSet object-->
+    <object name="Sif3StudentResponseSet" renderAs="sif3:StudentResponseSet" topic="true">
+        <desc>This object transmits the student's responses to stimuli presented in an assessment. This object contains the raw responses as well as provides item-level scores and feedback to the student based on those responses.</desc>
+        <attribute name="RefId" type="IdRefType" flags="R">
+            <desc>The GUID that uniquely identifies an instance of the object.</desc>
+        </attribute>
+        <attribute name="AssessmentAdministrationRefId" type="IdRefType" flags="R">
+            <desc>The administration associated with this score set.</desc>
+        </attribute>
+        <attribute name="StudentPersonalRefId" type="IdRefType" flags="R">
+            <desc>The student associated with the response set.</desc>
+        </attribute>
+        <attribute name="AssessmentRegistrationRefId" type="IdRefType" flags="O">
+            <desc>The registration associated with the response set.</desc>
+        </attribute>
+        <element name="ItemsSif3" type="ItemsSif3" flags="O"/>
+    </object>
+    <!--ItemsSif3 object-->
+    <object name="ItemsSif3" renderAs="Items">
+        <element name="ItemSif3" type="ItemSif3" flags="OR"/>
+    </object>
+    <!--ItemSif3 object-->
+    <object name="ItemSif3" renderAs="Item">
+        <element name="Response" type="String" flags="M">
+            <desc>Answer selected or student work in raw format.</desc>
+        </element>
+        <element name="ResponseLocation" type="AnyUri" flags="O">
+            <desc>An optional element that contains a URL pointing to the location of the response or additional
+                response.
+            </desc>
+        </element>
+        <element name="ResponseCorrectness" enum="ResponseCorrectness" flags="O">
+            <desc>After the test has been scored, this value will indicate the correctness of the response. This element will be missing if the response has not yet been scored. For open ended items that are scored using a rubric, this value will also likely be missing. These items do not fall nicely into the right/wrong category.</desc>
+        </element>
+        <element name="ViewStatus" enum="ViewStatus" flags="O">
+            <desc>This element will indicate if the item has been viewed or not by the student. Note this value can only be determined for online delivered tests. Paper tests should not use this attribute.</desc>
+        </element>
+        <element name="AttemptStatus" enum="AttemptStatus" flags="O">
+            <desc>This element indicates if the student attempted the item. If a full or partial response is present then the item should be considered attempted. If the student never responded then the item was not attempted. If the item was answered and then later the answer was removed, then it is the rule of the assessment system that would determine if that was considered an attempt. For paper tests, an erasure would also be determined by the rules of the assessment system (assuming gray scanning scale capabilities).</desc>
+        </element>
+        <element name="NumberOfAttempts" type="UnsignedInt" flags="O">
+            <desc>The number of times a student changes their answer or attempts a response. For online tests, this would represent each time an item was changed after the original (complete) response was provided and the student navigated away from the item. For paper-based tests, if erasure analysis is performed, this could represent either the number of erasures or be set to 2 if multiple responses are detected.</desc>
+        </element>
+        <element name="TimeOnItem" type="duration" flags="O">
+            <desc>The length of time the student spent viewing or answering this item. Only applies for online tests. If the student viewed the item multiple times, then this would be the accumulated total time spent on the item. As much as is possible, the delivery system should remove inter-item latency or item presentation time.</desc>
+        </element>
+        <element name="ItemNumber" type="Token" flags="O">
+            <desc>Identifies the sequence of the item as it was delivered to this student. For adaptive testing, this is the sequence in which the item was delivered. This should be the item sequence starting at 1 and continue to the end of the test (spanning all sections). This should include all items such as sample items.</desc>
+        </element>
+        <element name="ItemName" type="Token" flags="O">
+            <desc>Identifies the item on the assessment by name.</desc>
+        </element>
+        <element name="AssessmentRubricRefId" type="IdRefType" flags="O">
+            <desc>This identifies the rubric that was used to determine the score that is being recorded for this item response. This is only used for items that are scored using one or more rubrics.</desc>
+        </element>
+        <element name="ItemScore" type="Token" flags="O">
+            <desc>This is the score the student received on the specific item.</desc>
+        </element>
+        <element name="ItemScoreCode" type="Token" flags="O">
+            <desc>This is the score code the student received for the specific item. Generally only applies to open ended items. Values are program specific, but example values might be 'BL = blank', 'OT = off topic', 'FL = foreign language'.</desc>
+        </element>
+        <element name="Comments" type="Comments" flags="O">
+            <desc>If the scoring process provides for comment codes, then this list will contain each comment code provided with the item score.</desc>
+        </element>
+        <element name="TraitScores" type="TraitScores" flags="O">
+            <desc>If the item includes trait scores – typically open ended items – then this list will support one or more trait scores.</desc>
+        </element>
+        <element name="FeedbackItems" type="FeedbackItems" flags="O">
+            <desc>This list will support providing feedback to the student from multiple sources.</desc>
+        </element>
+        <element name="ItemAids" type="ItemAids" flags="O">
+            <desc>This is a list of the assessment item aids that were used (or accessed) by the student to answer the question.</desc>
+        </element>
+    </object>
+    <!--ResponseCorrectness enum-->
+    <enum name="ResponseCorrectness">
+        <value name="CORRECT" value="correct" desc="correct"/>
+        <value name="INCORRECT" value="incorrect" desc="incorrect" />
+        <value name="PARTIAL" value="partial" desc="Partially Correct"/>
+    </enum>
+    <!--ViewStatus enum-->
+    <enum name="ViewStatus">
+        <value name="YES" value="yes" desc="Student viewed the item"/>
+        <value name="NO" value="no" desc="Student did not view the item"/>
+    </enum>
+    <!--AttemptStatus enum-->
+    <enum name="AttemptStatus">
+        <value name="YES" value="yes" desc="Student attempted the item"/>
+        <value name="NO" value="no" desc="Student did not attempt the item"/>
+    </enum>
+    <!--Comments object-->
+    <object name="Comments">
+        <element name="Comment" type="Comment" flags="MR"/>
+    </object>
+    <!--Comment object-->
+    <object name="Comment">
+        <element name="CommentCode" type="Token" flags="M">
+            <desc>For each comment provided, this will identify the specific code for the comment. These codes will be program specific (no standardized values).</desc>
+        </element>
+        <element name="CommentDescription" type="normalizedString" flags="O">
+            <desc>Allows for the description of the comment code to be provided by the scoring system.</desc>
+        </element>
+    </object>
+    <!--TraitScores object-->
+    <object name="TraitScores">
+        <element name="TraitScore" type="TraitScore" flags="MR">
+            <desc>This is the container for the trait score elements.</desc>
+        </element>
+    </object>
+    <!--TraitScore object-->
+    <object name="TraitScore">
+        <element name="TraitScoreType" type="Token" flags="O">
+            <desc>If trait scores are provided, then this identifies the specific trait score that is provided. This value will be program specific (i.e. no standardized list of values available).</desc>
+        </element>
+        <element name="TraitScore" type="Token" flags="O">
+            <desc>This will be the numeric trait score value.</desc>
+        </element>
+        <element name="TraitScoreCode" type="Token" flags="O">
+            <desc>If there is a code associated with the trait score, then this will allow for identifying the code.</desc>
+        </element>
+    </object>
+    <!--FeedbackItems object-->
+    <object name="FeedbackItems">
+        <element name="FeedbackItem" type="FeedbackItem" flags="MR"/>
+    </object>
+    <!--FeedbackItem object-->
+    <object name="FeedbackItem">
+        <element name="FeedbackCode" type="Token" flags="O">
+            <desc>If there is a coding system associated with the feedback concerning the score, then this will identify that code. The format and content of the code is determined by the assessment program.</desc>
+        </element>
+        <element name="DiagnosticStatement" type="String" flags="O">
+            <desc>Psychometric purpose or design-related comment about the question.</desc>
+        </element>
+        <element name="FeedbackDescription" type="String" flags="O">
+            <desc>This is further qualification of a Student Score. If this is a teacher scored item, then this may be comments the teacher is providing back to the student.</desc>
+        </element>
+        <element name="FeedbackSource" type="String" flags="O">
+            <desc>This indicates the source for this feedback. May indicate if this is teacher, scorer, or system generated feedback. Values for this attribute would be determined by the assessment program.</desc>
+        </element>
+    </object>
+    <!--ItemAids object-->
+    <object name="ItemAids">
+        <element name="ItemAid" type="ItemAid" flags="MR"/>
+    </object>
+    <!--ItemAid object-->
+    <object name="ItemAid" datatype="Token"/>
+    <!--StudentScoreSet object-->
+    <object name="StudentScoreSet" topic="true">
+        <attribute name="RefId" type="IdRefType" flags="R">
+            <desc>The GUID that uniquely identifies an instance of the object.</desc>
+        </attribute>
+        <attribute name="ScoreMetric" enum="AssessmentReportingMethod" flags="R">
+            <desc>The metric or scale used to report the score.</desc>
+        </attribute>
+        <attribute name="AssessmentAdministrationRefId" type="IdRefType" flags="R">
+            <desc>The administration associated with this score set.</desc>
+        </attribute>
+        <attribute name="StudentPersonalRefId" type="IdRefType" flags="R">
+            <desc>The student associated with the response set.</desc>
+        </attribute>
+        <attribute name="AssessmentRegistrationRefId" type="IdRefType" flags="O">
+            <desc>The registration associated with this score set.</desc>
+        </attribute>
+        <element name="Scores" type="Scores" flags="O"/>
+    </object>
+    <!--Sif3StudentScoreSet object-->
+    <object name="Sif3StudentScoreSet" renderAs="sif3:StudentScoreSet" topic="true">
+        <attribute name="RefId" type="IdRefType" flags="R">
+            <desc>The GUID that uniquely identifies an instance of the object.</desc>
+        </attribute>
+        <attribute name="ScoreMetric" enum="AssessmentReportingMethod" flags="R">
+            <desc>The metric or scale used to report the score.</desc>
+        </attribute>
+        <attribute name="AssessmentAdministrationRefId" type="IdRefType" flags="R">
+            <desc>The administration associated with this score set.</desc>
+        </attribute>
+        <attribute name="StudentPersonalRefId" type="IdRefType" flags="R">
+            <desc>The student associated with the response set.</desc>
+        </attribute>
+        <attribute name="AssessmentRegistrationRefId" type="IdRefType" flags="O">
+            <desc>The registration associated with this score set.</desc>
+        </attribute>
+        <element name="ScoresSif3" type="ScoresSif3" flags="M"/>
+        <element name="PassFailIndicator" type="Token" flags="O">
+            <desc>If the score value also determines a pass/fail level, then this indicator will specify the value.</desc>
+        </element>
+        <element name="FeedbackItemsSif3StudentScoreSet" type="FeedbackItemsSif3StudentScoreSet" flags="O">
+            <desc>This list will support providing feedback to the student from multiple sources.</desc>
+        </element>
+    </object>
+    <!--ScoresSif3 object-->
+    <object name="ScoresSif3" renderAs="Scores">
+        <element name="ScoreSif3" type="ScoreSif3" flags="OR"/>
+    </object>
+    <!--ScoreSif3 object-->
+    <object name="ScoreSif3" renderAs="Score">
+        <attribute name="AssessmentSubTestRefId" type="IdRefType" flags="M">
+            <desc>References the AssessmentSubTest that defines the score.</desc>
+        </attribute>
+        <element name="PreliminaryIndicator" type="Token" flags="O">
+            <desc>If this score is preliminary, then this attribute value should be set. Preliminary scores may be provided for early use by the assessment program or user while final scoring is occurring.</desc>
+        </element>
+        <element name="ScoreValue" type="normalizedString" flags="M">
+            <desc>Value of the score</desc>
+        </element>
+    </object>
+    <!--FeedbackItemsSif3StudentScoreSet object-->
+    <object name="FeedbackItemsSif3StudentScoreSet" renderAs="FeedbackItems">
+        <element name="FeedbackItemSif3StudentScoreSet" type="FeedbackItemSif3StudentScoreSet" flags="MR"/>
+    </object>
+    <!--FeedbackItemSif3StudentScoreSet object-->
+    <object name="FeedbackItemSif3StudentScoreSet" renderAs="FeedbackItem">
+        <element name="DiagnosticStatement" type="String" flags="O">
+            <desc>Comment created by any logical analysis of this score.</desc>
+        </element>
+        <element name="FeedbackDescription" type="String" flags="O">
+            <desc>This is further qualification of a Student Score. If this is a teacher scored item, then this may be comments the teacher is providing back to the student.</desc>
+        </element>
+        <element name="FeedbackSource" type="String" flags="O">
+            <desc>This indicates the source for this feedback. May indicate if this is teacher, scorer, or system generated feedback. Values for this attribute would be determined by the assessment program.</desc>
+        </element>
+        <element name="NumberOfResponses" type="unsignedInt" flags="O">
+            <desc>This is the number of responses that are included with the StudentScoreSet. Responses are those items that were attempted (partially or fully answered) by the student and not necessarily the number of items in the sub test (which can be determined from the sub test object).</desc>
+        </element>
+    </object>
+
+    <!--StudentSpecialCondition object-->
+    <object name="StudentSpecialCondition">
+        <attribute name="Code" type="Token" flags="R">
+            <desc>A code indicating the type of special condition.</desc>
+        </attribute>
+    </object>
+    <!--StudentSpecialConditions object-->
+    <object name="StudentSpecialConditions">
+        <element name="StudentSpecialCondition" type="StudentSpecialCondition" flags="OR">
+            <desc>A description of the special condition. Student special conditions are different
+                from special conditions of the test.
+            </desc>
+        </element>
+    </object>
+
+    <!--ItemCharacteristics object-->
+    <object name="ItemCharacteristics" topic="true">
+        <desc>This object provides specific information about each assessment item. This information includes an
+            analysis, psychometric measures, reliability and validity information. This item-level information assists
+            in interpreting assessment scores as well as aide in improving teaching and learning.
+        </desc>
+        <attribute name="RefId" use="required" type="IdRefType">
+        </attribute>
+        <attribute name="AssessmentItemRefId" use="required" type="IdRefType">
+            <desc>This RefId points to the assessment item of which the characteristics are a part.</desc>
+        </attribute>
+        <element name="PercentCorrect" type="Decimal" flags="O">
+            <desc>Number of correct answers in sample.</desc>
+        </element>
+        <element name="SampleSize" type="int" flags="O">
+            <desc>Number of total Item exposures.</desc>
+        </element>
+        <element name="SampleDescription" type="NormalizedString" flags="O">
+            <desc>The description of the Sample the statistics are based on. May be District name, State or National
+                sample.
+            </desc>
+        </element>
+        <element name="Measurements" type="Measurements" flags="O">
+            <desc>A repeating group of psychometric measures.</desc>
+        </element>
+        <attribute name="AssessmentFormRefId" use="required" type="IdRefType">
+            <desc>This RefId points to the assessment form of which the item is a part.</desc>
+        </attribute>
+        <element name="Descriptive" type="Descriptive">
+            <desc></desc>
+        </element>
+        <element name="DifferentialItemAnalysis" type="DifferentialItemAnalysis">
+            <desc></desc>
+        </element>
+        <element name="ResponseChoicePattern" type="ResponseChoicePattern">
+            <desc></desc>
+        </element>
+    </object>
+
+    <!--Measurements object-->
+    <object name="Measurements">
+        <element name="Measurement" type="Measurement" flags="MR">
+            <desc>Container for series of item statistics.</desc>
+        </element>
+    </object>
+
+    <!--Measurement object-->
+    <object name="Measurement">
+        <attribute name="MeasurementCode" enum="MeasurementCodeEnum" flags="O">
+            <desc>A code representing the type of statistic or analysis.</desc>
+        </attribute>
+        <element name="MeasurementDescription" type="String" flags="O">
+            <desc>An additional description of the statistic or analysis.</desc>
+        </element>
+        <element name="ScaleValue" type="Token" flags="O">
+            <desc>The value of the Item based on this analysis</desc>
+        </element>
+        <element name="Min" type="Token" flags="O">
+            <desc>The minimum value possible for the measurement and test design.</desc>
+        </element>
+        <element name="Max" type="Token" flags="O">
+            <desc>The maximum value possible for the measurement and test design.</desc>
+        </element>
+        <element name="Optimal" type="Token" flags="O">
+            <desc>The optimal value for this measurement and test design.</desc>
+        </element>
+    </object>
+
+    <!--MeasurementCodeEnum enum-->
+    <enum name="MeasurementCodeEnum">
+        <value name="MSF_MEAN_SQUARE_FIT" value="MSF" desc="Mean Square Fit"/>
+        <value name="WMSF_WEIGHTED_MEAN_SQUARE_FIT" value="WMSF" desc="Weighted Mean Square Fit"/>
+        <value name="RMSF_REVISED_MEAN_SQUARE_FIT" value="RMSF" desc="Revised Mean Square Fit"/>
+        <value name="RPBim_REVISED_POINT_BISERIAL_MEASEURE" value="RPBim" desc="Revised Point Biserial Measure"/>
+        <value name="RIT_RASCH_ITEM_SCORE" value="RIT" desc="Rasch Item Score"/>
+        <value name="RC_RESPONSE_CORRELATION" value="RC" desc="Response Correlation"/>
+        <value name="RCS_RESPONSE_CORRELATION_SQUARED" value="RCS" desc="Response Correlation Squared"/>
+        <value name="ZChiSq_Z_CHI_SQUARE" value="ZChiSq" desc="Z CHI Square"/>
+        <value name="PVal_P_VALUE" value="PVal" desc="P Value"/>
+        <value name="PBi_POINTBISERIAL" value="PBi" desc="PointBiserial"/>
+        <value name="BiS_BISERIAL" value="BiS" desc="Biserial"/>
+        <value name="DI_DISCRIMINATIONINDEX" value="DI" desc="DiscriminationIndex"/>
+        <value name="RC_RELIABILITY_COEFFICIENT" value="RC" desc="Reliability Coefficient"/>
+        <value name="CoA_COEFFICIENT_ALPHA" value="CoA" desc="Coefficient Alpha"/>
+        <value name="ITC_ITEMTESTCORRELATION" value="ITC" desc="ItemTestCorrelation"/>
+        <value name="IV_ITEMVARIANCE" value="IV" desc="ItemVariance"/>
+        <value name="Scale_SCALE_VALUE" value="Scale" desc="ScaleValue"/>
+    </enum>
+
+    <object name="Descriptive">
+        <element name="PValue" type="Float" flags="O">
+            <desc>The percent of respondents who answered correctly. This number represents the probability of the
+                correct response to a question.
+            </desc>
+        </element>
+        <element name="SampleSize" type="int" flags="O">
+            <desc>The size of the student group that saw the item.</desc>
+        </element>
+        <element name="PointBiserial" type="Decimal" flags="O">
+            <desc>The correlation between correct answers (dichotomous variable) on this item and total correct answers
+                on the test.
+            </desc>
+        </element>
+        <element name="Biserial" type="Decimal" flags="O">
+            <desc>Similar to the Point Biserial Correlation except that answers to the item are assumed to come from an
+                underlying continuous variable.
+            </desc>
+        </element>
+        <element name="DiscriminationIndex" type="Decimal" flags="O">
+            <desc>The Index of Discrimination is the difference between the proportion of an upper group who got an item
+                right and the proportion of a lower group who got the item right.
+            </desc>
+        </element>
+    </object>
+
+    <object name="DifferentialItemAnalysis">
+        <element name="CMH" type="Decimal" flags="O">
+            <desc>Cochran-Mantel-Haenszel statistic.</desc>
+        </element>
+        <element name="MH" type="Decimal" flags="O">
+            <desc>Mantel-Haenszel statistic.</desc>
+        </element>
+    </object>
+
+    <object name="ResponseChoicePattern">
+        <element name="Choice" type="Choice" flags="O">
+            <desc></desc>
+        </element>
+    </object>
+
+    <object name="Choice">
+        <element name="ChoiceLabel" type="Token" flags="O">
+            <desc>Identifier for the choice.</desc>
+        </element>
+        <element name="Responses" type="int" flags="O">
+            <desc>The number of responses.</desc>
+        </element>
+    </object>
+
+</adk>

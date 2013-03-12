@@ -3,7 +3,7 @@
 <!--     Copyright (c)1998-2011 Pearson Education, Inc. or its affiliate(s)     -->
 <!--     All Rights Reserved                  -->
 <!-- ======================================== -->
-<!--    SIF 2.5 datamodel objects             -->
+<!--    SIF 2.5 gradebook objects             -->
 <!-- ======================================== -->
 <adk package="gradebook" version="2.5" namespace="http://www.sifinfo.org/au/infrastructure/2.x">
   

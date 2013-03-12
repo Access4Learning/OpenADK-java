@@ -1451,10 +1451,19 @@ public class MessageDispatcher implements Runnable
 
 			//  SIF_Version specifies the version of SIF that will be used to render
 			//  the SIF_Responses
-			// TODO: SIF now allows multiple versions within a SIF_Request
 			// The ADK needs to keep the list and write the response back in the
 			// latest supported version
-			renderAsVer = SIFVersion.parse( versions[0].getTextValue() );
+
+			SIFVersion[] candidateVersions = new SIFVersion[versions.length];
+			int i = 0;
+
+			for (SIF_Version version : versions)
+			{
+				candidateVersions[i++] = SIFVersion.parse(version.getTextValue());
+			}
+
+			renderAsVer = ADK.getLatestSupportedVersion(candidateVersions); 
+
 			if( !ADK.isSIFVersionSupported( renderAsVer ) ) {
 				rethrow = true;
 				throw new SIFException(

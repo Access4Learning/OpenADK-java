@@ -26,7 +26,7 @@ public interface ReportPublisher
 	 * 	the query it should return without taking any action.<p>
 	 * 
 	 * 	Assign report information to the ReportObjectOutputStream object by
-	 * 	constructing a ReportInfo instance (from the com.edustructures.sifworks.reporting
+	 * 	constructing a ReportInfo instance (from the openadk.library.reporting
 	 * 	package) and passing that instance to the <code>setReportInfo</code>
 	 * 	method. Alternatively, you may call the following methods directly:<p>
 	 * 

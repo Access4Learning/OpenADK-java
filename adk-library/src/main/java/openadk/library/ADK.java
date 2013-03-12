@@ -177,7 +177,7 @@ public class ADK {
 	public static int debug = DBG_VERY_DETAILED;
 
 	// This array must be in order from earliest to latest version
-	private static final SIFVersion[] sSupportedVersionsArray = { SIFVersion.SIF11, SIFVersion.SIF15r1, SIFVersion.SIF20, SIFVersion.SIF20r1, SIFVersion.SIF21, SIFVersion.SIF22, SIFVersion.SIF23, SIFVersion.SIF24, SIFVersion.SIF25 };
+	private static final SIFVersion[] sSupportedVersionsArray = { SIFVersion.SIF11, SIFVersion.SIF15r1, SIFVersion.SIF20, SIFVersion.SIF20r1, SIFVersion.SIF21, SIFVersion.SIF22, SIFVersion.SIF23, SIFVersion.SIF24, SIFVersion.SIF25, SIFVersion.SIF26 };
 
 	/**
 	 * The root log Category. Subcategories exist for the Agent and each zone,
@@ -278,7 +278,7 @@ public class ADK {
 	 * @param version
 	 *            The version of SIF that will be used by the agent this
 	 *            session. Supported versions are enumerated by constants of the
-	 *            <code>com.edustructures.SIFVersion</code> class. Once
+	 *            <code>openadk.SIFVersion</code> class. Once
 	 *            initialized, the version cannot be changed.
 	 * @param sdoLibraries
 	 *            One or more of the constants defined by the SDOLibrary class,
@@ -484,7 +484,7 @@ public class ADK {
 	 * @param version
 	 *            The version of SIF that will be used by the agent. Supported
 	 *            versions are enumerated by constants of the <code>
-	 *      com.edustructures.SIFVersion</code> class
+	 *      openadk.SIFVersion</code> class
 	 * 
 	 * @throws ADKNotSupportedException
 	 *             is thrown if the SIF version is not supported
@@ -646,7 +646,7 @@ public class ADK {
 	 * 
 	 * APIs that are affected by this setting include:<br>
 	 * {@link Element#getTextValue()} (@link
-	 * com.edustructures.sifworks.tools.mapping.StringMapAdaptor}
+	 * openadk.library.sifworks.tools.mapping.StringMapAdaptor}
 	 * 
 	 * 
 	 * @param formatter

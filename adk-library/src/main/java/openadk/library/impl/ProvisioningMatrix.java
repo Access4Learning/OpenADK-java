@@ -50,7 +50,7 @@ public class ProvisioningMatrix implements Provisioner {
 	
 	
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Provisioner#setPublisher(com.edustructures.sifworks.Publisher, com.edustructures.sifworks.ElementDef)
+	 * @see openadk.library.Provisioner#setPublisher(openadk.library.Publisher, openadk.library.ElementDef)
 	 */
 	public synchronized void setPublisher(Publisher publisher, ElementDef objectType ) 
 	throws ADKException 
@@ -60,7 +60,7 @@ public class ProvisioningMatrix implements Provisioner {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Provisioner#setPublisher(com.edustructures.sifworks.Publisher, com.edustructures.sifworks.ElementDef, com.edustructures.sifworks.PublishingOptions)
+	 * @see openadk.library.Provisioner#setPublisher(openadk.library.Publisher, openadk.library.ElementDef, openadk.library.PublishingOptions)
 	 */
 	public synchronized void setPublisher(Publisher publisher, ElementDef objectType, PublishingOptions options) 
 		throws ADKException 
@@ -80,7 +80,7 @@ public class ProvisioningMatrix implements Provisioner {
 	
 	
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Provisioner#setReportPublisher(com.edustructures.sifworks.ReportPublisher)
+	 * @see openadk.library.Provisioner#setReportPublisher(openadk.library.ReportPublisher)
 	 */
 	public synchronized void setReportPublisher(ReportPublisher publisher ) 
 	throws ADKException 
@@ -90,7 +90,7 @@ public class ProvisioningMatrix implements Provisioner {
 	
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Provisioner#setReportPublisher(com.edustructures.sifworks.ReportPublisher, com.edustructures.sifworks.ReportPublishingOptions)
+	 * @see openadk.library.Provisioner#setReportPublisher(openadk.library.ReportPublisher, openadk.library.ReportPublishingOptions)
 	 */
 	public synchronized void setReportPublisher(ReportPublisher publisher, ReportPublishingOptions options) 
 		throws ADKException 
@@ -105,7 +105,7 @@ public class ProvisioningMatrix implements Provisioner {
 	}
 	
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Provisioner#setSubscriber(com.edustructures.sifworks.Subscriber, com.edustructures.sifworks.ElementDef)
+	 * @see openadk.library.Provisioner#setSubscriber(openadk.library.Subscriber, openadk.library.ElementDef)
 	 */
 	public synchronized void setSubscriber(Subscriber subscriber, ElementDef objectType ) 
 	throws ADKException 
@@ -114,7 +114,7 @@ public class ProvisioningMatrix implements Provisioner {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Provisioner#setSubscriber(com.edustructures.sifworks.Subscriber, com.edustructures.sifworks.ElementDef, com.edustructures.sifworks.SubscriptionOptions)
+	 * @see openadk.library.Provisioner#setSubscriber(openadk.library.Subscriber, openadk.library.ElementDef, openadk.library.SubscriptionOptions)
 	 */
 	public synchronized void setSubscriber(Subscriber subscriber, ElementDef objectType, SubscriptionOptions options) 
 		throws ADKException 
@@ -128,7 +128,7 @@ public class ProvisioningMatrix implements Provisioner {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Provisioner#setQueryResults(com.edustructures.sifworks.QueryResults)
+	 * @see openadk.library.Provisioner#setQueryResults(openadk.library.QueryResults)
 	 */
 	public synchronized void setQueryResults(QueryResults queryResults) 
 		throws ADKException 
@@ -137,7 +137,7 @@ public class ProvisioningMatrix implements Provisioner {
 	}
 	
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Provisioner#setQueryResults(com.edustructures.sifworks.QueryResults, com.edustructures.sifworks.ElementDef)
+	 * @see openadk.library.Provisioner#setQueryResults(openadk.library.QueryResults, openadk.library.ElementDef)
 	 */
 	public synchronized void setQueryResults(QueryResults queryResults, ElementDef objectType )
 	throws ADKException
@@ -147,7 +147,7 @@ public class ProvisioningMatrix implements Provisioner {
 	
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Provisioner#setQueryResults(com.edustructures.sifworks.QueryResults, com.edustructures.sifworks.ElementDef, com.edustructures.sifworks.QueryResultsOptions)
+	 * @see openadk.library.Provisioner#setQueryResults(openadk.library.QueryResults, openadk.library.ElementDef, openadk.library.QueryResultsOptions)
 	 */
 	public synchronized void setQueryResults(QueryResults queryResults, ElementDef objectType, QueryResultsOptions options)
 		throws ADKException

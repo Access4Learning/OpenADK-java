@@ -446,14 +446,14 @@ public class DataObjectOutputFileStream extends DataObjectOutputStreamImpl
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.DataObjectOutputStream#setAutoFilter(com.edustructures.sifworks.Query)
+	 * @see openadk.library.DataObjectOutputStream#setAutoFilter(openadk.library.Query)
 	 */
 	public void setAutoFilter(Query filter) {
 		fFilter = filter;
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.impl.DataObjectOutputStreamImpl#getSIF_MorePackets()
+	 * @see openadk.library.impl.DataObjectOutputStreamImpl#getSIF_MorePackets()
 	 */
 	@Override
 	public YesNo getSIF_MorePackets() {
@@ -461,7 +461,7 @@ public class DataObjectOutputFileStream extends DataObjectOutputStreamImpl
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.impl.DataObjectOutputStreamImpl#getSIF_PacketNumber()
+	 * @see openadk.library.impl.DataObjectOutputStreamImpl#getSIF_PacketNumber()
 	 */
 	@Override
 	public int getSIF_PacketNumber() {
@@ -476,7 +476,7 @@ public class DataObjectOutputFileStream extends DataObjectOutputStreamImpl
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.impl.DataObjectOutputStreamImpl#setSIF_MorePackets(com.edustructures.sifworks.common.YesNo)
+	 * @see openadk.library.impl.DataObjectOutputStreamImpl#setSIF_MorePackets(openadk.library.common.YesNo)
 	 */
 	@Override
 	public void setSIF_MorePackets(YesNo morePacketsValue) {
@@ -484,7 +484,7 @@ public class DataObjectOutputFileStream extends DataObjectOutputStreamImpl
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.impl.DataObjectOutputStreamImpl#setSIF_PacketNumber(int)
+	 * @see openadk.library.impl.DataObjectOutputStreamImpl#setSIF_PacketNumber(int)
 	 */
 	@Override
 	public void setSIF_PacketNumber(int packetNumber) {

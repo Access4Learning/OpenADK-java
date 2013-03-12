@@ -28,7 +28,7 @@ public class DefinitionFile implements ErrorHandler
 	 *  package name by concatenating the package prefix specified on the
 	 *  adkgen command-line with the version of SIF associated with the
 	 *  definition file. The result is a package name "{prefix}.{version}.{local-package}".
-	 *  For example, "com.edustructures.sifworks.sif10r1.student"
+	 *  For example, "openadk.library.sif10r1.student"
 	 */
 	protected String fPackage;
 

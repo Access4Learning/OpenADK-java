@@ -133,7 +133,7 @@ public class SIFPullParser extends SIFParser {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.edustructures.sifworks.SIFParser#parse(java.lang.String )
+	 * @see openadk.library.SIFParser#parse(java.lang.String )
 	 */
 	@Override
 	public SIFElement parse(String msg) throws ADKParsingException, SIFException
@@ -145,8 +145,8 @@ public class SIFPullParser extends SIFParser {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.edustructures.sifworks.SIFParser#parse(java.lang.String,
-	 * com.edustructures.sifworks.Zone)
+	 * @see openadk.library.SIFParser#parse(java.lang.String,
+	 * openadk.library.Zone)
 	 */
 	@Override
 	public SIFElement parse(String msg, Zone zone) throws ADKParsingException, SIFException
@@ -158,8 +158,8 @@ public class SIFPullParser extends SIFParser {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.edustructures.sifworks.SIFParser#parse(java.lang.String,
-	 * com.edustructures.sifworks.Zone, int)
+	 * @see openadk.library.SIFParser#parse(java.lang.String,
+	 * openadk.library.Zone, int)
 	 */
 	@Override
 	public SIFElement parse(String msg, Zone zone, int flags) throws ADKParsingException, SIFException {
@@ -169,9 +169,9 @@ public class SIFPullParser extends SIFParser {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.edustructures.sifworks.SIFParser#parse(java.lang.String,
-	 * com.edustructures.sifworks.Zone, int,
-	 * com.edustructures.sifworks.SIFVersion)
+	 * @see openadk.library.SIFParser#parse(java.lang.String,
+	 * openadk.library.Zone, int,
+	 * openadk.library.SIFVersion)
 	 */
 	@Override
 	public SIFElement parse(String msg, Zone zone, int flags, SIFVersion version) throws ADKParsingException, SIFException {
@@ -186,8 +186,8 @@ public class SIFPullParser extends SIFParser {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.edustructures.sifworks.SIFParser#parse(java.io.Reader,
-	 * com.edustructures.sifworks.Zone)
+	 * @see openadk.library.SIFParser#parse(java.io.Reader,
+	 * openadk.library.Zone)
 	 */
 	@Override
 	public SIFElement parse(Reader msg, Zone zone) throws ADKParsingException, SIFException {
@@ -200,8 +200,8 @@ public class SIFPullParser extends SIFParser {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.edustructures.sifworks.SIFParser#parse(java.io.Reader,
-	 * com.edustructures.sifworks.Zone, int)
+	 * @see openadk.library.SIFParser#parse(java.io.Reader,
+	 * openadk.library.Zone, int)
 	 */
 	@Override
 	public SIFElement parse(Reader msg, Zone zone, int flags) throws ADKParsingException, SIFException {
@@ -214,9 +214,9 @@ public class SIFPullParser extends SIFParser {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.edustructures.sifworks.SIFParser#parse(java.io.Reader,
-	 * com.edustructures.sifworks.Zone, int,
-	 * com.edustructures.sifworks.SIFVersion)
+	 * @see openadk.library.SIFParser#parse(java.io.Reader,
+	 * openadk.library.Zone, int,
+	 * openadk.library.SIFVersion)
 	 */
 	@Override
 	public SIFElement parse(Reader msg, Zone zone, int flags, SIFVersion version) throws ADKParsingException, SIFException {
@@ -229,7 +229,7 @@ public class SIFPullParser extends SIFParser {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.edustructures.sifworks.SIFParser#getParsed()
+	 * @see openadk.library.SIFParser#getParsed()
 	 */
 	@Override
 	public SIFElement getParsed() {
@@ -663,7 +663,7 @@ public class SIFPullParser extends SIFParser {
 		 * JEN - todo Big Service Hack
 		 * 
 		 * @see
-		 * com.edustructures.sifworks.DTD#lookupAnyElementDef(java.lang.String)
+		 * openadk.library.DTD#lookupAnyElementDef(java.lang.String)
 		 */
 		if (def == null) {
 			// def = dtd.lookupAnyElementDef(elementName);

@@ -58,7 +58,7 @@
         Generates ADK SDO classes based on the US SIF datamodel
     -->
     <target name="US">
-        <property name="input.datadef" value="${datadef.dir}/us/sif11;${datadef.dir}/us/sif15r1;${datadef.dir}/us/sif20;${datadef.dir}/us/sif20r1;${datadef.dir}/us/sif21;${datadef.dir}/us/sif22;${datadef.dir}/us/sif23;${datadef.dir}/us/sif24;${datadef.dir}/us/sif25;${datadef.dir}/core/sif11;${datadef.dir}/core/sif15r1;${datadef.dir}/core/sif20;${datadef.dir}/core/sif20r1;${datadef.dir}/core/sif21;${datadef.dir}/core/sif22;${datadef.dir}/core/sif23;${datadef.dir}/core/sif24;${datadef.dir}/core/sif25;" />
+        <property name="input.datadef" value="${datadef.dir}/us/sif11;${datadef.dir}/us/sif15r1;${datadef.dir}/us/sif20;${datadef.dir}/us/sif20r1;${datadef.dir}/us/sif21;${datadef.dir}/us/sif22;${datadef.dir}/us/sif23;${datadef.dir}/us/sif24;${datadef.dir}/us/sif25;${datadef.dir}/us/sif26;${datadef.dir}/core/sif11;${datadef.dir}/core/sif15r1;${datadef.dir}/core/sif20;${datadef.dir}/core/sif20r1;${datadef.dir}/core/sif21;${datadef.dir}/core/sif22;${datadef.dir}/core/sif23;${datadef.dir}/core/sif24;${datadef.dir}/core/sif25;${datadef.dir}/core/sif26;" />
         <antcall target="build" />
         <!--This fixes a small compilation problem where an object needs to import some other objects.  There isn't really a general rule for this-->
         <replace file="${srcgen.dir}/openadk/library/common/StudentRecordExchangeData.java" token="import openadk.library.*;" value="import openadk.library.*;${line.separator}import openadk.library.etranscripts.*;${line.separator}import openadk.library.gradebook.Letter;" />
@@ -91,7 +91,7 @@
         Generates ADK SDO classes based on the AU SIF datamodel
     -->
     <target name="AU">
-        <property name="input.datadef" value="${datadef.dir}/au/sif20;${datadef.dir}/core/sif20;${datadef.dir}/au/sif23;${datadef.dir}/core/sif23;${datadef.dir}/au/sif24;${datadef.dir}/au/sif25;${datadef.dir}/core/sif24;${datadef.dir}/core/sif25" />
+        <property name="input.datadef" value="${datadef.dir}/au/sif20;${datadef.dir}/core/sif20;${datadef.dir}/au/sif23;${datadef.dir}/core/sif23;${datadef.dir}/au/sif24;${datadef.dir}/au/sif25;${datadef.dir}/au/sif26;${datadef.dir}/core/sif24;${datadef.dir}/core/sif25;${datadef.dir}/core/sif26" />
         <antcall target="build" />
         <!-- Copy the Package files -->
         <copy file="${datadef.dir}/au/sif20/infra.package.html" tofile="${srcgen.dir}/openadk/library/infra/package.html" />
@@ -104,7 +104,7 @@
         Generates ADK SDO classes based on the UK SIF datamodel
     -->
     <target name="UK">
-        <property name="input.datadef" value="${datadef.dir}/uk/sif20;${datadef.dir}/uk/sif20r1;${datadef.dir}/uk/sif21;${datadef.dir}/uk/sif22;${datadef.dir}/uk/sif23;${datadef.dir}/uk/sif24;${datadef.dir}/uk/sif25;${datadef.dir}/core/sif20;${datadef.dir}/core/sif20r1;${datadef.dir}/core/sif21;${datadef.dir}/core/sif22;${datadef.dir}/core/sif23;${datadef.dir}/core/sif24;${datadef.dir}/core/sif25;" />
+        <property name="input.datadef" value="${datadef.dir}/uk/sif20;${datadef.dir}/uk/sif20r1;${datadef.dir}/uk/sif21;${datadef.dir}/uk/sif22;${datadef.dir}/uk/sif23;${datadef.dir}/uk/sif24;${datadef.dir}/uk/sif25;${datadef.dir}/uk/sif26;${datadef.dir}/core/sif20;${datadef.dir}/core/sif20r1;${datadef.dir}/core/sif21;${datadef.dir}/core/sif22;${datadef.dir}/core/sif23;${datadef.dir}/core/sif24;${datadef.dir}/core/sif25;${datadef.dir}/core/sif26" />
         <antcall target="build" />
         <!-- Copy the Package files -->
         <copy file="${datadef.dir}/uk/sif20/infra.package.html" tofile="${srcgen.dir}/openadk/library/infra/package.html" />
@@ -150,7 +150,7 @@
     </target>
 
     <target name="dotnet.core">
-        <property name="input.datadef" value="${datadef.dir}/core/sif11;${datadef.dir}/core/sif15r1;${datadef.dir}/core/sif20;${datadef.dir}/core/sif20r1;${datadef.dir}/core/sif21;${datadef.dir}/core/sif22;${datadef.dir}/core/sif23;${datadef.dir}/core/sif24;${datadef.dir}/core/sif25;" />
+        <property name="input.datadef" value="${datadef.dir}/core/sif11;${datadef.dir}/core/sif15r1;${datadef.dir}/core/sif20;${datadef.dir}/core/sif20r1;${datadef.dir}/core/sif21;${datadef.dir}/core/sif22;${datadef.dir}/core/sif23;${datadef.dir}/core/sif24;${datadef.dir}/core/sif25;${datadef.dir}/core/sif26" />
         <property name="input.locale" value="core"/>
         <antcall target="dotnet.build" />
         <mkdir dir="${mvn.target.dir}/dotnet/core/OpenADK" />
@@ -159,7 +159,7 @@
     </target>
 
     <target name="dotnet.au">
-        <property name="input.datadef" value="${datadef.dir}/core/sif11;${datadef.dir}/core/sif15r1;${datadef.dir}/core/sif20;${datadef.dir}/core/sif20r1;${datadef.dir}/core/sif21;${datadef.dir}/core/sif22;${datadef.dir}/core/sif23;${datadef.dir}/core/sif24;${datadef.dir}/core/sif25;${datadef.dir}/au/sif20;${datadef.dir}/au/sif23;${datadef.dir}/au/sif24;${datadef.dir}/au/sif25;" />
+        <property name="input.datadef" value="${datadef.dir}/core/sif11;${datadef.dir}/core/sif15r1;${datadef.dir}/core/sif20;${datadef.dir}/core/sif20r1;${datadef.dir}/core/sif21;${datadef.dir}/core/sif22;${datadef.dir}/core/sif23;${datadef.dir}/core/sif24;${datadef.dir}/core/sif25;${datadef.dir}/au/sif20;${datadef.dir}/au/sif23;${datadef.dir}/au/sif24;${datadef.dir}/au/sif25;${datadef.dir}/au/sif26" />
         <property name="input.locale" value="au"/>
         <antcall target="dotnet.build" />
         <delete dir="${srcgen.dir}/openadk/library/Global" failonerror="false"/>
@@ -176,7 +176,7 @@
     </target>
 
     <target name="dotnet.uk">
-        <property name="input.datadef" value="${datadef.dir}/core/sif11;${datadef.dir}/core/sif15r1;${datadef.dir}/core/sif20;${datadef.dir}/core/sif20r1;${datadef.dir}/core/sif21;${datadef.dir}/core/sif22;${datadef.dir}/core/sif23;${datadef.dir}/core/sif24;${datadef.dir}/core/sif25;${datadef.dir}/uk/sif20;${datadef.dir}/uk/sif20r1;${datadef.dir}/uk/sif21;${datadef.dir}/uk/sif22;${datadef.dir}/uk/sif23;${datadef.dir}/uk/sif24;${datadef.dir}/uk/sif25;" />
+        <property name="input.datadef" value="${datadef.dir}/core/sif11;${datadef.dir}/core/sif15r1;${datadef.dir}/core/sif20;${datadef.dir}/core/sif20r1;${datadef.dir}/core/sif21;${datadef.dir}/core/sif22;${datadef.dir}/core/sif23;${datadef.dir}/core/sif24;${datadef.dir}/core/sif25;${datadef.dir}/core/sif26;${datadef.dir}/uk/sif20;${datadef.dir}/uk/sif20r1;${datadef.dir}/uk/sif21;${datadef.dir}/uk/sif22;${datadef.dir}/uk/sif23;${datadef.dir}/uk/sif24;${datadef.dir}/uk/sif25;${datadef.dir}/uk/sif26" />
         <property name="input.locale" value="uk"/>
         <antcall target="dotnet.build" />
         <delete dir="${srcgen.dir}/openadk/library/Global" failonerror="false"/>
@@ -193,7 +193,7 @@
     </target>
 
     <target name="dotnet.us">
-        <property name="input.datadef" value="${datadef.dir}/core/sif11;${datadef.dir}/core/sif15r1;${datadef.dir}/core/sif20;${datadef.dir}/core/sif20r1;${datadef.dir}/core/sif21;${datadef.dir}/core/sif22;${datadef.dir}/core/sif23;${datadef.dir}/core/sif24;${datadef.dir}/core/sif25;${datadef.dir}/us/sif11;${datadef.dir}/us/sif15r1;${datadef.dir}/us/sif20;${datadef.dir}/us/sif20r1;${datadef.dir}/us/sif21;${datadef.dir}/us/sif22;${datadef.dir}/us/sif23;${datadef.dir}/us/sif24;${datadef.dir}/us/sif25;" />
+        <property name="input.datadef" value="${datadef.dir}/core/sif11;${datadef.dir}/core/sif15r1;${datadef.dir}/core/sif20;${datadef.dir}/core/sif20r1;${datadef.dir}/core/sif21;${datadef.dir}/core/sif22;${datadef.dir}/core/sif23;${datadef.dir}/core/sif24;${datadef.dir}/core/sif25;${datadef.dir}/core/sif26;${datadef.dir}/us/sif11;${datadef.dir}/us/sif15r1;${datadef.dir}/us/sif20;${datadef.dir}/us/sif20r1;${datadef.dir}/us/sif21;${datadef.dir}/us/sif22;${datadef.dir}/us/sif23;${datadef.dir}/us/sif24;${datadef.dir}/us/sif25;${datadef.dir}/us/sif26" />
         <property name="input.locale" value="us"/>
         <antcall target="dotnet.build" />
         <delete dir="${srcgen.dir}/openadk/library/Global" failonerror="false"/>

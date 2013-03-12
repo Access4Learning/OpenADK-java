@@ -57,7 +57,7 @@ public class ObjectDef extends AbstractDef
 
 	/**
 	 *  Gets the local package name where this object's class should be generated.
-	 *  The local package name excludes the "com.edustructures.sifworks." prefix
+	 *  The local package name excludes the "openadk.library." prefix
 	 */
 	public String getLocalPackage()
 	{

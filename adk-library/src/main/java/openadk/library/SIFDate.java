@@ -106,7 +106,7 @@ public class SIFDate extends SIFSimpleType<Calendar> {
 	}
 	
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.SIFSimpleType#getTypeConverter()
+	 * @see openadk.library.SIFSimpleType#getTypeConverter()
 	 */
 	@Override
 	public SIFTypeConverter<Calendar> getTypeConverter() {

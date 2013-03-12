@@ -887,7 +887,7 @@ public class HttpTransport extends TransportImpl {
 				}
 			}
 			if (acceptEncoding == null) {
-				acceptEncoding = new SIF_Property("Accept-Encoding", "gzip;q=1.0, identity;q=0.5, *;q=0");
+				acceptEncoding = new SIF_Property("Accept-Encoding", "gzip;q=1.0, deflate;q=0.7, compress;q=0.6, identity;q=0.5, *;q=0");
 				proto.addSIF_Property(acceptEncoding);
 			}
 		}

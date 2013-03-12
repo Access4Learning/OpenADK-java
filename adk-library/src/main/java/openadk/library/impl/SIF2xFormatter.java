@@ -51,7 +51,7 @@ public class SIF2xFormatter extends SIFFormatter {
 
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.SIFFormatter#toDateString(java.util.Calendar)
+	 * @see openadk.library.SIFFormatter#toDateString(java.util.Calendar)
 	 */
     //FIXME Stephen Miller changed this for the same reason toTimeString was broken
 	public String toDateString( Calendar date ) {
@@ -138,7 +138,7 @@ public class SIF2xFormatter extends SIFFormatter {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.SIFFormatter#toString(java.lang.Boolean)
+	 * @see openadk.library.SIFFormatter#toString(java.lang.Boolean)
 	 */
 	public String toString(Boolean boolValue) {
 		if( boolValue == null ){
@@ -148,7 +148,7 @@ public class SIF2xFormatter extends SIFFormatter {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.SIFFormatter#toDate(java.lang.String)
+	 * @see openadk.library.SIFFormatter#toDate(java.lang.String)
 	 */
 	public Calendar toDate(String value) {
 		if( value == null || value.length() == 0 ){
@@ -173,7 +173,7 @@ public class SIF2xFormatter extends SIFFormatter {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.SIFFormatter#toBoolean(java.lang.String)
+	 * @see openadk.library.SIFFormatter#toBoolean(java.lang.String)
 	 */
 	public Boolean toBoolean(String value ) {
 		if( value == null ){
@@ -199,7 +199,7 @@ public class SIF2xFormatter extends SIFFormatter {
 
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.SIFFormatter#toDuration(java.lang.String)
+	 * @see openadk.library.SIFFormatter#toDuration(java.lang.String)
 	 */
 	@Override
 	public Duration toDuration(String xmlValue) {
@@ -208,7 +208,7 @@ public class SIF2xFormatter extends SIFFormatter {
 
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.SIFFormatter#toString(javax.xml.datatype.Duration)
+	 * @see openadk.library.SIFFormatter#toString(javax.xml.datatype.Duration)
 	 */
 	@Override
 	public String toString(Duration d) {
