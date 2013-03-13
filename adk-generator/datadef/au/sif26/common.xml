@@ -5,8 +5,11 @@
 <!-- ======================================== -->
 <!--    SIF 2.6 common objects             -->
 <!-- ======================================== -->
-<adk package="common" version="2.6"
-	namespace="http://www.sifinfo.org/au/infrastructure/2.x">
+<adk package="common" version="2.6"	namespace="http://www.sifinfo.org/au/infrastructure/2.x">
+
+  <!--RefIdObject object-->
+  <object name="RefIdObject" datatype="IdRefType"/>
+
 	<!--AUAddressRoleType enum-->
 	<enum name="AUAddressRoleType">
 		<value name="012A_TERM_ADDRESS" value="012A"
@@ -27,6 +30,7 @@
 			desc="Other organisation address" />
 		<value name="9999_OT_ADDRESS" value="9999" desc="Other Address" />
 	</enum>
+    
 	<!--Codeset enum-->
 	<enum name="Codeset">
 		<value name="STATEPROVINCE" value="StateProvince" desc="StateProvince" />
@@ -34,6 +38,7 @@
 		<value name="OTHER" value="Other" desc="Other" />
 		<value name="TEXT" value="Text" desc="Text" />
 	</enum>
+  
 	<!--OtherCode object -->
 	<object name="OtherCode" datatype="Token">
 		<attribute name="Codeset" enum="Codeset" flags="R">
@@ -42,6 +47,7 @@
 			</desc>
 		</attribute>
 	</object>
+    
 	<!--OtherCodeList object -->
 	<object name="OtherCodeList">
 		<element name="OtherCode" type="OtherCode" flags="OR">
@@ -50,6 +56,7 @@
 				element.</desc>
 		</element>
 	</object>
+    
 	<!--AU025AddressType-->
 	<enum name="AU025AddressType">
 		<value name="0123_MAILING_ADDRESS" value="0123"
@@ -60,6 +67,7 @@
 			desc="Physical location address" />
 		<value name="9999_OTHER" value="9999" desc="Other" />
 	</enum>
+    
 	<!--AU0315BirthdateVerificationType-->
 	<enum name="AU0315BirthdateVerificationType">
 		<value name="1004_BIRTH_CERTIFICATE" value="1004"
@@ -87,6 +95,7 @@
 		<value name="Y_DOCUMENTATION_SIGHTED_TYPE_NOT" value="Y"
 			desc="Documentation Sighted, type not recorded" />
 	</enum>
+    
 	<!--AustralianCitizenshipStatusType-->
 	<enum name="AustralianCitizenshipStatusType">
 		<value name="1_AUSTRALIAN_CITIZEN" value="1"
@@ -102,6 +111,7 @@
 			desc="Permanent Humanitarian Visa" />
 		<value name="X_NOT_PROVIDED" value="X" desc="Not Provided" />
 	</enum>
+    
 	<!--OtherId object-->
 	<object name="OtherId">
 		<desc>Describes an alternate ID for a person</desc>
@@ -112,14 +122,17 @@
 			</desc>
 		</attribute>
 	</object>
+    
 	<!--OtherIdList object-->
 	<object name="OtherIdList">
 		<element name="OtherId" type="OtherId" flags="OR" />
 	</object>
+    
 	<!--OtherIdType enum-->
 	<enum name="OtherIdType">
 		<desc>Codes that define valid types for OtherId elements</desc>
 	</enum>
+    
 	<!--PermanentResidentStatusType-->
 	<enum name="PermanentResidentStatusType">
 		<value name="99_UNKNOWN" value="99" desc="Unknown" />
@@ -129,6 +142,7 @@
 		<value name="T_TEMPORARY_RESIDENT" value="T"
 			desc="Temporary Resident" />
 	</enum>
+    
 	<!--ReligionType-->
 	<enum name="ReligionType">
 		<value name="1_BUDDHISM" value="1" desc="BUDDHISM" />
@@ -1615,6 +1629,9 @@
 		<value name="P_PREP" value="P" desc="Prep" />
 		<value name="PS_PRESCHOOL" value="PS" desc="Pre-School" />
 		<value name="UG_UNGRADED" value="UG" desc="Ungraded" />
+        <value name="3YO_KINDERGARTEN" value="K3" desc="3yo Kindergarten" />
+        <value name="4YO_KINDERGARTEN" value="K4" desc="4yo Kindergarten" />
+        <value name="CHILDCARE" value="CC" desc="Childcare" />
 	</enum>
 
 	<!--StartCode-->
@@ -2426,8 +2443,34 @@
         <desc>This is the LocalId of the specific address if it can be provided.</desc>
       </element>
       <element name="AddressGlobalUID" type="String" flags="O"/>
+      <element name="StatisticalAreas" type="StatisticalAreaList" flags="O"/>
 	</object>
 	
+  <!--StatisticalAreaList object-->
+  <object name="StatisticalAreaList">
+    <element name="StatisticalArea" type="StatisticalArea" flags="MR" />
+  </object>
+
+  <!--StatisticalArea object-->
+  <object name="StatisticalArea" datatype="NormalizedString">
+    <attribute name="SpatialUnitType" enum="SpatialUnitType" flags="R"/>
+  </object>
+    
+  <enum name="SpatialUnitType">
+    <value name="MB" value="MB" desc="Mesh Block" />
+    <value name="SA1" value="SA1" desc="Statistical Area Level 1" />
+    <value name="SA2" value="SA2" desc="Statistical Area Level 2" />
+    <value name="SA3" value="SA3" desc="Statistical Area Level 3" />
+    <value name="SA4" value="SA4" desc="Statistical Area Level 4" />
+    <value name="GCCSA" value="GCCSA" desc="Greater Capital City Statistical Areas" />
+    <value name="S_T" value="S/T" desc="State and Territory" />
+    <value name="LG" value="LG" desc="Local Government Area" />
+    <value name="TR" value="TR" desc="Tourism Region" />
+    <value name="ILOC" value="ILOC" desc="Indigenous Location" />
+    <value name="IARE" value="IARE" desc="Indigenous Area" />
+    <value name="IREG" value="IREG" desc="Indigenous Region" />
+  </enum>
+
 	  <!--CountryCode enum-->
   <enum name="CountryCode">
     <value name="8104" value="8104" desc="United States of America" />
@@ -3055,6 +3098,10 @@
 
   <!--Campus-->
   <object name="Campus">
+  
+    <element name="ParentSchoolId" type="NormalizedString" flags="O">
+      <desc>Parent School Id needs to be supplied if this Campus is not the Admin Campus. This number should be the state-assigned identifier for this school or the locally-assigned identifier for this school.</desc>
+    </element>
     <element name="SchoolCampusId" type="String" flags="M">
       <desc>Campus ID  - Needs to be considered as part of School. Different Campus' have different addresses</desc>
     </element>
@@ -3252,6 +3299,14 @@
     <element name="Reference" type="Reference" flags="O"/>
   </object>
 
+  <!--AssessmentDescriptor object-->
+  <object name="AssessmentDescriptor" datatype="String" />
+    
+  <!--AssessmentDescriptors object-->
+  <object name="AssessmentDescriptors">
+    <element name="AssessmentDescriptor" type="AssessmentDescriptor" flags="OR" />
+  </object>
+
 
   <!--Location-->
   <object name="Location">
@@ -3267,6 +3322,17 @@
     <attribute name="SIF_RefObject" enum="LocationRefIdSIF_RefObject" flags="R">
       <desc>Type of SIF Object</desc>
     </attribute>
+  </object>
+
+  <!--CommentList-->
+  <object name="CommentList">
+    <element name="Comment" type="CommentType" flags="MR"/>
+  </object>
+
+  <!--CommentType-->
+  <object name="CommentType">
+    <element name="CommentCode" type="Token" flags="M"/>
+    <element name="CommentDescription" type="String" flags="O"/>
   </object>
 
   <!--LocationRefIdSIF_RefObject-->
@@ -3287,6 +3353,12 @@
     <value name="NONINSTRUCTIONALSPACE" value="NonInstructionalSpace" desc="NonInstructionalSpace" />
     <value name="ATHLETICVENUE" value="AthleticVenue" desc="AthleticVenue" />
     <value name="OTHER" value="Other" desc="Other" />
+  </enum>
+
+  <!--AssessmentType enum-->
+  <enum name="AssessmentType">
+    <value name="STANDARD" value="standard" desc="standard" />
+    <value name="ALTERNATE" value="alternate" desc="alternate" />
   </enum>
 
   <!--AUCodeSetsAssessmentReportingMethodType enum-->
@@ -3350,67 +3422,114 @@
     <value name="ON_LEAVE" value="O" desc="On Leave" />
   </enum>
 
+  <!--AUCodeSetsAssessmentReportingMethodType enum-->
+  <enum name="AUCodeSetsAssessmentReportingMethodType">
+    <value name="0144" value="0144" desc="Letter grade/mark" />
+    <value name="0490" value="0490" desc="Age score" />
+    <value name="0492" value="0492" desc="Tertiary admission examination score" />
+    <value name="0493" value="0493" desc="Year equivalent or year-level indicator" />
+    <value name="0497" value="0497" desc="Normal curve equivalent" />
+    <value name="0498" value="0498" desc="Normalized standard score" />
+    <value name="0499" value="0499" desc="Number score" />
+    <value name="0500" value="0500" desc="Pass-fail" />
+    <value name="0502" value="0502" desc="Percentile rank" />
+    <value name="0503" value="0503" desc="Proficiency level" />
+    <value name="0504" value="0504" desc="Ranking" />
+    <value name="0506" value="0506" desc="Standard age score" />
+    <value name="0512" value="0512" desc="Achievement/proficiency level" />
+    <value name="0513" value="0513" desc="Mastery level" />
+    <value name="3473" value="3473" desc="Graduation score" />
+    <value name="3474" value="3474" desc="Growth/value-added/indexing" />
+    <value name="3475" value="3475" desc="International Baccalaureate score" />
+    <value name="3476" value="3476" desc="Percentile" />
+    <value name="3478" value="3478" desc="Raw score" />
+    <value name="3479" value="3479" desc="Scale score" />
+    <value name="3480" value="3480" desc="Workplace readiness score" />
+    <value name="9999" value="9999" desc="Other" />
+  </enum>
+  
+  <!--AUCodeSetsFFPOSStatusCodeType enum-->
+  <enum name="AUCodeSetsFFPOSStatusCodeType">
+    <value name="1_FFPOS" value="1" desc="FFPOS" />
+    <value name="2_NON_FFPOS" value="2" desc="Non-FFPOS" />
+    <value name="9_UNKNOWN" value="9" desc="Not stated/Unknown" />
+  </enum>
+  
+  <!--ResponseType enum-->
+  <enum name="ResponseType">
+    <value name="MULTIPLECHOICE" value="multiple-choice" desc="multiple-choice" />
+    <value name="MULTIPLEMULTIPLE_CHOICE" value="multiple-multiple choice" desc="multiple-multiple choice" />
+    <value name="TRUEFALSE" value="true-false" desc="true-false" />
+    <value name="FILLINTHEBLANK" value="fill-in-the-blank" desc="fill-in-the-blank" />
+    <value name="SHORTANSWER" value="short-answer" desc="short-answer" />
+    <value name="ESSAY" value="essay" desc="essay" />
+  </enum>
 
+
+    <!-- ================= -->
+    <!--  SIF 3.0 Codesets -->
+    <!-- ================= -->
+    <!--YNLower enum-->
+    <enum name="YNLower">
+        <value name="Y" value="y" desc="Yes" />
+        <value name="N" value="n" desc="No" />
+    </enum>
+
+    <!--YesNoLower enum-->
+    <enum name="YesNoLower">
+        <value name="YES" value="yes" desc="Yes" />
+        <value name="NO" value="no" desc="No" />
+    </enum>
+    
+    <!--YesNoUnkNotProvided enum-->
+    <enum name="YesNoUnkNotProvided">
+        <value name="YES" value="Y" desc="Yes" />
+        <value name="NO" value="N" desc="No" />
+        <value name="UNK" value="U" desc="Unknown" />
+        <value name="NOTPROVIDED" value="X" desc="Not Provided" />
+    </enum>
+    
+    <!--TimeUnitEnum enum-->
+    <enum name="TimeUnitEnum">
+        <value name="WEEK" value="week" desc="week" />
+        <value name="DAY" value="day" desc="day" />
+        <value name="HOUR" value="hour" desc="hour" />
+        <value name="MINUTE" value="minute" desc="minute" />
+        <value name="SECOND" value="second" desc="second" />
+    </enum>
 
 	<!--Topics enum-->
 	<enum name="Topics">
-		<value name="ATTENDANCECODEINFO" value="AttendanceCodeInfo"
-			desc="AttendanceCodeInfo" />
-		<value name="CALENDARDATE" value="CalendarDate"
-			desc="CalendarDate" />
-		<value name="CALENDARSUMMARY" value="CalendarSummary"
-			desc="CalendarSummary" />
+		<value name="ATTENDANCECODEINFO" value="AttendanceCodeInfo" desc="AttendanceCodeInfo" />
+		<value name="CALENDARDATE" value="CalendarDate" desc="CalendarDate" />
+		<value name="CALENDARSUMMARY" value="CalendarSummary" desc="CalendarSummary" />
 		<value name="ROOMINFO" value="RoomInfo" desc="RoomInfo" />
-		<value name="SCHOOLCOURSEINFO" value="SchoolCourseInfo"
-			desc="SchoolCourseInfo" />
+		<value name="SCHOOLCOURSEINFO" value="SchoolCourseInfo" desc="SchoolCourseInfo" />
 		<value name="SCHOOLINFO" value="SchoolInfo" desc="SchoolInfo" />
-		<value name="SESSIONINFO" value="SessionInfo"
-			desc="SessionInfo" />
-		<value name="SIF_AGENTACL" value="SIF_AgentACL"
-			desc="SIF_AgentACL" />
-		<value name="SIF_LOGENTRY" value="SIF_LogEntry"
-			desc="SIF_LogEntry" />
-		<value name="SIF_ZONESTATUS" value="SIF_ZoneStatus"
-			desc="SIF_ZoneStatus" />
-		<value name="STAFFASSIGNMENT" value="StaffAssignment"
-			desc="StaffAssignment" />
-		<value name="STAFFPERSONAL" value="StaffPersonal"
-			desc="StaffPersonal" />
-		<value name="STUDENTATTENDANCESUMMARY"
-			value="StudentAttendanceSummary" desc="StudentAttendanceSummary" />
-		<value name="STUDENTCONTACT" value="StudentContact"
-			desc="StudentContact" />
-		<value name="STUDENTDAILYATTENDANCE"
-			value="StudentDailyAttendance" desc="StudentDailyAttendance" />
-		<value name="STUDENTPARTICIPATION" value="StudentParticipation"
-			desc="StudentParticipation" />
-		<value name="STUDENTPERIODATTENDANCE"
-			value="StudentPeriodAttendance" desc="StudentPeriodAttendance" />
-		<value name="STUDENTPERSONAL" value="StudentPersonal"
-			desc="StudentPersonal" />
-		<value name="STUDENTPICTURE" value="StudentPicture"
-			desc="StudentPicture" />
-		<value name="STUDENTSCHOOLENROLLMENT"
-			value="StudentSchoolEnrollment" desc="StudentSchoolEnrollment" />
-		<value name="STUDENTSNAPSHOT" value="StudentSnapshot"
-			desc="StudentSnapshot" />
-		<value name="TEACHINGGROUP" value="TeachingGroup"
-			desc="TeachingGroup" />
+		<value name="SESSIONINFO" value="SessionInfo" desc="SessionInfo" />
+		<value name="SIF_AGENTACL" value="SIF_AgentACL" desc="SIF_AgentACL" />
+		<value name="SIF_LOGENTRY" value="SIF_LogEntry" desc="SIF_LogEntry" />
+		<value name="SIF_ZONESTATUS" value="SIF_ZoneStatus" desc="SIF_ZoneStatus" />
+		<value name="STAFFASSIGNMENT" value="StaffAssignment" desc="StaffAssignment" />
+		<value name="STAFFPERSONAL" value="StaffPersonal" desc="StaffPersonal" />
+		<value name="STUDENTATTENDANCESUMMARY" value="StudentAttendanceSummary" desc="StudentAttendanceSummary" />
+		<value name="STUDENTCONTACT" value="StudentContact" desc="StudentContact" />
+		<value name="STUDENTDAILYATTENDANCE" value="StudentDailyAttendance" desc="StudentDailyAttendance" />
+		<value name="STUDENTPARTICIPATION" value="StudentParticipation" desc="StudentParticipation" />
+		<value name="STUDENTPERIODATTENDANCE" value="StudentPeriodAttendance" desc="StudentPeriodAttendance" />
+		<value name="STUDENTPERSONAL" value="StudentPersonal" desc="StudentPersonal" />
+		<value name="STUDENTPICTURE" value="StudentPicture" desc="StudentPicture" />
+		<value name="STUDENTSCHOOLENROLLMENT" value="StudentSchoolEnrollment" desc="StudentSchoolEnrollment" />
+		<value name="STUDENTSNAPSHOT" value="StudentSnapshot" desc="StudentSnapshot" />
+		<value name="TEACHINGGROUP" value="TeachingGroup" desc="TeachingGroup" />
 		<value name="TIMETABLE" value="TimeTable" desc="TimeTable" />
-		<value name="TIMETABLECELL" value="TimeTableCell"
-			desc="TimeTableCell" />
-		<value name="TIMETABLESUBJECT" value="TimeTableSubject"
-			desc="TimeTableSubject" />
-        <value name="SYSTEMROLE" value="SystemRole"
-            desc="SystemRole" />
-        <value name="LEARNINGSTANDARDITEM" value="LearningStandardItem"
-            desc="LearningStandardItem" />
-        <value name="LEARNINGSTANDARDDOCUMENT" value="LearningStandardDocument"
-            desc="LearningStandardDocument" />
-        <value name="LEARNINGRESOURCEPACKAGE" value="LearningResourcePackage"
-            desc="LearningResourcePackage" />
-        <value name="LEARNINGRESOURCE" value="LearningResource"
-            desc="LearningResource" />
+		<value name="TIMETABLECELL" value="TimeTableCell" desc="TimeTableCell" />
+		<value name="TIMETABLESUBJECT" value="TimeTableSubject" desc="TimeTableSubject" />
+        <value name="SYSTEMROLE" value="SystemRole" desc="SystemRole" />
+        <value name="LEARNINGSTANDARDITEM" value="LearningStandardItem" desc="LearningStandardItem" />
+        <value name="LEARNINGSTANDARDDOCUMENT" value="LearningStandardDocument" desc="LearningStandardDocument" />
+        <value name="LEARNINGRESOURCEPACKAGE" value="LearningResourcePackage" desc="LearningResourcePackage" />
+        <value name="LEARNINGRESOURCE" value="LearningResource" desc="LearningResource" />
         <value name="ASSESSMENT" value="Assessment" desc="Assessment" />
         <value name="ASSESSMENTITEM" value="AssessmentItem" desc="AssessmentItem" />
         <value name="ASSESSMENTREGISTRATION" value="AssessmentRegistration" desc="AssessmentRegistration" />
@@ -3423,6 +3542,23 @@
 	    <value name="AGGREGATESTATISTICFACT" value="AggregateStatisticFact" desc="AggregateStatisticFact" />
 	    <value name="AGGREGATESTATISTICINFO" value="AggregateStatisticInfo" desc="AggregateStatisticInfo" />
         <value name="RESOURCEUSAGE" value="ResourceUsage" desc="ResourceUsage" />
+
+        <!-- SIF 3.0 Style Objects for SIF AU 1.3 -->
+        <value name="ACTIVITY" value="Activity" desc="Activity SIF 3.0 Version" />
+        <value name="SIF3ASSESSMENT" value="Sif3Assessment" desc="Assessment SIF 3.0 Version" />
+        <value name="SIF3ASSESSMENTADMINISTRATION" value="Sif3AssessmentAdministration" desc="AssessmentAdministration  SIF 3.0 Version" />
+        <value name="SIF3ASSESSMENTASSET" value="Sif3AssessmentAsset" desc="AssessmentAsset SIF 3.0 Version" />
+        <value name="SIF3ASSESSMENTFORM" value="Sif3AssessmentForm" desc="AssessmentForm SIF 3.0 Version" />
+        <value name="SIF3ASSESSMENTITEM" value="Sif3AssessmentItem" desc="AssessmentItem SIF 3.0 Version" />
+        <value name="SIF3ASSESSMENTITEMASSOCIATION" value="Sif3AssessmentItemAssociation" desc="AssessmentItemAssociation SIF 3.0 Version" />
+        <value name="SIF3ASSESSMENTREGISTRATION" value="Sif3AssessmentRegistration" desc="AssessmentRegistration SIF 3.0 Version" />
+        <value name="SIF3ASSESSMENTRUBRIC" value="Sif3AssessmentRubric" desc="AssessmentRubric SIF 3.0 Version" />
+        <value name="SIF3ASSESSMENTSCORETABLE" value="Sif3AssessmentScoreTable" desc="AssessmentScoreTable SIF 3.0 Version" />
+        <value name="SIF3ASSESSMENTSECTION" value="Sif3AssessmentSection" desc="AssessmentSection SIF 3.0 Version" />
+        <value name="SIF3ASSESSMENTSESSION" value="Sif3AssessmentSession" desc="AssessmentSession SIF 3.0 Version" />
+        <value name="SIF3ASSESSMENTSUBTEST" value="Sif3AssessmentSubTest" desc="AssessmentSubTest SIF 3.0 Version" />
+        <value name="SIF3STUDENTRESPONSESET" value="Sif3StudentResponseSet" desc="StudentResponseSet SIF 3.0 Version" />    
+
 	</enum>
 
 </adk>

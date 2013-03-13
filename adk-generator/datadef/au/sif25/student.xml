@@ -1,4 +1,4 @@
-﻿<!-- ======================================== -->
+<!-- ======================================== -->
 <!--    Open ADK Object Definition File   -->
 <!--     Copyright (c)1998-2011 Pearson Education, Inc. or its affiliate(s)     -->
 <!--     All Rights Reserved                  -->
@@ -533,7 +533,7 @@
       <desc>Does the student meet the State criteria for classification as having an economic disadvantage?</desc>
     </element>
     <element name="ESL" enum="AUCodeSetsYesOrNoCategoryType" flags="O">
-      <desc>Does the student meet â€˜English as a Second Language Criteriaâ€™?</desc>
+      <desc>Does the student meet ‘English as a Second Language Criteria’?</desc>
     </element>
     <element name="YoungCarersRole" enum="AUCodeSetsYesOrNoCategoryType" flags="O">
       <desc>Is the student a carer of other family members?</desc>
@@ -603,7 +603,7 @@
       <desc>Local identifier representing the school in which the student is or was most recently enrolled in the district.</desc>
     </element>
     <element name="HomeroomLocalId" type="String" flags="O">
-      <desc>Local identifier representing the current or most recent homeroom in which the student is or was most recently assigned in the district.  Use the value from RoomInfo/HomeroomNumber if supported.  If not supported, use the value from RoomInfo/RoomNumber.  If neither is supported, use the most appropriate value from the agentâ€šÃ„Ã´s application.</desc>
+      <desc>Local identifier representing the current or most recent homeroom in which the student is or was most recently assigned in the district.  Use the value from RoomInfo/HomeroomNumber if supported.  If not supported, use the value from RoomInfo/RoomNumber.  If neither is supported, use the most appropriate value from the agent‚Äôs application.</desc>
     </element>
     <element name="YearLevel" type="YearLevel" flags="O">
       <desc>The current or most recent grade level of the student in the district.</desc>
@@ -842,7 +842,7 @@
       <desc>The highest level of education completed by the contact person.</desc>
     </element>
     <element name="NonSchoolEducation" enum="NonSchoolEducationType" flags="O">
-      <desc>This reflects the level of the Contactâ€šÃ„Ã´s Non-School Education.</desc>
+      <desc>This reflects the level of the Contact‚Äôs Non-School Education.</desc>
     </element>
     <element name="ContactFlags" type="ContactFlags" flags="M" />
     <element name="MainlySpeaksEnglishAtHome" enum="AUCodeSetsYesOrNoCategoryType" flags="O">
@@ -1301,10 +1301,10 @@
       <desc>Approved or Unapproved status of this attendance code.</desc>
     </element>
     <element name="TimeIn" type="Time" flags="O">
-      <desc>The time the student entered or returned to school.  Must be provided if â€šÃ„Ã²Partialâ€šÃ„Ã´ chosen for DayValue.</desc>
+      <desc>The time the student entered or returned to school.  Must be provided if ‚ÄòPartial‚Äô chosen for DayValue.</desc>
     </element>
     <element name="TimeOut" type="Time" flags="O">
-      <desc>The time the student left school.  Must be provided if â€šÃ„Ã²Partialâ€šÃ„Ã´ chosen for DayValue..</desc>
+      <desc>The time the student left school.  Must be provided if ‚ÄòPartial‚Äô chosen for DayValue..</desc>
     </element>
     <element name="AbsenceValue" type="Decimal" flags="O" />
     <element name="AttendanceNote" type="String" flags="O">
@@ -1414,7 +1414,7 @@
       <desc>The highest level of education completed by the contact person.</desc>
     </element>
     <element name="NonSchoolEducation" enum="NonSchoolEducationType" flags="O">
-      <desc>This reflects the level of the Contactâ€šÃ„Ã´s Non-School Education.</desc>
+      <desc>This reflects the level of the Contact‚Äôs Non-School Education.</desc>
     </element>
   </object>
   
@@ -1997,7 +1997,7 @@
       <desc>GUID that identifies the activity in which the student participates.</desc>
     </element>
     <element name="StudentActivityDescription" type="String" flags="M">
-      <desc>Description of Activity Info in the Previous Schoolsâ€™ zone.</desc>
+      <desc>Description of Activity Info in the Previous Schools’ zone.</desc>
     </element>
   </object>
   
@@ -2065,10 +2065,10 @@
       <desc>The name of the person to contact for further information on this student.</desc>
     </element>
     <element name="PhoneNumberList" type="PhoneNumberList" flags="O">
-      <desc>The further contact personâ€šÃ„Ã´s phone number(s).</desc>
+      <desc>The further contact person‚Äôs phone number(s).</desc>
     </element>
     <element name="EmailList" type="EmailList" flags="O">
-      <desc>The further contact personâ€šÃ„Ã´s e-mail address(es).</desc>
+      <desc>The further contact person‚Äôs e-mail address(es).</desc>
     </element>
   </object>
 

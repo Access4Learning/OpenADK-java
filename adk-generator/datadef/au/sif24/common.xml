@@ -3251,6 +3251,13 @@
     <element name="Reference" type="Reference" flags="O"/>
   </object>
 
+  <!--AssessmentDescriptor object-->
+  <object name="AssessmentDescriptor" datatype="String" />
+    
+  <!--AssessmentDescriptors object-->
+  <object name="AssessmentDescriptors">
+    <element name="AssessmentDescriptor" type="AssessmentDescriptor" flags="OR" />
+  </object>
 
   <!--Location-->
   <object name="Location">
@@ -3288,6 +3295,12 @@
     <value name="OTHER" value="Other" desc="Other" />
   </enum>
 
+  <!--AssessmentType enum-->
+  <enum name="AssessmentType">
+    <value name="STANDARD" value="standard" desc="standard" />
+    <value name="ALTERNATE" value="alternate" desc="alternate" />
+  </enum>
+
   <!--AUCodeSetsAssessmentReportingMethodType enum-->
   <enum name="AUCodeSetsAssessmentReportingMethodType">
     <value name="0144" value="0144" desc="Letter grade/mark" />
@@ -3312,6 +3325,16 @@
     <value name="3479" value="3479" desc="Scale score" />
     <value name="3480" value="3480" desc="Workplace readiness score" />
     <value name="9999" value="9999" desc="Other" />
+  </enum>
+  
+  <!--ResponseType enum-->
+  <enum name="ResponseType">
+    <value name="MULTIPLECHOICE" value="multiple-choice" desc="multiple-choice" />
+    <value name="MULTIPLEMULTIPLE_CHOICE" value="multiple-multiple choice" desc="multiple-multiple choice" />
+    <value name="TRUEFALSE" value="true-false" desc="true-false" />
+    <value name="FILLINTHEBLANK" value="fill-in-the-blank" desc="fill-in-the-blank" />
+    <value name="SHORTANSWER" value="short-answer" desc="short-answer" />
+    <value name="ESSAY" value="essay" desc="essay" />
   </enum>
 
 	<!--Topics enum-->

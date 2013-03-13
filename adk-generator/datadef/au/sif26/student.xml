@@ -641,6 +641,7 @@
     <attribute name="EndDate" type="Date" flags="R">
       <desc>Ending date of this attendance reporting period.</desc>
     </attribute>
+    <element name="StudentAttendanceSummaryRefId" type="IdRefType" flags="O" />
     <element name="StartDay" type="Uint" flags="O">
       <desc>Number of the school day represented in StartDate.</desc>
     </element>
@@ -868,6 +869,7 @@
     <attribute name="StudentPersonalRefId" type="String" flags="R">
       <desc>The ID (GUID) of the student to whom this information relates.</desc>
     </attribute>
+    <element name="StudentSnapshotRefId" type="IdRefType" flags="O" />
     <element name="SchoolYear" type="int" flags="M" />
     <element name="Name" type="Name" flags="M" />
     <element name="LocalId" type="String" flags="M" />
@@ -908,6 +910,7 @@
     <attribute name="CalendarSummaryRefId" type="String" flags="R">
       <desc>The ID (GUID) of the calendar summary in which this calendar date is.</desc>
     </attribute>
+    <element name="CalendarDateRefId" type="IdRefType" flags="O" />
     <element name="SchoolInfoRefId" type="String" flags="M">
       <desc>The ID (GUID) of the school for which this calendar information is being reported.</desc>
     </element>
@@ -990,6 +993,9 @@
     <element name="FTE" type="Decimal" flags="O" />
     <element name="FTPTStatus" enum="FTPTStatusCodeType" flags="O">
       <desc>An indication of whether the student is enrolled full time or part time.</desc>
+    </element>
+    <element name="FFPOS" enum="AUCodeSetsFFPOSStatusCodeType" flags="O">
+      <desc>Enrolled Full-fee Paying Overseas Student (FFPOS) Status. Enrolment Frame Element 10 NSCC Collection.</desc>
     </element>
     <element name="CatchmentStatus" type="CatchmentStatus" flags="O" />
     <element name="RecordClosureReason" enum="RecordClosureReason" flags="O">
@@ -1445,6 +1451,7 @@
     <attribute name="StudentContactPersonalRefId" type="String" flags="R">
       <desc>GUID that identifies the contact person for the relationship.</desc>
     </attribute>
+    <element name="StudentContactRelationshipRefId" type="IdRefType" flags="O" />
     <element name="Relationship" type="Relationship" flags="M" />
     <element name="ParentRelationshipStatus" enum="ParentRelationshipStatusType" flags="O" />
     <element name="HouseholdList" type="HouseholdList" flags="O" />

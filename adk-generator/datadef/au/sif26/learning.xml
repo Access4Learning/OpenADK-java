@@ -48,6 +48,7 @@
         <element name="TimeTableSubjectLocalId" type="String" flags="O">
             <desc>Local subject Id.</desc>
         </element>
+        <element name="Semester" type="int" flags="O" />
         <element name="StudentList" type="StudentList" flags="O" />
         <element name="TeacherList" type="TeacherList" flags="O" />
         <element name="MinClassSize" type="int" flags="O">

@@ -58,15 +58,6 @@
     </element>
   </object>
   
-  <!--AssessmentDescriptor object-->
-  <object name="AssessmentDescriptor" datatype="String" />
-  
-  
-  <!--AssessmentDescriptors object-->
-  <object name="AssessmentDescriptors">
-    <element name="AssessmentDescriptor" type="AssessmentDescriptor" flags="OR" />
-  </object>
-  
   <!--AssessmentDescriptorType enum-->
   <enum name="AssessmentDescriptorType">
     <value name="STATEWIDE" value="Statewide" desc="Statewide" />
@@ -271,12 +262,6 @@
     </element>
   </object>
   
-  <!--AssessmentType enum-->
-  <enum name="AssessmentType">
-    <value name="STANDARD" value="standard" desc="standard" />
-    <value name="ALTERNATE" value="alternate" desc="alternate" />
-  </enum>
-     
   <!--CutScores object-->
   <object name="CutScores">
     <attribute name="ScoreMetric" enum="AUCodeSetsAssessmentReportingMethodType" flags="R">
@@ -373,16 +358,6 @@
     <value name="NOTANSWERED" value="NotAnswered" desc="NotAnswered" />
     <value name="ATTEMPTED" value="Attempted" desc="Attempted" />
     <value name="INCOMPLETE" value="Incomplete" desc="Incomplete" />
-  </enum>
-  
-  <!--ResponseType enum-->
-  <enum name="ResponseType">
-    <value name="MULTIPLECHOICE" value="multiple-choice" desc="multiple-choice" />
-    <value name="MULTIPLEMULTIPLE_CHOICE" value="multiple-multiple choice" desc="multiple-multiple choice" />
-    <value name="TRUEFALSE" value="true-false" desc="true-false" />
-    <value name="FILLINTHEBLANK" value="fill-in-the-blank" desc="fill-in-the-blank" />
-    <value name="SHORTANSWER" value="short-answer" desc="short-answer" />
-    <value name="ESSAY" value="essay" desc="essay" />
   </enum>
   
   <!--Score object-->
@@ -486,6 +461,8 @@
       <desc>The registration associated with this score set.</desc>
     </element>
     <element name="Scores" type="Scores" flags="O" />
+    <element name="StartDateTime" type="DateTime" flags="O" />
+    <element name="FinishDateTime" type="DateTime" flags="O" />
   </object>
   
   <!--StudentSpecialCondition object-->

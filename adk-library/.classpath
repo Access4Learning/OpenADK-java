@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/main/resources"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/OpenADK-java/lib/commons-jxpath/commons-jxpath-1.3.jar"/>
+	<classpathentry kind="lib" path="/OpenADK-java/lib/servlet-api/servlet-api-2.5.jar"/>
+	<classpathentry kind="lib" path="/OpenADK-java/lib/jetty-server/jetty-server-7.5.4.v20111024.jar"/>
+	<classpathentry kind="lib" path="/OpenADK-java/lib/jetty-util/jetty-util-7.5.4.v20111024.jar"/>
+	<classpathentry kind="lib" path="/OpenADK-java/lib/jetty-http/jetty-http-7.5.4.v20111024.jar"/>
+	<classpathentry kind="lib" path="/OpenADK-java/lib/log4j/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="/OpenADK-java/lib/org.mortbay.jetty/org.mortbay.jetty-5.1.12.jar"/>
+	<classpathentry kind="lib" path="/OpenADK-java/lib/commons-lang/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="/OpenADK-java/lib/xerces/xercesImpl.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

@@ -34,6 +34,9 @@
     <element name="CommonwealthId" type="String" flags="O">
       <desc>Commonwealth identifier for this school/campus.</desc>
     </element>
+    <element name="OtherIdList" type="OtherIdList" flags="O">
+      <desc>Lists all "other" identifiers associated with the school.</desc>
+    </element>
     <element name="SchoolName" type="String" flags="M">
       <desc>Name of school/campus.</desc>
     </element>
