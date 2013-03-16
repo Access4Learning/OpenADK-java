@@ -32,7 +32,7 @@ public class SIFInt extends SIFSimpleType<Integer> {
 	
 	
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.SIFSimpleType#getTypeConverter()
+	 * @see openadk.library.SIFSimpleType#getTypeConverter()
 	 */
 	@Override
 	public SIFTypeConverter<Integer> getTypeConverter() {

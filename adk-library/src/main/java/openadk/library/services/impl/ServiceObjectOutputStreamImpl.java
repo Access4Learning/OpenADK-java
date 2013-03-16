@@ -71,7 +71,7 @@ public class ServiceObjectOutputStreamImpl implements ServiceObjectOutputStream 
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see com.edustructures.sifworks.services.ServiceObjectOutputStream#write(com.edustructures.sifworks.SIFElement)
+	 * @see openadk.library.services.ServiceObjectOutputStream#write(openadk.library.SIFElement)
 	 */
 	public void write(SIFElement data) throws ADKException {
 

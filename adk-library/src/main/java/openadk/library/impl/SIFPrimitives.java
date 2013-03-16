@@ -646,7 +646,7 @@ public class SIFPrimitives implements ISIFPrimitives
 
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.impl.ISIFPrimitives#sifProvision(com.edustructures.sifworks.Zone, com.edustructures.sifworks.infra.SIF_Provision)
+	 * @see openadk.library.impl.ISIFPrimitives#sifProvision(openadk.library.Zone, openadk.library.infra.SIF_Provision)
 	 */
 	public SIF_Ack sifProvision( Zone zone,
 			SIF_ProvideObjects providedObjects,

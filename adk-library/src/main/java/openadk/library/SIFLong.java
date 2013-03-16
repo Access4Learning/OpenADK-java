@@ -32,7 +32,7 @@ public class SIFLong extends SIFSimpleType<Long> {
 
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.SIFSimpleType#getTypeConverter()
+	 * @see openadk.library.SIFSimpleType#getTypeConverter()
 	 */
 	@Override
 	public SIFTypeConverter<Long> getTypeConverter() {

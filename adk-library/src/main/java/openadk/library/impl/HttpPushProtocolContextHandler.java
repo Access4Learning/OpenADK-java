@@ -17,8 +17,12 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.Calendar;
 import java.util.List;
+import java.util.zip.DeflaterOutputStream;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
+import java.util.zip.InflaterInputStream;
+import java.util.zip.ZipInputStream;
+import java.util.zip.ZipOutputStream;
 
 /**
  * Created by IntelliJ IDEA.
@@ -344,14 +348,32 @@ public class HttpPushProtocolContextHandler extends AbstractHandler {
 			try
 			{
 				// NOTE: Keep this a StringBuffer for now because it is used externally
-				StringBuffer strbuf = new StringBuffer();
+				StringBuffer strbuf = new StringBuffer(expected > 64 ? expected : 64);
 				char buf[] = new char[expected < 1024 ? expected : 1024];
 
-				String contentEncoding = request.getCharacterEncoding();
-				if (contentEncoding != null && "gzip".equalsIgnoreCase(contentEncoding.trim())) {
-					in = SIFIOFormatter.createInputReader(new GZIPInputStream(request.getInputStream()));
-				} else {
+				String contentEncoding = request.getHeader("Content-Encoding");
+				if (contentEncoding == null) {
 					in = SIFIOFormatter.createInputReader( request.getInputStream() );
+				} else {
+					String encoding = contentEncoding.toLowerCase();
+					if (encoding.contains("gzip")) { // gzip or x-gzip
+					in = SIFIOFormatter.createInputReader(new GZIPInputStream(request.getInputStream()));
+					} 
+					else if (encoding.contains("compress")) {	// compress or x-compress
+						in = SIFIOFormatter.createInputReader(new ZipInputStream(request.getInputStream()));
+					}
+					else if (encoding.contains("deflate")) {	// deflate or x-deflate
+						in = SIFIOFormatter.createInputReader(new InflaterInputStream(request.getInputStream()));
+				} else {
+						fZone.log.error("HttpProtocolHandler push message failure : Unsuported Content-Encoding of '" + contentEncoding + "'" );
+		                try {
+				            response.sendError(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE);
+		                }
+		                catch (IOException e) {
+		                    fZone.log.error("Problem sending UNSUPPORTED_MEDIA_TYPE error");
+		                }
+			            return null;
+					}
 				}
 
 				int charsRead = 0;
@@ -366,7 +388,7 @@ public class HttpPushProtocolContextHandler extends AbstractHandler {
 			}
 			catch( Throwable thr )
 			{
-				System.out.println("HttpProtocolHandler failed to read push message (approximately "+
+				fZone.log.error("HttpProtocolHandler failed to read push message (approximately "+
 					totalRead+" of "+expected+" bytes read; zone="+fZone.getZoneId()+"): "+thr);
                 try {
                     response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
@@ -439,7 +461,7 @@ public class HttpPushProtocolContextHandler extends AbstractHandler {
 			}
 			catch( Throwable thr )
 			{
-				System.out.println("HttpProtocolHandler failed to send SIF_Ack for pushed message (zone="+
+				fZone.log.error("HttpProtocolHandler failed to send SIF_Ack for pushed message (zone="+
 					fZone.getZoneId()+"): "+thr);
                 try {
                     response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

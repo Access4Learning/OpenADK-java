@@ -47,7 +47,7 @@ public class SIF1xFormatter extends SIFFormatter {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see com.edustructures.sifworks.SIFFormatter#toDateString(java.util.Calendar)
+	 * @see openadk.library.SIFFormatter#toDateString(java.util.Calendar)
 	 */
 	public String toDateString(Calendar date) {
 		if (date == null) {
@@ -59,7 +59,7 @@ public class SIF1xFormatter extends SIFFormatter {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see com.edustructures.sifworks.SIFFormatter#toString(java.lang.Boolean)
+	 * @see openadk.library.SIFFormatter#toString(java.lang.Boolean)
 	 */
 	public String toString(Boolean boolValue) {
 		if (boolValue == null) {
@@ -106,7 +106,7 @@ public class SIF1xFormatter extends SIFFormatter {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see com.edustructures.sifworks.SIFFormatter#toDate(java.lang.String)
+	 * @see openadk.library.SIFFormatter#toDate(java.lang.String)
 	 */
 	public Calendar toDate(String value) {
 		if (value == null ) {
@@ -133,7 +133,7 @@ public class SIF1xFormatter extends SIFFormatter {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see com.edustructures.sifworks.SIFFormatter#toBoolean(java.lang.String)
+	 * @see openadk.library.SIFFormatter#toBoolean(java.lang.String)
 	 */
 	public Boolean toBoolean(String value) {
 		if (value == null ) {

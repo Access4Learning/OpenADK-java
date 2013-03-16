@@ -154,7 +154,7 @@ public class HttpPushProtocolHandler extends BaseHttpProtocolHandler
 
 
     /* (non-Javadoc)
-          * @see com.edustructures.sifworks.impl.IProtocolHandler#isActive(com.edustructures.sifworks.impl.ZoneImpl)
+          * @see openadk.library.impl.IProtocolHandler#isActive(openadk.library.impl.ZoneImpl)
           */
     public boolean isActive(ZoneImpl zone)
         throws ADKTransportException

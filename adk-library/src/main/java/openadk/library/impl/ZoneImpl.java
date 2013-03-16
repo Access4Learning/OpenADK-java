@@ -398,7 +398,7 @@ public class ZoneImpl implements Zone
 		/*
 		if( ADK.supportsALQ() && !fProps.getDisableQueue() )
 		{
-			String clazz = fProps.getProperty("adk.queue.impl","com.edustructures.sifworks.impl.JDBCQueue");
+			String clazz = fProps.getProperty("adk.queue.impl","openadk.library.impl.JDBCQueue");
 			try {
 				queue = (IAgentQueue)Class.forName(clazz).newInstance();
 			} catch( ClassNotFoundException cnfe ) {
@@ -1464,7 +1464,7 @@ synchronized( fConnLock )
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Zone#reportEvent(com.edustructures.sifworks.SIFDataObject, com.edustructures.sifworks.EventAction)
+	 * @see openadk.library.Zone#reportEvent(openadk.library.SIFDataObject, openadk.library.EventAction)
 	 */
 	public void reportEvent( SIFDataObject obj, EventAction actionCode )
 		throws ADKException
@@ -1473,7 +1473,7 @@ synchronized( fConnLock )
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Zone#reportEvent(com.edustructures.sifworks.SIFDataObject, com.edustructures.sifworks.EventAction, com.edustructures.sifworks.SIFContext[])
+	 * @see openadk.library.Zone#reportEvent(openadk.library.SIFDataObject, openadk.library.EventAction, openadk.library.SIFContext[])
 	 */
 	public void reportEvent( SIFDataObject obj, EventAction actionCode, SIFContext... contexts )
 	throws ADKException
@@ -1482,7 +1482,7 @@ synchronized( fConnLock )
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Zone#reportEvent(com.edustructures.sifworks.SIFDataObject, com.edustructures.sifworks.EventAction, java.lang.String)
+	 * @see openadk.library.Zone#reportEvent(openadk.library.SIFDataObject, openadk.library.EventAction, java.lang.String)
 	 */
 	public void reportEvent( SIFDataObject obj, EventAction actionCode, String destinationId )
 		throws ADKException
@@ -1491,7 +1491,7 @@ synchronized( fConnLock )
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Zone#reportEvent(com.edustructures.sifworks.Event)
+	 * @see openadk.library.Zone#reportEvent(openadk.library.Event)
 	 */
 	public void reportEvent( Event event )
 		throws ADKException
@@ -1671,7 +1671,7 @@ synchronized( fConnLock )
 
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Provisioner#setPublisher(com.edustructures.sifworks.Publisher)
+	 * @see openadk.library.Provisioner#setPublisher(openadk.library.Publisher)
 	 */
 	public void setPublisher( Publisher publisher )
 		throws ADKException
@@ -1680,7 +1680,7 @@ synchronized( fConnLock )
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Provisioner#setPublisher(com.edustructures.sifworks.Publisher, com.edustructures.sifworks.ElementDef)
+	 * @see openadk.library.Provisioner#setPublisher(openadk.library.Publisher, openadk.library.ElementDef)
 	 */
 	public void setPublisher(Publisher publisher, ElementDef objectType) throws ADKException {
 		fProvMatrix.setPublisher(publisher, objectType );
@@ -1689,7 +1689,7 @@ synchronized( fConnLock )
 
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Provisioner#setPublisher(com.edustructures.sifworks.Publisher, com.edustructures.sifworks.ElementDef, com.edustructures.sifworks.PublishingOptions)
+	 * @see openadk.library.Provisioner#setPublisher(openadk.library.Publisher, openadk.library.ElementDef, openadk.library.PublishingOptions)
 	 */
 	public void setPublisher( Publisher publisher, ElementDef objectType, PublishingOptions options )
 		throws ADKException
@@ -1699,7 +1699,7 @@ synchronized( fConnLock )
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Provisioner#setReportPublisher(com.edustructures.sifworks.ReportPublisher)
+	 * @see openadk.library.Provisioner#setReportPublisher(openadk.library.ReportPublisher)
 	 */
 	public void setReportPublisher(ReportPublisher publisher) throws ADKException {
 		fProvMatrix.setReportPublisher( publisher );
@@ -1707,7 +1707,7 @@ synchronized( fConnLock )
 
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Provisioner#setReportPublisher(com.edustructures.sifworks.ReportPublisher, com.edustructures.sifworks.ReportPublishingOptions)
+	 * @see openadk.library.Provisioner#setReportPublisher(openadk.library.ReportPublisher, openadk.library.ReportPublishingOptions)
 	 */
 	public void setReportPublisher( ReportPublisher publisher, ReportPublishingOptions options )
 		throws ADKException
@@ -1718,7 +1718,7 @@ synchronized( fConnLock )
 
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Provisioner#setSubscriber(com.edustructures.sifworks.Subscriber, com.edustructures.sifworks.ElementDef)
+	 * @see openadk.library.Provisioner#setSubscriber(openadk.library.Subscriber, openadk.library.ElementDef)
 	 */
 	public void setSubscriber(Subscriber subscriber, ElementDef objectType) throws ADKException {
 		fProvMatrix.setSubscriber(subscriber, objectType );
@@ -1727,7 +1727,7 @@ synchronized( fConnLock )
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Provisioner#setSubscriber(com.edustructures.sifworks.Subscriber, com.edustructures.sifworks.ElementDef, com.edustructures.sifworks.SubscriptionOptions)
+	 * @see openadk.library.Provisioner#setSubscriber(openadk.library.Subscriber, openadk.library.ElementDef, openadk.library.SubscriptionOptions)
 	 */
 	public void setSubscriber( Subscriber subscriber, ElementDef objectType, SubscriptionOptions options )
 		throws ADKException
@@ -1738,7 +1738,7 @@ synchronized( fConnLock )
 
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Provisioner#setQueryResults(com.edustructures.sifworks.QueryResults)
+	 * @see openadk.library.Provisioner#setQueryResults(openadk.library.QueryResults)
 	 */
 	public void setQueryResults( QueryResults queryResults )
 		throws ADKException
@@ -1747,7 +1747,7 @@ synchronized( fConnLock )
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Provisioner#setQueryResults(com.edustructures.sifworks.QueryResults, com.edustructures.sifworks.ElementDef)
+	 * @see openadk.library.Provisioner#setQueryResults(openadk.library.QueryResults, openadk.library.ElementDef)
 	 */
 	public void setQueryResults(QueryResults queryResults, ElementDef objectType) throws ADKException {
 		fProvMatrix.setQueryResults( queryResults, objectType );
@@ -1756,7 +1756,7 @@ synchronized( fConnLock )
 
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Provisioner#setQueryResults(com.edustructures.sifworks.QueryResults, com.edustructures.sifworks.ElementDef, com.edustructures.sifworks.QueryResultsOptions)
+	 * @see openadk.library.Provisioner#setQueryResults(openadk.library.QueryResults, openadk.library.ElementDef, openadk.library.QueryResultsOptions)
 	 */
 	public void setQueryResults( QueryResults queryResults, ElementDef objectType, QueryResultsOptions flags )
 		throws ADKException
@@ -1827,7 +1827,7 @@ synchronized( fConnLock )
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Zone#query(com.edustructures.sifworks.Query)
+	 * @see openadk.library.Zone#query(openadk.library.Query)
 	 */
 	public String query( Query query )
 		throws ADKException
@@ -1836,7 +1836,7 @@ synchronized( fConnLock )
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Zone#query(com.edustructures.sifworks.Query, com.edustructures.sifworks.MessagingListener)
+	 * @see openadk.library.Zone#query(openadk.library.Query, openadk.library.MessagingListener)
 	 */
 	public String query( Query query, MessagingListener listener )
 		throws ADKException
@@ -1845,7 +1845,7 @@ synchronized( fConnLock )
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Zone#query(com.edustructures.sifworks.Query, int)
+	 * @see openadk.library.Zone#query(openadk.library.Query, int)
 	 */
 	public String query( Query query, int queryOptions )
 		throws ADKException
@@ -1854,7 +1854,7 @@ synchronized( fConnLock )
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Zone#query(com.edustructures.sifworks.Query, com.edustructures.sifworks.MessagingListener, int)
+	 * @see openadk.library.Zone#query(openadk.library.Query, openadk.library.MessagingListener, int)
 	 */
 	public String query( Query query, MessagingListener listener, int queryOptions )
 		throws ADKException
@@ -1863,7 +1863,7 @@ synchronized( fConnLock )
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Zone#query(com.edustructures.sifworks.Query, java.lang.String, int)
+	 * @see openadk.library.Zone#query(openadk.library.Query, java.lang.String, int)
 	 */
 	public String query( Query query, String destinationId, int queryOptions )
 		throws ADKException
@@ -1872,7 +1872,7 @@ synchronized( fConnLock )
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Zone#query(com.edustructures.sifworks.Query, com.edustructures.sifworks.MessagingListener, java.lang.String, int)
+	 * @see openadk.library.Zone#query(openadk.library.Query, openadk.library.MessagingListener, java.lang.String, int)
 	 */
 	public String query( Query query, MessagingListener listener, String destinationId, int queryOptions )
 		throws ADKException
@@ -2449,7 +2449,7 @@ synchronized( fConnLock )
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Zone#purgeQueue(boolean, boolean)
+	 * @see openadk.library.Zone#purgeQueue(boolean, boolean)
 	 */
 	public void purgeQueue( boolean incoming, boolean outgoing )
 		throws ADKException
@@ -2592,7 +2592,7 @@ synchronized( fConnLock )
 					try
 					{
 						if( BuildOptions.PROFILED )
-							ProfilerUtils.profileStart( String.valueOf( com.edustructures.sifprofiler.api.OIDs.ADK_SIFREQUEST_REQUESTOR_MESSAGING ), query.getObjectType(), inf.getMsgId() );
+							ProfilerUtils.profileStart( String.valueOf( openadk.sifprofiler.api.OIDs.ADK_SIFREQUEST_REQUESTOR_MESSAGING ), query.getObjectType(), inf.getMsgId() );
 
 						target.onQueryPending( inf,this );
 					}

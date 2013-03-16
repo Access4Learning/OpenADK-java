@@ -3,6 +3,10 @@ import openadk.library.ADK;
 import openadk.library.SIFDTD;
 import openadk.library.SIFVersion;
 import openadk.library.SIFWriter;
+import openadk.library.assessment.AssessmentAdministration;
+import openadk.library.assessment.OrganizationSif3;
+import openadk.library.assessment.Sif3Assessment;
+import openadk.library.assessment.Sif3AssessmentAdministration;
 import openadk.library.common.*;
 import openadk.library.student.StudentAddressList;
 import openadk.library.student.StudentPersonal;
@@ -74,6 +78,32 @@ public class MessageTest extends TestCase {
 
         String xml = stringWriter.getBuffer().toString();
         Assert.assertTrue("SIF Message contains US namespace", xml.contains("xmlns=\"http://www.sifinfo.org/infrastructure/2.x\""));
+    }
+
+    public void testSif3Assessment() {
+        Sif3Assessment obj = new Sif3Assessment();
+
+        StringWriter stringWriter = new StringWriter();
+        SIFWriter sifWriter = new SIFWriter(stringWriter, true);
+        sifWriter.write(obj);
+        sifWriter.close();
+
+        String xml = stringWriter.getBuffer().toString();
+        Assert.assertTrue("SIF Message contains US namespace", xml.contains("xmlns:sif3=\"urn:sif3placeholder\""));
+    }
+
+    public void testSif3AssessmentAdministration(){
+        Sif3AssessmentAdministration obj = new Sif3AssessmentAdministration();
+        OrganizationSif3 organizationSif3 = new OrganizationSif3();
+
+        StringWriter stringWriter = new StringWriter();
+        SIFWriter sifWriter = new SIFWriter(stringWriter, true);
+        sifWriter.write(obj);
+        sifWriter.close();
+
+        String xml = stringWriter.getBuffer().toString();
+        Assert.assertTrue("SIF Message contains US namespace", xml.contains("xmlns:sif3=\"urn:sif3placeholder\""));
+
     }
 
 }

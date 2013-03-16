@@ -48,7 +48,7 @@ public class TopicFactoryImpl implements TopicFactory
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.TopicFactory#getInstance(com.edustructures.sifworks.ElementDef)
+	 * @see openadk.library.TopicFactory#getInstance(openadk.library.ElementDef)
 	 */
 	public synchronized Topic getInstance(  ElementDef objectType )
 	{
@@ -57,7 +57,7 @@ public class TopicFactoryImpl implements TopicFactory
 	
 	
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.TopicFactory#getInstance(com.edustructures.sifworks.ElementDef, com.edustructures.sifworks.SIFContext)
+	 * @see openadk.library.TopicFactory#getInstance(openadk.library.ElementDef, openadk.library.SIFContext)
 	 */
 	public synchronized Topic getInstance(  ElementDef objectType, SIFContext context )
 	{
@@ -79,7 +79,7 @@ public class TopicFactoryImpl implements TopicFactory
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.TopicFactory#lookupInstance(com.edustructures.sifworks.ElementDef, com.edustructures.sifworks.SIFContext)
+	 * @see openadk.library.TopicFactory#lookupInstance(openadk.library.ElementDef, openadk.library.SIFContext)
 	 */
 	public synchronized Topic lookupInstance( ElementDef objectType, SIFContext context )
 	{

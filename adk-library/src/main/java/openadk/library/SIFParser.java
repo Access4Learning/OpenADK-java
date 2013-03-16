@@ -60,7 +60,7 @@ public abstract class SIFParser
 	 * Parses Xml text into a SIFElement
 	 * @param msg The content to parse
 	 * @return A SIFElement object encapsulating the message payload (e.g.
-	 *      a com.edustructures.sifworks.student.StudentPersonal object)
+	 *      a openadk.library.student.StudentPersonal object)
 	 * @throws ADKParsingException is thrown if unable to parse the message
 	 * @throws SIFException is thrown if unable to parse the message
 	 * @throws IOException is thrown if an error is reported while reading the message content
@@ -79,7 +79,7 @@ public abstract class SIFParser
 	 *      not applicable or not known
 	 *
 	 *  @return A SIFElement object encapsulating the message payload (e.g.
-	 *      a com.edustructures.sifworks.student.StudentPersonal object)
+	 *      a openadk.library.student.StudentPersonal object)
 	 *
 	 * @throws ADKParsingException is thrown if unable to parse the message
 	 * @throws SIFException is thrown if unable to parse the message
@@ -100,7 +100,7 @@ public abstract class SIFParser
 	 *  @param flags One or more <code>FLG_</code> constants, or zero if no
 	 *      flags are applicable
 	 *  @return A SIFElement object encapsulating the message payload (e.g.
-	 *      a com.edustructures.sifworks.student.StudentPersonal object)
+	 *      a openadk.library.student.StudentPersonal object)
 	 *
 	 * @throws ADKParsingException is thrown if unable to parse the message
 	 * @throws SIFException is thrown if unable to parse the message
@@ -131,7 +131,7 @@ public abstract class SIFParser
 	 *      version indicated by the <i>Version</i> and <i>xmlns</i> attributes
 	 *
 	 *  @return A SIFElement object encapsulating the message payload (e.g.
-	 *      a com.edustructures.sifworks.student.StudentPersonal object)
+	 *      a openadk.library.student.StudentPersonal object)
 	 *
 	 * @throws ADKParsingException is thrown if unable to parse the message
 	 * @throws SIFException is thrown if unable to parse the message
@@ -150,7 +150,7 @@ public abstract class SIFParser
 	 *  @param zone The Zone from which the message was received, or null if
 	 *      not applicable or not known
 	 *  @return A SIFElement object encapsulating the message payload (e.g.
-	 *      a com.edustructures.sifworks.student.StudentPersonal object)
+	 *      a openadk.library.student.StudentPersonal object)
 	 *
 	 * @throws ADKParsingException is thrown if unable to parse the message
 	 * @throws SIFException is thrown if unable to parse the message
@@ -169,7 +169,7 @@ public abstract class SIFParser
 	 *  @param flags One or more <code>FLG_</code> constants, or zero if no
 	 *      flags are applicable
 	 *  @return A SIFElement object encapsulating the message payload (e.g.
-	 *      a com.edustructures.sifworks.student.StudentPersonal object)
+	 *      a openadk.library.student.StudentPersonal object)
 	 *
 	 * @throws ADKParsingException is thrown if unable to parse the message
 	 * @throws SIFException is thrown if unable to parse the message
@@ -198,7 +198,7 @@ public abstract class SIFParser
 	 *      version indicated by the <i>Version</i> and <i>xmlns</i> attributes
 	 *
 	 *  @return A SIFElement object encapsulating the message payload (e.g.
-	 *      a com.edustructures.sifworks.student.StudentPersonal object)
+	 *      a openadk.library.student.StudentPersonal object)
 	 *
 	 * @throws ADKParsingException is thrown if unable to parse the message
 	 * @throws SIFException is thrown if unable to parse the message
@@ -211,7 +211,7 @@ public abstract class SIFParser
 	/**
 	 *  Gets the last SIFElement parsed
 	 *  @return A SIFElement object encapsulating the message payload (e.g.
-	 *      a com.edustructures.sifworks.student.StudentPersonal object). Note
+	 *      a openadk.library.student.StudentPersonal object). Note
 	 *      if the parse method was unsuccessful, the element may be incomplete.
 	 */
 	public abstract SIFElement getParsed();

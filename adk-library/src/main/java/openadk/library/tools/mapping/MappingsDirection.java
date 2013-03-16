@@ -19,8 +19,8 @@ public enum MappingsDirection {
 	 * 	agent is not specifying whether the method is being called for an inbound
 	 * 	or outbound operation.<p>
 	 *
-	 *	@see Mappings#mapInbound(com.edustructures.sifworks.SIFDataObject, FieldAdaptor)
-	 *  @see Mappings#mapOutbound(FieldAdaptor,com.edustructures.sifworks.SIFDataObject)
+	 *	@see Mappings#mapInbound(openadk.library.SIFDataObject, FieldAdaptor)
+	 *  @see Mappings#mapOutbound(FieldAdaptor,openadk.library.SIFDataObject)
 	 *  @see MappingsContext#getDirection()
 	 *
 	 * 	@since ADK 1.5
@@ -38,8 +38,8 @@ public enum MappingsDirection {
 	 * 	its <code>translate</code> function on the value produced from
 	 * 	the mapping.<p>
 	 *
-	 *	@see Mappings#mapInbound(com.edustructures.sifworks.SIFDataObject, FieldAdaptor)
-	 *  @see Mappings#mapOutbound(FieldAdaptor,com.edustructures.sifworks.SIFDataObject)
+	 *	@see Mappings#mapInbound(openadk.library.SIFDataObject, FieldAdaptor)
+	 *  @see Mappings#mapOutbound(FieldAdaptor,openadk.library.SIFDataObject)
 	 *  @see MappingsContext#getDirection()
 	 *
 	 * 	@since ADK 1.5
@@ -56,8 +56,8 @@ public enum MappingsDirection {
 	 * 	automatically lookup the ValueSet by ID and call its <code>translateReverse</code> 
 	 * 	function on the value produced from the mapping.<p>
 	 *
-	 *	@see Mappings#mapInbound(com.edustructures.sifworks.SIFDataObject, FieldAdaptor)
-	 *  @see Mappings#mapOutbound(FieldAdaptor,com.edustructures.sifworks.SIFDataObject)
+	 *	@see Mappings#mapInbound(openadk.library.SIFDataObject, FieldAdaptor)
+	 *  @see Mappings#mapOutbound(FieldAdaptor,openadk.library.SIFDataObject)
 	 *  @see MappingsContext#getDirection()
 	 *
 	 * 	@since ADK 1.5

@@ -75,7 +75,7 @@ public class Event
 	 *      which must be of the same class type
 	 *  @param action Describes how the data has changed. One of the
 	 *      following flags: <code>ADD</code>, <code>CHANGE</code>, or <code>DELETE</code>
-	 *  @param objectType An ElementDef constant from the {@linkplain com.edustructures.sifworks.SIFDTD} class that
+	 *  @param objectType An ElementDef constant from the {@linkplain openadk.library.SIFDTD} class that
 	 *      identifies the type of SIF Data Object contained in the event
 	 * 	@see openadk.library.EventAction
 	 */
@@ -105,7 +105,7 @@ public class Event
 	 *  @param data A DataObjectInputStream that returns SIFDataObjects, all of
 	 *      which must be of the same class type
 	 *  @param action Describes how the data has changed
-	 *  @param objectType An ElementDef constant from the {@linkplain com.edustructures.sifworks.SIFDTD} class that
+	 *  @param objectType An ElementDef constant from the {@linkplain openadk.library.SIFDTD} class that
 	 *      identifies the type of SIF Data Object contained in the event
 	 */
     public Event( DataObjectInputStream data, String action, ElementDef objectType )
@@ -207,7 +207,7 @@ public class Event
 
 	/**
 	 *  Identifies the type of SIF Data Object contained in the Event payload
-	 *  @return An ElementDef constant from the {@linkplain com.edustructures.sifworks.SIFDTD} class that identifies the
+	 *  @return An ElementDef constant from the {@linkplain openadk.library.SIFDTD} class that identifies the
 	 *      type of SIF Data Object contained in the event. All objects in an Event
 	 * 		must be of the same type.
 	 */

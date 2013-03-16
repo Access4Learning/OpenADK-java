@@ -33,7 +33,7 @@ public class RequestCacheFile extends RequestCache
 
 	
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.impl.RequestCache#initialize(com.edustructures.sifworks.Agent)
+	 * @see openadk.library.impl.RequestCache#initialize(openadk.library.Agent)
 	 */
 	protected synchronized void initialize( Agent agent )
 		throws ADKException
@@ -423,7 +423,7 @@ public class RequestCacheFile extends RequestCache
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.impl.RequestCache#getRequestInfo(java.lang.String, com.edustructures.sifworks.Zone)
+	 * @see openadk.library.impl.RequestCache#getRequestInfo(java.lang.String, openadk.library.Zone)
 	 */
 	public synchronized RequestInfo getRequestInfo( String msgId, Zone zone )
 		throws ADKException
@@ -432,7 +432,7 @@ public class RequestCacheFile extends RequestCache
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.impl.RequestCache#lookupRequestInfo(java.lang.String, com.edustructures.sifworks.Zone)
+	 * @see openadk.library.impl.RequestCache#lookupRequestInfo(java.lang.String, openadk.library.Zone)
 	 */
 	public synchronized RequestInfo lookupRequestInfo( String msgId, Zone zone )
 		throws ADKException

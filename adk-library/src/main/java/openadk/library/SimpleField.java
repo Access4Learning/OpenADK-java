@@ -51,7 +51,7 @@ public class SimpleField<T> extends Element
     }
     
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.SimpleField#getTextValue(com.edustructures.sifworks.SIFFormatter)
+	 * @see openadk.library.SimpleField#getTextValue(openadk.library.SIFFormatter)
 	 */
 	public String getTextValue( SIFFormatter formatter ) {
 		return fValue.toString( formatter );
@@ -68,7 +68,7 @@ public class SimpleField<T> extends Element
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Element#getTextValue()
+	 * @see openadk.library.Element#getTextValue()
 	 */
 	@Override
 	public String getTextValue() {

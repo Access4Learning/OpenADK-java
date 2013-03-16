@@ -22,7 +22,7 @@ public class ServiceSurrogate extends AbstractRenderSurrogate implements
 	}
 
 	/* (non-Javadoc)
-	 * @see openadk.library.impl.surrogates.RenderSurrogate#renderRaw(com.edustructures.util.XMLWriter, openadk.library.SIFVersion, openadk.library.Element, openadk.library.SIFFormatter)
+	 * @see openadk.library.impl.surrogates.RenderSurrogate#renderRaw(openadk.util.XMLWriter, openadk.library.SIFVersion, openadk.library.Element, openadk.library.SIFFormatter)
 	 */
 	public void renderRaw(XMLWriter writer, SIFVersion version, Element o,
 			SIFFormatter formatter) throws SIFException {

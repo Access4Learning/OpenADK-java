@@ -1,0 +1,923 @@
+<!-- ======================================== -->
+<!--    Open ADK Object Definition File   -->
+<!--     Copyright (c)1998-2011 Pearson Education, Inc. or its affiliate(s)     -->
+<!--     All Rights Reserved                  -->
+<!-- ======================================== -->
+<!--    SIF 2.6 Sif 3 Assessment objects            -->
+<!-- ======================================== -->
+<adk package="sif3assessment" version="2.6" namespace="http://www.sifinfo.org/au/infrastructure/2.x">
+
+  <!-- ============= -->
+  <!--Activity object-->
+  <!-- ============= -->
+  <object name="Activity" topic="true">
+    <attribute name="RefId" type="IdRefType" flags="R"/>
+    <attribute name="Language" renderAs="xml:lang" type="String" flags="R" />
+    <element name="Title" type="NormalizedString" flags="O" />
+    <element name="Preamble" type="String" flags="O" />
+    <element name="TechnicalRequirements" type="TechnicalRequirementList" flags="O" />
+    <element name="SoftwareRequirementList" type="SoftwareRequirementList" flags="O" />
+    <element name="EssentialMaterials" type="EssentialMaterialList" flags="O" />
+    <element name="LearningObjectives" type="LearningObjectiveList" flags="O" />
+    <element name="LearningStandards" type="LearningStandardList" flags="O" />
+    <element name="SourceObjects" type="SourceObjectList" flags="O" />
+    <element name="Points" type="int" flags="O" />
+    <element name="ActivityTime" type="ActivityTime" flags="M" />
+    <element name="AssessmentRefId" type="IdRefType" flags="O" />
+    <element name="MaxAttemptsAllowed" type="int" flags="O" />
+    <element name="ActivityWeight" type="decimal" flags="O" />
+    <element name="Evaluation" type="ActivityEvaluation" flags="O" />
+    <element name="LearningResources" type="LearningResourceList" flags="O" />
+  </object>
+
+  <!--TechnicalRequirementList object-->
+  <object name="TechnicalRequirementList">
+    <element name="TechnicalRequirement" type="TechnicalRequirement" flags="MR" />
+  </object>
+
+  <!--TechnicalRequirement object-->
+  <object name="TechnicalRequirement" datatype="String"/>
+
+  <!--SoftwareRequirementList object-->
+  <object name="SoftwareRequirementList">
+    <element name="SoftwareRequirement" type="SoftwareRequirement" flags="MR" />
+  </object>
+
+  <!--SoftwareRequirement object-->
+  <object name="SoftwareRequirement">
+    <element name="SoftwareTitle" type="String" flags="M" />
+    <element name="Version" type="String" flags="O" />
+    <element name="Vendor" type="String" flags="O" />
+    <element name="OS" type="String" flags="O" />
+  </object>
+
+  <!--EssentialMaterialList object-->
+  <object name="EssentialMaterialList">
+    <element name="EssentialMaterial" type="EssentialMaterial" flags="MR" />
+  </object>
+
+  <!--EssentialMaterial object-->
+  <object name="EssentialMaterial" datatype="String"/>
+
+  <!--LearningObjectiveList object-->
+  <object name="LearningObjectiveList">
+    <element name="LearningObjective" type="LearningObjective" flags="MR" />
+  </object>
+
+  <!--LearningObjective object-->
+  <object name="LearningObjective" datatype="String"/>
+
+  <!--LearningStandardList object-->
+  <object name="LearningStandardList">
+    <element name="LearningStandardItemRefId" type="LearningStandardItemRefId" flags="MR" />
+  </object>
+
+  <!--SourceObjectList object-->
+  <object name="SourceObjectList">
+    <element name="SourceObject" type="SourceObject" flags="MR" />
+  </object>
+
+  <!--SourceObject object-->
+  <object name="SourceObject" datatype="IdRefType">
+    <attribute name="SIF_RefObject" enum="SourceObjectRefObjEnum" flags="R"/>
+  </object>
+
+  <!--ActivityTime object-->
+  <object name="ActivityTime">
+    <element name="CreationDate" type="Date" flags="M" />
+    <element name="Duration" type="Duration" flags="O" />
+    <element name="StartDate" type="Date" flags="O" />
+    <element name="FinishDate" type="Date" flags="O" />
+    <element name="DueDate" type="Date" flags="O" />
+  </object>
+
+  <!--Duration object-->
+  <object name="Duration" datatype="int">
+    <attribute name="Units" enum="TimeUnitEnum" flags="R"/>
+  </object>
+
+  <!--Evaluation object-->
+  <object name="ActivityEvaluation">
+    <attribute name="EvaluationType" enum="EvaluationType" flags="R"/>
+    <element name="Description" type="String" flags="O" />
+  </object>
+
+  <!--LearningResourceList object-->
+  <object name="LearningResourceList">
+    <element name="LearningResourceRefId" type="RefIdObject" flags="MR" />
+  </object>
+
+  <!-- =================== -->
+  <!--Sif3Assessment object-->
+  <!-- =================== -->
+  <object name="Sif3Assessment" topic="true">
+    <attribute name="RefId" type="IdRefType" flags="R">
+      <desc>The GUID that uniquely identifies an instance of the object.</desc>
+    </attribute>
+    <element name="Name" type="NormalizedString" flags="M" />
+    <element name="AssessmentIdentifiers" type="AssessmentIdentifiers" flags="O" />
+    <element name="AssessmentPackageRefId" type="IdRefType" flags="O" />
+    <element name="AssessmentDescriptors" type="AssessmentDescriptors" flags="O" />
+    <element name="AssessmentProvider" type="NormalizedString" flags="O" />
+    <element name="AssessmentItemBanks" type="AssessmentItemBankList" flags="O" />
+    <element name="AssessmentSubjects" type="SubjectAreaList" flags="O" />
+    <element name="AssessmentGradeLevels" type="YearLevels" flags="O" />
+    <element name="AssessmentLanguages" type="LanguageList" flags="O" />
+    <element name="LearningStandardItemRefIds" type="LearningStandardItems" flags="O" />
+  </object>
+  
+  <!--AssessmentIdentifiers object-->
+  <object name="AssessmentIdentifiers">
+    <element name="AssessmentIdentifier" type="AssessmentIdentifier" flags="MR" />
+  </object>
+
+  <!--AssessmentIdentifier object-->
+  <object name="AssessmentIdentifier" datatype="NormalizedString">
+    <attribute name="AssessmentIdType" enum="AssessmentIdType" flags="O"/>
+  </object>
+
+  <!--AssessmentItemBankList object-->
+  <object name="AssessmentItemBankList">
+    <element name="AssessmentItemBank" type="AssessmentItemBank" flags="MR" />
+  </object>
+
+  <!--AssessmentItemBank object-->
+  <object name="AssessmentItemBank">
+    <element name="AssessmentItemBankId" type="NormalizedString" flags="M" />
+    <element name="AssessmentItemBankName" type="NormalizedString" flags="O" />
+  </object>
+
+  <!-- ================================= -->
+  <!--Sif3AssessmentAdministration object-->
+  <!-- ================================= -->
+  <object name="Sif3AssessmentAdministration" topic="true">
+    <attribute name="RefId" type="IdRefType" flags="R">
+      <desc>The GUID that uniquely identifies an instance of the object.</desc>
+    </attribute>
+    <element name="AdministrationName" type="NormalizedString" flags="O" />
+    <element name="AdministrationCode" type="NormalizedString" flags="O" />
+    <element name="StartDateTime" type="DateTime" flags="O">
+      <desc>Date and time testing begins.</desc>
+    </element>
+    <element name="FinishDateTime" type="DateTime" flags="O">
+      <desc>Date and time testing ends.</desc>
+    </element>
+    <element name="AdministrationAssessments" type="AdministrationAssessments" flags="O" />
+    <element name="Organizations" type="Sif3Organizations" flags="O" />
+  </object>
+
+  <!--AdministrationAssessments object-->
+  <object name="AdministrationAssessments">
+    <element name="AdministrationAssessment" type="RefIdObject" flags="MR" />
+  </object>
+
+  <!--Organization object-->
+  <object name="Sif3Organizations">
+    <element name="Organization" type="Sif3Organization" flags="MR" />
+  </object> 
+
+  <!--Sif3Organization object-->
+  <object name="Sif3Organization">
+    <element name="LEAInfoRefId" type="IdRefType" flags="O" />
+    <element name="SchoolInfoRefId" type="IdRefType" flags="O" />
+  </object> 
+  
+  <!-- ======================== -->
+  <!--Sif3AssessmentAsset object-->
+  <!-- ======================== -->
+  <object name="Sif3AssessmentAsset" topic="true">
+    <attribute name="RefId" type="IdRefType" flags="R"/>
+    <element name="AssetVersion" type="NormalizedString" flags="O" />
+    <element name="AssetPublishDate" type="DateTime" flags="O" />
+    <element name="AssetIdentifiers" type="AssetIdentifierList" flags="O" />
+    <element name="AssetName" type="NormalizedString" flags="O" />
+    <element name="AssetType" enum="AssetType" flags="M" />
+    <element name="AssetOwner" type="NormalizedString" flags="O" />
+    <element name="AssetSubjects" type="SubjectAreaList" flags="O" />
+    <element name="AssetGradeLevels" type="YearLevels" flags="O" />
+    <element name="AssetLanguage" type="String" flags="O" /> <!-- This should be a enum but it is very large so I did make it a string only -->
+    <element name="AssetLearningStandards" type="AssetLearningStandardList" flags="O" />
+    <element name="AssetContent" type="AbstractContentElementType" flags="M" />
+  </object>
+
+  <!--AssetIdentifierList object-->
+  <object name="AssetIdentifierList">
+    <element name="AssetIdentifier" type="AssetIdentifier" flags="MR" />
+  </object>
+
+  <!--AssetIdentifier object-->
+  <object name="AssetIdentifier" datatype="NormalizedString">
+    <attribute name="AssetIdType" enum="AssetIdType" flags="O"/>
+  </object>
+
+  <!--AssetLearningStandardList object-->
+  <object name="AssetLearningStandardList">
+    <element name="AssetLearningStandard" type="RefIdObject" flags="MR" />
+  </object>
+
+  <!-- ======================= -->
+  <!--Sif3AssessmentForm object-->
+  <!-- ======================= -->
+  <object name="Sif3AssessmentForm" topic="true">
+    <attribute name="RefId" type="IdRefType" flags="M"/>
+    <attribute name="AssessmentRefId" type="IdRefType" flags="M"/>
+    <element name="FormVersion" type="NormalizedString" flags="O" />
+    <element name="FormPublishDate" type="DateTime" flags="O" />
+    <element name="AssessmentType" enum="AssessmentType" flags="O" />
+    <element name="FormName" type="NormalizedString" flags="M" />
+    <element name="FormIdentifiers" type="FormIdentifierList" flags="O" />
+    <element name="FormAccommodations" type="FormAccommodationList" flags="O" />
+    <element name="Level" type="Token" flags="O" />
+    <element name="Period" type="Token" flags="O" />
+    <element name="GradeLevels" type="YearLevels" flags="O" />
+    <element name="AssessmentFormSubjects" type="SubjectAreaList" flags="O" />
+    <element name="AssessmentFormLanguages" type="LanguageList" flags="O" />
+    <element name="AssessmentSubTestRefIds" type="Sif3AssessmentSubTestRefIds" flags="O" />
+    <element name="AssessmentSections" type="AssessmentSectionList" flags="O" />
+    <element name="AssessmentPlatforms" type="AssessmentPlatformList" flags="O" />
+    <element name="AssessmentAssetRefIds" type="AssessmentAssetRefIds" flags="O" />
+  </object>
+
+  <!--FormIdentifierList object-->
+  <object name="FormIdentifierList">
+    <element name="FormIdentifier" type="FormIdentifier" flags="MR" />
+  </object>
+
+  <!--FormIdentifier object-->
+  <object name="FormIdentifier" datatype="Token">
+    <attribute name="FormIdentifierType" enum="AssessmentIdType" flags="M"/>
+  </object>
+
+  <!--FormAccommodationList object-->
+  <object name="FormAccommodationList">
+    <element name="FormAccommodation" type="FormAccommodation" flags="MR" />
+  </object>
+
+  <!--FormAccommodation object-->
+  <object name="FormAccommodation" enum="FormAccommodationType" />
+
+  <!--AssessmentSectionList object-->
+  <object name="AssessmentSectionList">
+    <element name="AssessmentSection" type="AssessmentSection" flags="MR" />
+  </object>
+
+  <!--AssessmentSection object-->
+  <object name="AssessmentSection">
+    <element name="AssessmentSectionRefId" type="IdRefType" flags="M" />
+    <element name="AssessmentSectionSequence" type="Token" flags="M" />
+  </object>
+  
+  <!--AssessmentAssetRefIds object-->
+  <object name="AssessmentAssetRefIds">
+    <element name="AssessmentAssetRefId" type="RefIdObject" flags="MR" />
+  </object>
+
+  <!--AssessmentPlatformList object-->
+  <object name="AssessmentPlatformList">
+    <element name="AssessmentPlatform" type="AssessmentPlatform" flags="MR" />
+  </object>
+
+  <!--AssessmentPlatform object-->
+  <object name="AssessmentPlatform" enum="AssessmentPlatformType"/>
+  
+  <!-- ======================== -->
+  <!--Sif3AssessmentItem object -->
+  <!-- ======================== -->
+  <object name="Sif3AssessmentItem" topic="true">
+    <attribute name="RefId" type="IdRefType" flags="R"/>
+    <attribute name="ResponseType" enum="ResponseType" flags="R"/>
+    <element name="ItemVersion" type="NormalizedString" flags="O" />
+    <element name="ItemPublishDate" type="DateTime" flags="O" />
+    <element name="ItemName" type="String" flags="M" />
+    <element name="AssessmentIdentifiers" type="AssessmentIdentifiers" flags="O" />
+    <element name="AssessmentSubjects" type="SubjectAreaList" flags="O" />
+    <element name="AssessmentGradeLevels" type="YearLevels" flags="O" />
+    <element name="AssessmentLanguages" type="LanguageList" flags="O" />
+    <element name="LearningStandardItems" type="LearningStandardItems" flags="O" />
+    <element name="AssessmentItemAssetRefIds" type="AssessmentItemAssetRefIds" flags="O" />
+    <element name="Stem" type="AbstractContentElementType" flags="O" />
+    <element name="ResponseChoices" type="Sif3ResponseChoices" flags="O" />
+    <element name="ItemFeedbackCorrect" type="String" flags="O" />
+    <element name="ItemFeedbackIncorrect" type="String" flags="O" />
+    <element name="ItemFeedbackHint" type="String" flags="O" />
+    <element name="ItemScoreMaximum" type="Token" flags="O" />
+    <element name="ItemScoreMinimum" type="Token" flags="O" />
+    <element name="ItemRubricIds" type="ItemRubricIds" flags="O" />
+    <element name="AssessmentItemBanks" type="AssessmentItemBankList" flags="O" />
+    <element name="AssessmentItemPlatforms" type="AssessmentItemPlatformList" flags="O" />
+  </object>
+
+  <!--AssessmentItemAssetRefIds object-->
+  <object name="AssessmentItemAssetRefIds">
+    <element name="AssessmentItemAssetRefId" type="RefIdObject" flags="MR" />
+  </object>
+
+  <!--Sif3ResponseChoices object-->
+  <object name="Sif3ResponseChoices">
+    <element name="Choice" type="Sif3Choice" flags="MR" />
+  </object>
+
+  <!--Sif3Choices object-->
+  <object name="Sif3Choice">
+    <element name="ChoiceLabel" type="Token" flags="O"/>
+    <element name="ChoiceContent" type="AbstractContentElementType" flags="M"/>
+    <element name="CreditValue" type="float" flags="O"/>
+    <element name="ResponseFeedback" type="String" flags="O"/>
+  </object>
+
+  <!--ItemRubricIds object-->
+  <object name="ItemRubricIds">
+    <element name="ItemRubricId" type="RefIdObject" flags="MR" />
+  </object>
+
+  <!--AssessmentItemBankList object-->
+  <object name="AssessmentItemBankList">
+    <element name="AssessmentItemBank" type="AssessmentItemBank" flags="MR" />
+  </object>
+
+  <!--AssessmentItemBank object-->
+  <object name="AssessmentItemBank">
+    <element name="AssessmentItemBankId" type="NormalizedString" flags="M" />
+    <element name="AssessmentItemBankName" type="NormalizedString" flags="O" />
+  </object>
+
+  <!--AssessmentItemPlatformList object-->
+  <object name="AssessmentItemPlatformList">
+    <element name="AssessmentItemPlatform" type="AssessmentItemPlatform" flags="MR" />
+  </object>
+
+  <!--"AssessmentItemPlatform" object-->
+  <object name="AssessmentItemPlatform" enum="AssessmentPlatformType"/>
+
+  <!-- ================================== -->
+  <!--Sif3AssessmentItemAssociation object-->
+  <!-- ================================== -->
+  <object name="Sif3AssessmentItemAssociation" topic="true">
+    <attribute name="RefId" type="IdRefType" flags="R">
+      <desc>The GUID that uniquely identifies an instance of the object.</desc>
+    </attribute>
+    <element name="AssessmentItemRefId" type="IdRefType" flags="M" />
+    <element name="TargetAssessmentItemRefId" type="IdRefType" flags="M" />
+    <element name="AssociationType" enum="AssociationType" flags="M" />
+  </object>
+
+  <!-- =============================== -->
+  <!--Sif3AssessmentRegistration object-->
+  <!-- =============================== -->
+  <object name="Sif3AssessmentRegistration" topic="true">
+    <attribute name="RefId" type="IdRefType" flags="R"/>
+    <attribute name="StudentPersonalRefId" type="IdRefType" flags="R"/>
+    <attribute name="AssessmentRefId" type="IdRefType" flags="R"/>
+    <element name="AssessmentAdministrationRefId" type="IdRefType" flags="O" />
+    <element name="AssessmentSessionRefId" type="IdRefType" flags="O" />
+    <element name="AssessmentFormRefId" type="IdRefType" flags="O" />
+    <element name="CreationDateTime" type="DateTime" flags="M" />
+    <element name="StartDateTime" type="DateTime" flags="O" />
+    <element name="EndDateTime" type="DateTime" flags="O" />
+    <element name="AssessmentPlatform" enum="AssessmentPlatformType" flags="O" />
+    <element name="DaysOfInstruction" type="int" flags="O" />
+    <element name="RetestIndicator" enum="YNLower" flags="O" />
+    <element name="TestAttemptIdentifier" type="Token" flags="O" />
+    <element name="StudentSpecialEvents" type="StudentSpecialEventList" flags="O" />
+    <element name="TestingStatuses" type="TestingStatusList" flags="O" />
+    <element name="ScorePublishDate" type="DateTime" flags="O" />
+    <element name="StudentGradeLevel" type="YearLevel" flags="O" />
+    <element name="AssessmentGradeLevel" type="YearLevel" flags="O" />
+    <element name="AssessmentStudentSnapshot" type="Sif3AssessmentStudentSnapshot" flags="O" />
+    <element name="LEAInfoRefId" type="IdRefType" flags="O" />
+    <element name="SchoolInfoRefId" type="IdRefType" flags="O" />
+    <element name="StaffPersonalRefId" type="IdRefType" flags="O" />
+    <element name="SectionInfoRefId" type="IdRefType" flags="O" />
+  </object>
+
+  <!--StudentSpecialEventList object-->
+  <object name="StudentSpecialEventList">
+    <element name="StudentSpecialEvent" type="StudentSpecialEvent" flags="MR" />
+  </object>
+
+  <!--ItemRubricId object-->
+  <object name="StudentSpecialEvent" datatype="NormalizedString">
+    <attribute name="Code" type="Token" flags="R"/>
+  </object>
+
+  <!--TestingStatusList object-->
+  <object name="TestingStatusList">
+    <element name="TestingStatus" type="TestingStatus" flags="MR" />
+  </object>
+
+  <!--TestingStatus object-->
+  <object name="TestingStatus">
+    <element name="TestingStatusCode" type="Token" flags="M" />
+    <element name="TestingStatusDescription" type="NormalizedString" flags="O" />
+  </object>
+  
+  <!--Sif3AssessmentStudentSnapshot object-->
+  <object name="Sif3AssessmentStudentSnapshot">
+    <element name="Name" type="Name" flags="O" />
+    <element name="LocalId" type="String" flags="M" />
+    <element name="Name" type="Name" flags="O" />
+    <element name="StateProvinceId" type="String" flags="O" />
+    <element name="Address" type="Address" flags="O" />
+    <element name="Sex" enum="Sex" flags="O" />
+    <element name="BirthDate" type="Date" flags="O" />
+    <element name="Age" type="int" flags="O" />
+    <element name="ProjectedGraduationYear" type="int" flags="O" />
+    <element name="OnTimeGraduationYear" type="int" flags="O" />
+    <element name="GraduationDate" type="String" flags="O" />
+    <element name="GraduationAward" enum="GraduationAwardEnum" flags="O" />
+    <element name="GraduationOnTime" enum="GraduationOnTimeEnum" flags="O" />
+    <element name="HomeEnrollment" type="Sif3HomeEnrollment" flags="M" />
+    <element name="GiftedTalented" enum="YesNoUnkNotProvided" flags="O" />
+    <element name="EconomicDisadvantage" enum="YesNoUnkNotProvided" flags="O" />
+    <element name="NeglectedDelinquent" enum="YesNoUnkNotProvided" flags="O" />
+  </object>
+  
+  <!--Sif3HomeEnrollment object-->
+  <object name="Sif3HomeEnrollment">
+    <element name="StudentSchoolEnrollmentRefId" type="IdRefType" flags="O" />
+    <element name="SchoolName" type="NormalizedString" flags="O" />
+    <element name="SchoolInfoRefId" type="IdRefType" flags="O" />
+    <element name="LocalId" type="String" flags="O" />
+    <element name="StateProvinceId" type="String" flags="O" />
+    <element name="Status" enum="EnrollmentStatus" flags="M" />
+    <element name="GradeLevel" type="YearLevel" flags="M" />
+    <element name="Homeroom" type="Sif3Homeroom" flags="O" />
+    <element name="HomeroomNumber" type="NormalizedString" flags="O" />
+    <element name="FullYearEnrollment" enum="YesNoUnknown" flags="O" />
+  </object>
+
+  <!--Sif3Homeroom object-->
+  <object name="Sif3Homeroom" datatype="IdRefType">
+    <attribute name="SIF_RefObject" enum="Sif3HomeroomRefObjEnum" flags="R"/>
+  </object>
+
+  <!-- ========================= -->
+  <!--Sif3AssessmentRubric object-->
+  <!-- ========================= -->
+  <object name="Sif3AssessmentRubric" topic="true">
+    <attribute name="RefId" type="IdRefType" flags="R"/>
+    <element name="RubricVersion" type="Token" flags="O" />
+    <element name="RubricPublishDate" type="DateTime" flags="O" />
+    <element name="RubricIdentifiers" type="RubricIdentifiers" flags="O" />
+    <element name="RubricName" type="NormalizedString" flags="M" />
+    <element name="ScoringGuideReference" type="AnyUri" flags="O" />
+    <element name="Scores" type="ScoreList" flags="O" />
+  </object>
+
+  <!--RubricIdentifiers object-->
+  <object name="RubricIdentifiers">
+    <element name="RubricIdentifier" type="RubricIdentifier" flags="MR" />
+  </object>
+
+  <!--RubricIdentifier object-->
+  <object name="RubricIdentifier" datatype="Token">
+    <attribute name="RubricIdentifierType" enum="AssessmentIdType" flags="O"/>
+  </object>
+
+  <!--ScoreList object-->
+  <object name="ScoreList">
+    <element name="Score" type="Sif3Score" flags="MR" />
+  </object>
+
+  <!--Sif3Score object-->
+  <object name="Sif3Score">
+    <element name="ScoreCode" type="Token" flags="O" />
+    <element name="ScoreCodeDefinition" type="AbstractContentElementType" flags="O" />
+    <element name="ScoreValue" type="Decimal" flags="O" />
+    <element name="ScoreDescriptions" type="ScoreDescriptionList" flags="O" />
+    <element name="ScoreComments" type="ScoreCommentList" flags="O" />
+  </object>
+
+  <!--ScoreDescriptions object-->
+  <object name="ScoreDescriptionList">
+    <element name="ScoreDescription" type="AbstractContentElementType" flags="MR">
+       <desc>An individual statement that defines the specific expectations that the response must illustrate in order to achieve this score point. This is a complex content type in order to support math or other subjects that may require non-text representations of expectations.</desc>
+    </element>
+  </object>
+
+  <!--ScoreCommentList object-->
+  <object name="ScoreCommentList">
+    <element name="ScoreComment" type="ScoreComment" flags="MR" />
+  </object>
+
+  <!--ScoreComment object-->
+  <object name="ScoreComment">
+    <element name="CommentCode" type="Token" flags="M" />
+    <element name="Comment" type="AbstractContentElementType" flags="M" />
+  </object>
+
+  <!-- ============================= -->
+  <!--Sif3AssessmentScoreTable object-->
+  <!-- ============================= -->
+  <object name="Sif3AssessmentScoreTable" topic="true">
+    <attribute name="RefId" type="IdRefType" flags="R"/>
+    <element name="ScoreTableVersion" type="Token" flags="O" />
+    <element name="ScoreTablePublishDate" type="DateTime" flags="O" />
+    <element name="ScoreTableIdentifiers" type="ScoreTableIdentifiers" flags="O" />
+    <element name="ScoreTableName" type="NormalizedString" flags="M" />
+    <element name="ScoreValues" type="ScoreValueList" flags="O" />
+  </object>
+
+  <!--ScoreTableIdentifiers object-->
+  <object name="ScoreTableIdentifiers">
+    <element name="ScoreTableIdentifier" type="ScoreTableIdentifier" flags="MR" />
+  </object>
+
+  <!--ScoreTableIdentifier object-->
+  <object name="ScoreTableIdentifier" datatype="Token">
+    <attribute name="ScoreTableIdentifierType" enum="AssessmentIdType" flags="O"/>
+  </object>
+
+  <!--ScoreValueList object-->
+  <object name="ScoreValueList">
+    <element name="ScoreValue" type="ScoreValue" flags="MR" />
+  </object>
+
+  <!--ScoreValue object-->
+  <object name="ScoreValue">
+    <attribute name="FromScoreMetric" enum="AUCodeSetsAssessmentReportingMethodType" flags="R"/>
+    <element name="LowerCut" type="Token" flags="M" />
+    <element name="UpperCut" type="Token" flags="M" />
+    <element name="DerivedValue" type="DerivedValue" flags="M" />
+    <element name="PassFailIndicator" enum="PassFailEnum" flags="O" />
+    <element name="FeedbackList" type="FeedbackList" flags="O" />
+  </object>
+
+  <!--DerivedValue object-->
+  <object name="DerivedValue" datatype="Token">
+    <attribute name="ToScoreMetric" enum="AUCodeSetsAssessmentReportingMethodType" flags="R"/>
+  </object>
+
+  <!--FeedbackList object-->
+  <object name="FeedbackList">
+    <element name="Feedback" type="Feedback" flags="MR" />
+  </object>
+
+  <!--Feedback object-->
+  <object name="Feedback">
+    <element name="DiagnosticStatement" type="String" flags="M" />
+    <element name="Description" type="NormalizedString" flags="O" />
+    <element name="Source" type="Token" flags="O" />
+  </object>
+
+  <!-- ========================== -->
+  <!--Sif3AssessmentSection object-->
+  <!-- ========================== -->
+  <object name="Sif3AssessmentSection" topic="true">
+    <attribute name="RefId" type="IdRefType" flags="R"/>
+    <element name="SectionVersion" type="NormalizedString" flags="O" />
+    <element name="SectionPublishDate" type="DateTime" flags="O" />
+    <element name="SectionIdentifiers" type="SectionIdentifiers" flags="O" />
+    <element name="SectionName" type="NormalizedString" flags="O" />
+    <element name="SectionItemSequenceType" enum="SectionItemSequenceType" flags="M" />
+    <element name="ItemSelectionAlgorithmName" type="String" flags="O" />
+    <element name="ItemSelectionAlgorithm" type="AnyUri" flags="O" />
+    <element name="SectionTimeLimit" type="duration" flags="O" />
+    <element name="SectionSealed" enum="YNLower" flags="O" />
+    <element name="SectionReentry" enum="YNLower" flags="O" />
+    <element name="SectionAssets" type="SectionAssets" flags="O" />
+    <element name="SectionItems" type="SectionItemList" flags="O" />
+  </object>
+
+  <!--SectionIdentifiers object-->
+  <object name="SectionIdentifiers">
+    <element name="SectionIdentifier" type="SectionIdentifier" flags="MR" />
+  </object>
+
+  <!--SectionIdentifier object-->
+  <object name="SectionIdentifier" datatype="Token">
+    <attribute name="SectionIdentifierType" enum="AssessmentIdType" flags="O"/>
+  </object>
+
+  <!--SectionAssets object-->
+  <object name="SectionAssets">
+    <element name="SectionAsset" type="RefIdObject" flags="MR" />
+  </object>
+
+  <!--SectionItemList object-->
+  <object name="SectionItemList">
+    <element name="SectionItem" type="SectionItem" flags="MR" />
+  </object>
+
+  <!--SectionItem object-->
+  <object name="SectionItem">
+    <element name="AssessmentItemRefId" type="IdRefType" flags="M" />
+    <element name="ItemSequence" type="Token" flags="O" />
+  </object>
+
+  <!-- ========================== -->
+  <!--Sif3AssessmentSession object-->
+  <!-- ========================== -->
+  <object name="Sif3AssessmentSession" topic="true">
+    <attribute name="RefId" type="IdRefType" flags="R"/>
+    <element name="SessionName" type="NormalizedString" flags="M" />
+    <element name="SessionType" enum="SessionType" flags="M" />
+    <element name="UnusualEvents" type="UnusualEventsList" flags="O" />
+    <element name="ScheduledStartDateTime" type="DateTime" flags="O"/>
+    <element name="ScheduledEndDateTime" type="DateTime" flags="O"/>
+    <element name="ActualStartDateTime" type="DateTime" flags="O"/>
+    <element name="ActualEndDateTime" type="DateTime" flags="O"/>
+    <element name="Address" type="Address" flags="O"/>
+    <element name="AssessmentAdministrationRefId" type="IdRefType" flags="O" />
+    <element name="AssessmentRefId" type="IdRefType" flags="M" />
+    <element name="AssessmentFormRefId" type="IdRefType" flags="O" />
+    <element name="LEAInfoRefId" type="IdRefType" flags="O" />
+    <element name="SchoolInfoRefId" type="IdRefType" flags="O" />
+    <element name="StaffPersonalRefIds" type="Sif3AssessmentStaffList" flags="O" />
+  </object>
+
+  <!--UnusualEventsList object-->
+  <object name="UnusualEventsList">
+    <element name="UnusualEvent" type="UnusualEvent" flags="MR" />
+  </object>
+
+  <!--UnusualEvent object-->
+  <object name="UnusualEvent" datatype="NormalizedString">
+    <attribute name="Code" type="Token" flags="O"/>
+    <attribute name="SIF_Action" enum="UnusualEventActionEnum" flags="O"/>
+  </object>
+
+  <!--StaffList object-->
+  <object name="Sif3AssessmentStaffList">
+    <element name="StaffPersonalRefId" type="RefIdObject" flags="MR" />
+  </object>
+
+  <!-- ========================== -->
+  <!--Sif3AssessmentSubTest object-->
+  <!-- ========================== -->
+  <object name="Sif3AssessmentSubTest" topic="true">
+    <attribute name="RefId" type="IdRefType" flags="R"/>
+    <element name="SubTestVersion" type="Token" flags="O" />
+    <element name="SubTestPublishDate" type="DateTime" flags="O" />
+    <element name="SubTestIdentifiers" type="SubTestIdentifiers" flags="O" />
+    <element name="SubTestName" type="NormalizedString" flags="M" />
+    <element name="ScoreReporting" type="ScoreReportingType" flags="O" />
+    <element name="SubTestSubjectAreas" type="SubjectAreaList" flags="O" />
+    <element name="SubTestGradeLevels" type="YearLevels" flags="O" />
+    <element name="AssessmentSubTestRefIds" type="Sif3AssessmentSubTestRefIds" flags="O" />
+    <element name="ContainerOnly" type="boolean" flags="O" />
+    <element name="SubTestTier" type="int" flags="O" />
+    <element name="LearningStandardItemRefIds" type="LearningStandardItems" flags="O" />
+    <element name="Abbreviation" type="Token" flags="O" />
+    <element name="Description" type="String" flags="O" />
+    <element name="NumberOfItems" type="int" flags="O" />
+    <element name="AssessmentItems" type="Sif3AssessmentItemList" flags="O" />
+  </object>
+
+  <!--SubTestIdentifiers object-->
+  <object name="SubTestIdentifiers">
+    <element name="SubTestIdentifier" type="SubTestIdentifier" flags="MR" />
+  </object>
+
+  <!--SubTestIdentifier object-->
+  <object name="SubTestIdentifier" datatype="Token">
+    <attribute name="SubTestIdentifierType" enum="AssetIdType" flags="O"/>
+  </object>
+
+  <!--ScoreReportingType object-->
+  <object name="ScoreReportingType">
+    <attribute name="ScoreMetric" enum="AUCodeSetsAssessmentReportingMethodType" flags="R"/>
+    <element name="Minimum" type="Token" flags="O" />
+    <element name="Maximum" type="Token" flags="O" />
+    <element name="ScoreTableRefId" type="IdRefType" flags="O" />
+  </object>
+
+  <!--Sif3AssessmentSubTestRefIds object-->
+  <object name="Sif3AssessmentSubTestRefIds">
+    <element name="AssessmentSubTestRefId" type="RefIdObject" flags="MR" />
+  </object>
+
+  <!--Sif3AssessmentItemList object-->
+  <object name="Sif3AssessmentItemList">
+    <element name="AssessmentItem" type="Sif3AssessmentItem" flags="MR" />
+  </object>
+
+  <!--Sif3AssessmentItem object-->
+  <object name="Sif3AssessmentItem">
+    <element name="AssessmentItemRefId" type="IdRefType" flags="M" />
+    <element name="ItemWeightCorrect" type="decimal" flags="M" />
+    <element name="ItemWeightIncorrect" type="decimal" flags="M" />
+    <element name="ItemWeightNotAttempted" type="decimal" flags="M" />
+  </object>
+
+  <!-- =========================== -->
+  <!--Sif3StudentResponseSet object-->
+  <!-- =========================== -->
+  <object name="Sif3StudentResponseSet" topic="true">
+    <attribute name="RefId" type="IdRefType" flags="R"/>
+    <attribute name="AssessmentAdministrationRefId" type="IdRefType" flags="R"/>
+    <attribute name="StudentPersonalRefId" type="IdRefType" flags="R"/>
+    <attribute name="AssessmentRegistrationRefId" type="IdRefType" flags="R"/>
+    <element name="Items" type="ItemList" flags="M" />
+  </object>
+  
+  <!--ItemList object-->
+  <object name="ItemList">
+    <element name="Item" type="Sif3Item" flags="MR" />
+  </object>
+
+  <!--Sif3Item object-->
+  <object name="Sif3Item">
+    <attribute name="AssessmentItemRefId" type="IdRefType" flags="O"/>
+    <element name="Response" type="String" flags="M" />
+    <element name="ResponseLocation" type="AnyUri" flags="O" />
+    <element name="ResponseCorrectness" enum="ResponseCorrectnessEnum" flags="O" />
+    <element name="ViewStatus" enum="YesNoLower" flags="O" />
+    <element name="AttemptStatus" enum="YesNoLower" flags="O" />
+    <element name="TimeOnItem" type="duration" flags="O" />
+    <element name="ItemNumber" type="Token" flags="O" />
+    <element name="ItemName" type="Token" flags="O" />
+    <element name="AssessmentRubricRefId" type="IdRefType" flags="O" />
+    <element name="ItemScore" type="Token" flags="O" />
+    <element name="ItemScoreCode" type="Token" flags="O" />
+    <element name="Comments" type="CommentList" flags="O" />
+    <element name="TraitScores" type="TraitScoreList" flags="O" />
+    <element name="FeedbackItems" type="FeedbackItemList" flags="O" />
+    <element name="ItemAids" type="ItemAidList" flags="O" />
+  </object>
+  
+  <!--TraitScoreList object-->
+  <object name="TraitScoreList">
+    <element name="TraitScore" type="TraitScore" flags="MR" />
+  </object>
+  
+  <!--TraitScore object-->
+  <object name="TraitScore">
+    <element name="TraitScoreType" type="Token" flags="O" />
+    <element name="TraitScore" type="Token" flags="O" />
+    <element name="TraitScoreCode" type="Token" flags="O" />
+  </object>
+  
+  <!--FeedbackItemList object-->
+  <object name="FeedbackItemList">
+    <element name="FeedbackItem" type="FeedbackItem" flags="MR" />
+  </object>
+  
+  <!--FeedbackItem object-->
+  <object name="FeedbackItem">
+    <element name="FeedbackCode" type="Token" flags="O" />
+    <element name="DiagnosticStatement" type="String" flags="O" />
+    <element name="FeedbackDescription" type="String" flags="O" />
+    <element name="FeedbackSource" type="String" flags="O" />
+  </object>
+  
+  <!--ItemAidList object-->
+  <object name="ItemAidList">
+    <element name="ItemAid" type="ItemAid" flags="MR" />
+  </object>
+  
+  <!--ItemAid object-->
+  <object name="ItemAid" datatype="Token"/>
+
+  <!-- ========================= -->
+  <!-- Code Lists (Enumerations) -->
+  <!-- ========================= -->
+  
+  <!--AssociationType enum-->
+  <enum name="AssociationType">
+    <value name="ENEMY" value="enemy" desc="Enemy" />
+    <value name="DERIVATIVE" value="derivative" desc="Derivative" />
+  </enum>  
+  
+  <!--SessionType enum-->
+  <enum name="SessionType">
+    <value name="STANDARD" value="standard" desc="Standard" />
+    <value name="ACCOMMODATION" value="accommodation" desc="Accommodation" />
+  </enum>  
+  
+  <!--UnusualEventActionEnum enum-->
+  <enum name="UnusualEventActionEnum">
+    <value name="DELETE" value="delete" desc="Delete" />
+  </enum>  
+  
+  <!--AssessmentIdType enum-->
+  <enum name="AssessmentIdType">
+    <value name="CLIENT" value="client" desc="Client" />
+    <value name="LOCAL" value="local" desc="Local" />
+    <value name="PUBLISHER" value="publisher" desc="Publisher" />
+    <value name="INTERNAL" value="internal" desc="Internal" />
+    <value name="OTHER" value="other" desc="Other" />
+  </enum>  
+  
+  <!--AssetIdType enum-->
+  <enum name="AssetIdType">
+    <value name="CLIENT" value="client" desc="Client" />
+    <value name="PUBLISHER" value="publisher" desc="Publisher" />
+    <value name="INTERNAL" value="internal" desc="Internal" />
+    <value name="OTHER" value="other" desc="Other" />
+  </enum>  
+   
+  <!--AssetType enum-->
+  <enum name="AssetType">
+    <value name="READINGPASSAGE" value="reading passage" desc="reading passage" />
+    <value name="GRAPHICART" value="graphic art" desc="graphic art" />
+    <value name="MAP" value="map" desc="map" />
+    <value name="FORMULASHEET" value="formula sheet" desc="formula sheet" />
+    <value name="TABLE" value="table" desc="table" />
+    <value name="CHART" value="chart" desc="chart" />
+    <value name="AUDIO" value="audio" desc="audio" />
+    <value name="VIDEO" value="video" desc="video" />
+    <value name="SCENARIO" value="scenario" desc="scenario" />
+    <value name="SIMULATION" value="simulation" desc="simulation" />
+    <value name="STORYBOARD" value="story board" desc="story board" />
+    <value name="LABSET" value="lab set" desc="lab set" />
+    <value name="PERIODICTABLE" value="periodic table" desc="periodic table" />
+    <value name="TRANSLATIONDICTIONARY" value="translation dictionary" desc="translation dictionary" />
+    <value name="BASICCALCULATOR" value="basic calculator" desc="basic calculator" />
+    <value name="STANDARDCALCULATOR" value="standard calculator" desc="standard calculator" />
+    <value name="SCIENTIFICCALCULATOR" value="scientific calculator" desc="scientific calculator" />
+    <value name="GRAPHINGCALCULATOR" value="graphing calculator" desc="graphing calculator" />
+    <value name="PROTRACTOR" value="protractor" desc="protractor" />
+    <value name="METRICRULER" value="metric ruler" desc="metric ruler" />
+    <value name="ENGLISHRULER" value="english ruler" desc="english ruler" />
+    <value name="UNITSRULER" value="units ruler" desc="units ruler" />
+    <value name="READINGLINE" value="reading line" desc="reading line" />
+    <value name="LINEDRAW" value="line draw" desc="line draw" />
+    <value name="HIGHLIGHTER" value="highlighter" desc="highlighter" />
+    <value name="OTHERINTERACTIVE" value="other interactive" desc="other interactive" />
+    <value name="OTHERNONINTERACTIVE" value="other non-interactive" desc="other non-interactive" />
+    <value name="OTHER" value="other" desc="other" />
+  </enum>
+      
+  <!--FormAccommodationType enum-->
+  <enum name="FormAccommodationType">
+    <value name="BRAILLE" value="braille" desc="braille" />
+    <value name="TEXTTOSPEECH" value="text-to-speech" desc="text-to-speech" />
+    <value name="AUDIO" value="audio" desc="audio" />
+    <value name="SIGNLANGUAGE" value="signLanguage" desc="signLanguage" />
+    <value name="ALTERNATELANGUAGE" value="alternateLanguage" desc="alternateLanguage" />
+    <value name="SIMPLIFIEDLANGUAGE" value="simplifiedLanguage" desc="simplifiedLanguage" />
+  </enum>  
+
+  <!--AssessmentPlatformType enum-->
+  <enum name="AssessmentPlatformType">
+    <value name="PAPER" value="paper" desc="paper" />
+    <value name="COMPUTER" value="computer" desc="computer" />
+    <value name="MOBILE" value="mobile" desc="mobile" />
+    <value name="CLICKER" value="clicker" desc="clicker" />
+    <value name="MIXEDMODE" value="mixed mode" desc="mixed mode" />
+    <value name="OTHER" value="other" desc="other" />
+  </enum>  
+
+  <!--PassFailEnum enum-->
+  <enum name="PassFailEnum">
+    <value name="PASS" value="p" desc="Pass" />
+    <value name="FAIL" value="f" desc="Fail" />
+  </enum>  
+
+  <!--SectionItemSequenceType enum-->
+  <enum name="SectionItemSequenceType">
+    <value name="SEQUENTIAL" value="sequential" desc="Sequential" />
+    <value name="RANDOM" value="random" desc="Random" />
+    <value name="ADAPTIVE" value="adaptive" desc="Adaptive" />
+    <value name="OTHER" value="other" desc="Other" />
+  </enum>
+
+  <!--ResponseCorrectnessEnum enum-->
+  <enum name="ResponseCorrectnessEnum">
+    <value name="CORRECT" value="correct" desc="correct" />
+    <value name="INCORRECT" value="incorrect" desc="incorrect" />
+    <value name="PARTIAL" value="partial" desc="partial" />
+  </enum>
+
+  <!--GraduationAwardEnum enum-->
+  <enum name="GraduationAwardEnum">
+    <value name="DIPLOMA" value="Diploma" desc="Diploma" />
+    <value name="CERTIFICATE" value="Certificate" desc="Certificate" />
+    <value name="GED" value="GED" desc="GED" />
+  </enum>
+
+  <!--GraduationOnTimeEnum enum-->
+  <enum name="GraduationOnTimeEnum">
+    <value name="YES" value="Yes" desc="Yes" />
+    <value name="NO" value="No" desc="No" />
+    <value name="UNAVAILABLE" value="Unavailable" desc="Unavailable" />
+    <value name="NA" value="NA" desc="NA" />
+  </enum>
+  
+  <!--EnrollmentStatus enum-->
+  <enum name="EnrollmentStatus">
+    <value name="ACTIVE" value="Active" desc="Active" />
+    <value name="INACTIVE" value="Inactive" desc="Inactive" />
+    <value name="UNREPORTED" value="Unreported" desc="Unreported" />
+  </enum>
+  
+  <!--Sif3HomeroomRefObjEnum enum-->
+  <enum name="Sif3HomeroomRefObjEnum">
+    <value name="ROOMINFO" value="RoomInfo" desc="RoomInfo" />
+  </enum>
+  
+  <!--SourceObjectRefObjEnum enum-->
+  <enum name="SourceObjectRefObjEnum">
+    <value name="ASSESSMENT" value="Assessment" desc="Assessment" />
+    <value name="LEARNINGRESOURCE" value="LearningResource" desc="LearningResource" />
+    <value name="ACTIVITY" value="Activity" desc="Activity" />
+    <value name="LESSON" value="Lesson" desc="Lesson" />
+  </enum>
+  
+  <!--EvaluationType enum-->
+  <enum name="EvaluationType">
+    <value name="INLINE" value="Inline" desc="Inline" />
+    <value name="REFID" value="RefId" desc="RefId" />
+  </enum>
+</adk>

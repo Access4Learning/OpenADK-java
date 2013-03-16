@@ -37,7 +37,7 @@ import org.xml.sax.SAXException;
  *  at initialization time. In this way, versioning is mostly transparent to the
  *  developer.<p>
  *
- *  Each version-specific SIFDTD class (e.g. "com.edustructures.sifworks.impl.SIF10r2")
+ *  Each version-specific SIFDTD class (e.g. "openadk.library.impl.SIF10r2")
  *  extends the SIFDTD class of the prior version. Thus, SIF10r2.class would
  *  extend SIF10r1, SIF15r0.class would extend SIF10r2, and so on. These classes
  *  then add ElementDef definitions for objects and fields that were newly
@@ -49,7 +49,7 @@ import org.xml.sax.SAXException;
  *  Enumerated type classes work in the same way. For example, suppose in
  *  SIF 1.0r2 the <Name> element were given a new child element <NickName>, and
  *  the <PreferredName> element were changed to <PrefName>. The
- *  <code>com.edustructures.sifworks.common.Name class</code> would now include the
+ *  <code>openadk.library.common.Name class</code> would now include the
  *  new member functions setNickName and setPrefName. However, the
  *  setPreferredName method that previously existed for SIF 1.0r1 would remain
  *  intact since ADKGen builds classes by aggregating all versions of SIF into
@@ -81,7 +81,7 @@ import org.xml.sax.SAXException;
  *      </li>
  *      <li>
  *          <b>p=package</b> is the package prefix to use for Data Object
- *          classes that are generated (defaults to "com.edustructures.sifworks")
+ *          classes that are generated (defaults to "openadk.library")
  *      </li>
  *  </ul>
  *
@@ -331,7 +331,7 @@ public class Main implements FilenameFilter
 
 	/**
 	 *  Gets the base package all other packages are relative to
-	 *  @return A package name (defaults to "com.edustructures.sifworks")
+	 *  @return A package name (defaults to "openadk.library")
 	 */
 	public static String getPackage()
 	{
@@ -361,8 +361,8 @@ public class Main implements FilenameFilter
 	protected void printHelp()
 	{
 		System.out.println("\r\nUsage: adkgen [dir1;dir2;etc. | @files] o=output p=package l=[java|cs|jh|zis] locale=[au|uk|us]");
-		System.out.println("Example: adkgen ..\\datadef\\sif10r1 o=.. p=com.edustructures.sifworks");
-		System.out.println("Example: adkgen ..\\datadef\\sif10r1 o=.. p=com.edustructures.sifworks l=cs");
+		System.out.println("Example: adkgen ..\\datadef\\sif10r1 o=.. p=openadk.library");
+		System.out.println("Example: adkgen ..\\datadef\\sif10r1 o=.. p=openadk.library l=cs");
 		System.out.println("Example: adkgen ..\\datadef\\sif10r1;..\\datadef\\sif10r2");
 		System.out.println("Example: adkgen @MyFiles.txt o=c:\\adk\\src");
 	}

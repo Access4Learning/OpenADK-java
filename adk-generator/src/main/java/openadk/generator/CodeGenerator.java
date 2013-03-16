@@ -98,7 +98,7 @@ public abstract class CodeGenerator extends Generator {
 		};
 
 	/**
-	 *  Generates the SIFDTD class, which extends com.edustructures.sifworks.DTD
+	 *  Generates the SIFDTD class, which extends openadk.library.DTD
 	 *  to provide information about the core SIF data type definition. In
 	 *  addition, generates a derived class for each version of SIF, where
 	 *  the name is the version (e.g."SIF10r1").

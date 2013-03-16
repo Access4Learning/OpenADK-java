@@ -82,7 +82,7 @@ public class SIFTypeConverters {
 	 */
 	private static final class SIFIntConverter extends SIFTypeConverter<Integer> {
 		/* (non-Javadoc)
-		 * @see com.edustructures.sifworks.SIFTypeConverter#parse(com.edustructures.sifworks.SIFFormatter, java.lang.String)
+		 * @see openadk.library.SIFTypeConverter#parse(openadk.library.SIFFormatter, java.lang.String)
 		 */
 		@Override
 		public SIFSimpleType<Integer> parse(SIFFormatter formatter, String xmlValue) throws ADKTypeParseException {
@@ -149,7 +149,7 @@ public class SIFTypeConverters {
 	 */
 	private static final class SIFLongConverter extends SIFTypeConverter<Long> {
 		/* (non-Javadoc)
-		 * @see com.edustructures.sifworks.SIFTypeConverter#parse(com.edustructures.sifworks.SIFFormatter, java.lang.String)
+		 * @see openadk.library.SIFTypeConverter#parse(openadk.library.SIFFormatter, java.lang.String)
 		 */
 		@Override
 		public SIFSimpleType<Long> parse(SIFFormatter formatter, String xmlValue) throws ADKTypeParseException {
@@ -217,7 +217,7 @@ public class SIFTypeConverters {
 	 */
 	private static final class SIFDecimalConverter extends SIFTypeConverter<BigDecimal> {
 		/* (non-Javadoc)
-		 * @see com.edustructures.sifworks.SIFTypeConverter#parse(com.edustructures.sifworks.SIFFormatter, java.lang.String)
+		 * @see openadk.library.SIFTypeConverter#parse(openadk.library.SIFFormatter, java.lang.String)
 		 */
 		@Override
 		public SIFSimpleType<BigDecimal> parse(SIFFormatter formatter, String xmlValue) throws ADKTypeParseException {
@@ -292,7 +292,7 @@ public class SIFTypeConverters {
 	 */
 	private static final class SIFFloatConverter extends SIFTypeConverter<Float> {
 		/* (non-Javadoc)
-		 * @see com.edustructures.sifworks.SIFTypeConverter#parse(com.edustructures.sifworks.SIFFormatter, java.lang.String)
+		 * @see openadk.library.SIFTypeConverter#parse(openadk.library.SIFFormatter, java.lang.String)
 		 */
 		@Override
 		public SIFSimpleType<Float> parse(SIFFormatter formatter, String xmlValue) throws ADKTypeParseException {
@@ -366,7 +366,7 @@ public class SIFTypeConverters {
 	 */
 	private static final class SIFBooleanConverter extends SIFTypeConverter<Boolean> {
 		/* (non-Javadoc)
-		 * @see com.edustructures.sifworks.SIFTypeConverter#parse(com.edustructures.sifworks.SIFFormatter, java.lang.String)
+		 * @see openadk.library.SIFTypeConverter#parse(openadk.library.SIFFormatter, java.lang.String)
 		 */
 		@Override
 		public SIFSimpleType<Boolean> parse(SIFFormatter formatter, String xmlValue) throws ADKTypeParseException {
@@ -430,7 +430,7 @@ public class SIFTypeConverters {
 
 	private static final class SIFStringConverter extends SIFTypeConverter<String> {
 		/* (non-Javadoc)
-		 * @see com.edustructures.sifworks.SIFTypeConverter#parse(com.edustructures.sifworks.SIFFormatter, java.lang.String)
+		 * @see openadk.library.SIFTypeConverter#parse(openadk.library.SIFFormatter, java.lang.String)
 		 */
 		@Override
 		public SIFSimpleType<String> parse(SIFFormatter formatter, String xmlValue) throws ADKTypeParseException {
@@ -471,7 +471,7 @@ public class SIFTypeConverters {
 	 */
 	private static final class SIFDateConverter extends SIFTypeConverter<Calendar> {
 		/* (non-Javadoc)
-		 * @see com.edustructures.sifworks.SIFTypeConverter#parse(com.edustructures.sifworks.SIFFormatter, java.lang.String)
+		 * @see openadk.library.SIFTypeConverter#parse(openadk.library.SIFFormatter, java.lang.String)
 		 */
 		@Override
 		public SIFSimpleType<Calendar> parse(SIFFormatter formatter, String xmlValue) throws ADKTypeParseException {
@@ -537,7 +537,7 @@ public class SIFTypeConverters {
 	 */
 	private static final class SIFDateTimeConverter extends SIFTypeConverter<Calendar> {
 		/* (non-Javadoc)
-		 * @see com.edustructures.sifworks.SIFTypeConverter#parse(com.edustructures.sifworks.SIFFormatter, java.lang.String)
+		 * @see openadk.library.SIFTypeConverter#parse(openadk.library.SIFFormatter, java.lang.String)
 		 */
 		@Override
 		public SIFSimpleType<Calendar> parse(SIFFormatter formatter, String xmlValue) throws ADKTypeParseException {
@@ -603,7 +603,7 @@ public class SIFTypeConverters {
 	 */
 	private static final class SIFTimeConverter extends SIFTypeConverter<Calendar> {
 		/* (non-Javadoc)
-		 * @see com.edustructures.sifworks.SIFTypeConverter#parse(com.edustructures.sifworks.SIFFormatter, java.lang.String)
+		 * @see openadk.library.SIFTypeConverter#parse(openadk.library.SIFFormatter, java.lang.String)
 		 */
 		@Override
 		public SIFSimpleType<Calendar> parse(SIFFormatter formatter, String xmlValue) throws ADKTypeParseException {
@@ -668,7 +668,7 @@ public class SIFTypeConverters {
 	 */
 	private static final class SIFDurationConverter extends SIFTypeConverter<Duration> {
 		/* (non-Javadoc)
-		 * @see com.edustructures.sifworks.SIFTypeConverter#parse(com.edustructures.sifworks.SIFFormatter, java.lang.String)
+		 * @see openadk.library.SIFTypeConverter#parse(openadk.library.SIFFormatter, java.lang.String)
 		 */
 		@Override
 		public SIFSimpleType<Duration> parse(SIFFormatter formatter, String xmlValue) throws ADKTypeParseException {

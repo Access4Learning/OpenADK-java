@@ -62,7 +62,7 @@ public class ADKDefaultPolicy extends PolicyFactory {
 	
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.policy.PolicyFactory#getRequestPolicy(com.edustructures.sifworks.Zone, com.edustructures.sifworks.ElementDef)
+	 * @see openadk.library.policy.PolicyFactory#getRequestPolicy(openadk.library.Zone, openadk.library.ElementDef)
 	 */
 	@Override
 	public ObjectRequestPolicy getRequestPolicy( Zone zone, String objectName) {

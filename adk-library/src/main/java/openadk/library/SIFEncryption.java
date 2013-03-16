@@ -355,7 +355,7 @@ public abstract class SIFEncryption {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.edustructures.sifworks.SIFEncryption#writePassword(com.edustructures.sifworks.infra.AuthenticationInfoPassword, java.lang.String)
+		 * @see openadk.library.SIFEncryption#writePassword(openadk.library.infra.AuthenticationInfoPassword, java.lang.String)
 		 */
 		@Override
 		public void writePassword( Password password, String value )
@@ -403,7 +403,7 @@ public abstract class SIFEncryption {
 
 		
 		/* (non-Javadoc)
-		 * @see com.edustructures.sifworks.SIFEncryption#getKey()
+		 * @see openadk.library.SIFEncryption#getKey()
 		 */
 		@Override
 		public byte[] getKey()
@@ -412,7 +412,7 @@ public abstract class SIFEncryption {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.edustructures.sifworks.SIFEncryption#isHash()
+		 * @see openadk.library.SIFEncryption#isHash()
 		 */
 		@Override
 		public boolean isHash()
@@ -433,7 +433,7 @@ public abstract class SIFEncryption {
 		    }
 
 		/* (non-Javadoc)
-		 * @see com.edustructures.sifworks.SIFEncryption#writePassword(com.edustructures.sifworks.infra.AuthenticationInfoPassword, java.lang.String)
+		 * @see openadk.library.SIFEncryption#writePassword(openadk.library.infra.AuthenticationInfoPassword, java.lang.String)
 		 */
 		@Override
 		public void writePassword( Password password, String value )
@@ -447,7 +447,7 @@ public abstract class SIFEncryption {
 
 	
 		/* (non-Javadoc)
-		 * @see com.edustructures.sifworks.SIFEncryption#readPassword(com.edustructures.sifworks.infra.AuthenticationInfoPassword)
+		 * @see openadk.library.SIFEncryption#readPassword(openadk.library.infra.AuthenticationInfoPassword)
 		 */
 		@Override
 		public String readPassword( Password password )
@@ -461,7 +461,7 @@ public abstract class SIFEncryption {
 
 		
 		/* (non-Javadoc)
-		 * @see com.edustructures.sifworks.SIFEncryption#getKey()
+		 * @see openadk.library.SIFEncryption#getKey()
 		 */
 		@Override
 		public byte[] getKey()
@@ -471,7 +471,7 @@ public abstract class SIFEncryption {
 
 		
 		/* (non-Javadoc)
-		 * @see com.edustructures.sifworks.SIFEncryption#isHash()
+		 * @see openadk.library.SIFEncryption#isHash()
 		 */
 		@Override
 		public boolean isHash()
@@ -496,7 +496,7 @@ public abstract class SIFEncryption {
 
 		
 		/* (non-Javadoc)
-		 * @see com.edustructures.sifworks.SIFEncryption#writePassword(com.edustructures.sifworks.infra.AuthenticationInfoPassword, java.lang.String)
+		 * @see openadk.library.SIFEncryption#writePassword(openadk.library.infra.AuthenticationInfoPassword, java.lang.String)
 		 */
 		@Override
 		public void writePassword( Password password, String value )
@@ -513,7 +513,7 @@ public abstract class SIFEncryption {
 
 		
 		/* (non-Javadoc)
-		 * @see com.edustructures.sifworks.SIFEncryption#readPassword(com.edustructures.sifworks.infra.AuthenticationInfoPassword)
+		 * @see openadk.library.SIFEncryption#readPassword(openadk.library.infra.AuthenticationInfoPassword)
 		 */
 		@Override
 		public String readPassword( Password password )
@@ -526,7 +526,7 @@ public abstract class SIFEncryption {
 
 		
 		/* (non-Javadoc)
-		 * @see com.edustructures.sifworks.SIFEncryption#getKey()
+		 * @see openadk.library.SIFEncryption#getKey()
 		 */
 		@Override
 		public byte[] getKey()
@@ -536,7 +536,7 @@ public abstract class SIFEncryption {
 
 		
 		/* (non-Javadoc)
-		 * @see com.edustructures.sifworks.SIFEncryption#isHash()
+		 * @see openadk.library.SIFEncryption#isHash()
 		 */
 		@Override
 		public boolean isHash()

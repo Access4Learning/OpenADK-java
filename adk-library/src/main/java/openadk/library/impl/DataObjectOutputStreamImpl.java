@@ -51,7 +51,7 @@ public abstract class DataObjectOutputStreamImpl implements DataObjectOutputStre
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.impl.BaseObjectOutputStream#initialize(com.edustructures.sifworks.Zone, com.edustructures.sifworks.Query, java.lang.String, java.lang.String, com.edustructures.sifworks.SIFVersion, int)
+	 * @see openadk.library.impl.BaseObjectOutputStream#initialize(openadk.library.Zone, openadk.library.Query, java.lang.String, java.lang.String, openadk.library.SIFVersion, int)
 	 */
 	public abstract void initialize(
 		Zone zone,
@@ -63,7 +63,7 @@ public abstract class DataObjectOutputStreamImpl implements DataObjectOutputStre
 		    throws ADKException;
 	
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.impl.BaseObjectOutputStream#initialize(com.edustructures.sifworks.Zone, com.edustructures.sifworks.ElementDef[], java.lang.String, java.lang.String, com.edustructures.sifworks.SIFVersion, int)
+	 * @see openadk.library.impl.BaseObjectOutputStream#initialize(openadk.library.Zone, openadk.library.ElementDef[], java.lang.String, java.lang.String, openadk.library.SIFVersion, int)
 	 */
 	public abstract void initialize(
 		Zone zone,
@@ -75,31 +75,31 @@ public abstract class DataObjectOutputStreamImpl implements DataObjectOutputStre
 		    throws ADKException;
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.impl.BaseObjectOutputStream#close()
+	 * @see openadk.library.impl.BaseObjectOutputStream#close()
 	 */
 	public abstract void close()
 		throws IOException;
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.impl.BaseObjectOutputStream#commit()
+	 * @see openadk.library.impl.BaseObjectOutputStream#commit()
 	 */
 	public abstract void commit()
 		throws ADKException;
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.impl.BaseObjectOutputStream#abort()
+	 * @see openadk.library.impl.BaseObjectOutputStream#abort()
 	 */
 	public abstract void abort()
 		throws ADKException;
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.impl.BaseObjectOutputStream#write(com.edustructures.sifworks.SIFDataObject)
+	 * @see openadk.library.impl.BaseObjectOutputStream#write(openadk.library.SIFDataObject)
 	 */
 	public abstract void write( SIFDataObject data )
 		throws ADKException;
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.impl.BaseObjectOutputStream#setError(com.edustructures.sifworks.infra.SIF_Error)
+	 * @see openadk.library.impl.BaseObjectOutputStream#setError(openadk.library.infra.SIF_Error)
 	 */
 	public abstract void setError( SIF_Error error )
 		throws ADKException;
@@ -148,22 +148,22 @@ public abstract class DataObjectOutputStreamImpl implements DataObjectOutputStre
 	}
 	
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.impl.BaseObjectOutputStream#getSIF_MorePackets()
+	 * @see openadk.library.impl.BaseObjectOutputStream#getSIF_MorePackets()
 	 */
 	public abstract YesNo getSIF_MorePackets();
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.impl.BaseObjectOutputStream#getSIF_PacketNumber()
+	 * @see openadk.library.impl.BaseObjectOutputStream#getSIF_PacketNumber()
 	 */
 	public abstract int getSIF_PacketNumber();
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.impl.BaseObjectOutputStream#setSIF_MorePackets(com.edustructures.sifworks.common.YesNo)
+	 * @see openadk.library.impl.BaseObjectOutputStream#setSIF_MorePackets(openadk.library.common.YesNo)
 	 */
 	public abstract void setSIF_MorePackets(YesNo morePacketsValue);
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.impl.BaseObjectOutputStream#setSIF_PacketNumber(int)
+	 * @see openadk.library.impl.BaseObjectOutputStream#setSIF_PacketNumber(int)
 	 */
 	public abstract void setSIF_PacketNumber(int packetNumber);
 	

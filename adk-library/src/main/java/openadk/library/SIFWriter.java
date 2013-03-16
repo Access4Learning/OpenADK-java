@@ -56,6 +56,10 @@ public class SIFWriter
 
 	protected SIFFormatter fFormatter;
 
+    /**
+   	 *  The sif3 namespace tag
+   	 */
+    protected String nsTag;
     public static final String XSI_NAMESPACE = "http://www.w3.org/2001/XMLSchema-instance";
     public static final String XML_NAMESPACE = "http://www.w3.org/XML/1998/namespace";
     public static final String NIL = "nil";
@@ -230,7 +234,7 @@ public class SIFWriter
 	public synchronized void write( SIFDataObject o )
 	{
 		setSIFVersion( o.getSIFVersion() );
-
+        nsTag = o.getObjectTag();
 		if( o instanceof SIFDataObjectXML ){
 			fWriter.write(o.toXML());
 		}
@@ -593,6 +597,9 @@ public class SIFWriter
 			if( includeVersion ){
 				fWriter.write( " Version=\"" + fVersion.toString() + "\"" );
 			}
+            if(nsTag != null && nsTag.startsWith("sif3")){
+                fWriter.write(" xmlns:sif3=\"urn:sif3placeholder\"");
+            }
 		}
 		fRootAttributesWritten = true;
 	}

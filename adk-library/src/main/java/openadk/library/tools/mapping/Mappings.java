@@ -1664,7 +1664,7 @@ public class Mappings {
 	 * in the SIFDataObject when a field rule matches.</li>
 	 * <li>
 	 * Create a SIFDataObject instance of the appropriate type (e.g. a
-	 * com.edustructures.sifworks.student.StudentPersonal instance if the
+	 * openadk.library.student.StudentPersonal instance if the
 	 * mapping will be applied to an incoming &lt;StudentPersonal&gt; message).</li>
 	 * <li>
 	 * Call this <code>map</code> method to apply all field values in the

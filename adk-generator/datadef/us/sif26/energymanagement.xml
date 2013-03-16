@@ -1,0 +1,187 @@
+<!-- ======================================== -->
+<!--    Open ADK Object Definition File   -->
+<!--     Copyright (c)1998-2011 Pearson Education, Inc. or its affiliate(s)     -->
+<!--     All Rights Reserved                  -->
+<!-- ======================================== -->
+<!--    SIF 2.6 energy management                  -->
+<!-- ======================================== -->
+<adk package="energymanagement" version="2.6" namespace="http://www.sifinfo.org/infrastructure/2.x">
+    <!--EnergyUsage object-->
+    <object name="EnergyUsage" topic="true">
+        <desc>This object contains energy usage information for an energy location.</desc>
+        <element name="UsageLocationInfo" type="UsageLocationInfo" flags="M">
+            <desc>Complex element containing the location of where measurements apply to.</desc>
+        </element>
+        <element name="DataSource" type="DataSource" flags="O">
+            <desc>The description of the source of the measurements.</desc>
+        </element>
+    </object>
+    <!--UsageLocationInfo object-->
+    <object name="UsageLocationInfo">
+        <element name="SchoolId" type="BinaryData" flags="M">
+            <desc>"e.g., urn:sif:school:AcmeMiddleSchool1.CoyoteDistrict.Arizona.
+                   e.g., urn:sif:school:AcmeMiddleSchool1.CoyoteDistrict.Arizona."</desc>
+        </element>
+        <element name="Building" type="String" flags="M">
+            <desc>Name of the School Building.</desc>
+        </element>
+        <element name="EnergyZone" type="EnergyZone" flags="O">
+            <desc>Complex element refining and narrowing the location of the contained readings within the School/Building.</desc>
+        </element>
+    </object>
+    <!--EnergyZone object-->
+    <object name="EnergyZone">
+        <element name="Type" type="Type" flags="M">
+            <desc>Complex type of the facility or location supported by the Energy Zone.</desc>
+        </element>
+    </object>
+    <!--Type object-->
+    <object name="Type">
+        <element name="Facility" enum="Facility" flags="C">
+            <desc>Type of educational facility. Either the faciity type or the description must be provided.</desc>
+        </element>
+        <element name="Description" type="String" flags="C">
+            <desc>"Used when location type is not covered by prefixed values in enumerated facility type list.
+
+            Used when location type is not covered by prefixed values in enumerated facility type list."</desc>
+        </element>
+        <element name="EnergyZoneName" type="String" flags="M">
+            <desc>Text description of Energy Zone Area to which readings will apply.</desc>
+        </element>
+        <element name="TagList" type="TagList" flags="O">
+            <desc>List of energy zone identifiers (each consisting of a Name and Value).</desc>
+        </element>
+    </object>
+    <!--Type Facility-->
+    <enum name="Facility">
+        <value name="CLASSROOM" value="Classroom" desc="Classroom"/>
+        <value name="OFFICE" value="Office" desc="office"/>
+        <value name="HALL" value="Hall" desc="Hall"/>
+        <value name="AUDITORIUM" value="Auditorium" desc="Auditorium"/>
+        <value name="GYMNASIUM" value="Gymnasium" desc="Gymnasium"/>
+        <value name="LOCKER_ROOM" value="LockerRoom" desc="Locker Room"/>
+        <value name="SWIMMING_POOL" value="SwimmingPool" desc="Swimming Pool"/>
+        <value name="CAFETERIA" value="Cafeteria" desc="Cafeteria"/>
+        <value name="KITCHEN" value="Kitchen" desc="Kitchen"/>
+        <value name="LIBRARY" value="Library" desc="Library"/>
+        <value name="STUDY_HALL" value="StudyHall" desc="Study Hall"/>
+        <value name="LABORATORY" value="Laboratory" desc="Laboratory"/>
+        <value name="SHOP" value="Shop" desc="Shop"/>
+        <value name="STORAGE" value="Storage" desc="Storage"/>
+        <value name="HOME_ECONOMICS" value="HomeEconomics" desc="Home Economics"/>
+        <value name="WING" value="Wing" desc="Wing"/>
+        <value name="FLOOR" value="Floor" desc="Floor"/>
+        <value name="BUILDING" value="Builing" desc="Building"/>
+        <value name="CAMPUS" value="Campus" desc="Campus"/>
+        <value name="OTHER" value="Other" desc="Other"/>
+    </enum>
+    <!--TagList object-->
+    <object name="TagList">
+        <element name="Tag" type="Tag" flags="OR">
+            <desc>An energy zone identifier. Could include “SensorGroup”, or individual SensorId”, or anything else.</desc>
+        </element>
+    </object>
+    <!--Tag object-->
+    <object name="Tag">
+        <element name="Name" type="String" flags="M">
+            <desc>Name of the tag</desc>
+        </element>
+        <element name="Value" type="String" flags="O">
+            <desc>Value of the tag</desc>
+        </element>
+    </object>
+    <!--DataSource object-->
+    <object name="DataSource">
+        <element name="System" type="String" flags="M">
+            <desc>Identifier of the reporting system.</desc>
+        </element>
+        <element name="StartTime" type="dateTime" flags="M">
+            <desc>Start time of measurements that follow.</desc>
+        </element>
+        <element name="ReadingDataList" type="ReadingDataList" flags="M">
+            <desc>List of ReadingData</desc>
+        </element>
+    </object>
+    <!--ReadingDataList object-->
+    <object name="ReadingDataList">
+        <element name="ReadingData" type="ReadingData" flags="MR">
+            <desc>Complex element defining a set of parameters that apply to all the actual readings that follow.</desc>
+        </element>
+    </object>
+    <!--ReadingData object-->
+    <object name="ReadingData">
+        <element name="Measurement" enum="Measurement" flags="M">
+            <desc>Measurement type</desc>
+        </element>
+        <element name="SensorId" type="String" flags="O">
+            <desc>Identification of internal meter or data source.</desc>
+        </element>
+        <element name="Interval" type="unsignedInt" flags="O">
+            <desc>Time in seconds between Measurements.</desc>
+        </element>
+        <element name="EnergyUnits" enum="EnergyUnits" flags="M">
+            <desc>One of enumerated list of unit types for energy readings (temperature, electrical energy usage, gas usage and the price for both).</desc>
+        </element>
+        <element name="ReadingName" type="String" flags="O">
+            <desc>Description of collection of readings</desc>
+        </element>
+        <element name="ReadingList" type="ReadingList" flags="O">
+            <desc>Collection of reported data readings, in time order.</desc>
+        </element>
+    </object>
+    <!--Measurement enum-->
+    <enum name="Measurement">
+        <value name="GAS" value="Gas" desc="Gas"/>
+        <value name="ELECTRICAL" value="Electrical" desc="Electrical"/>
+        <value name="THERMOMETER" value="Thermometer" desc="Thermometer"/>
+        <value name="THERMOSTAT" value="Thermostat" desc="Thermostat"/>'
+        <value name="COST" value="Cost" desc="Cost"/>
+        <value name="OTHER" value="Other" desc="Other"/>
+    </enum>
+    <!--EnergyUnits enum-->
+    <enum name="EnergyUnits">
+        <value name="DEGREECENTIGRADE" value="DegreeCentigrade" desc="Degree Centigrade"/>
+        <value name="KILOWATT_HOUR" value="Kilowatt-Hour" desc="Kilowatt-Hour"/>
+        <value name="$_KILOWATT_HOUR" value="$Kilowatt-Hour" desc="$/Kilowatt-Hour"/>
+        <value name="THOUSAND_CUBIC_FEET" value="ThousandCubicFeet" desc="Thousand Cubic Feet"/>
+        <value name="$_THOUSAND_CUBIC_FEET" value="$ThousandCubicFeet" desc="$/Thousand Cubic Feet"/>
+        <value name="OTHER" value="Other" desc="Other"/>
+    </enum>
+    <!--ReadingList object-->
+    <object name="ReadingList">
+        <element name="Reading" type="Reading" flags="OR">
+            <desc>Values for the energy readings for each interval.</desc>
+        </element>
+    </object>
+    <!--Reading object-->
+    <object name="Reading" datatype="decimal">
+        <attribute name="IntervalIndex" type="unsignedInt" flags="O">
+            <desc>Interval number when reading was taken.</desc>
+        </attribute>
+    </object>
+</adk>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

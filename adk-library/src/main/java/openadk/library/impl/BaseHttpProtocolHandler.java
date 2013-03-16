@@ -7,8 +7,12 @@ package openadk.library.impl;
 
 
 import java.util.*;
+import java.util.zip.DeflaterOutputStream;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
+import java.util.zip.InflaterInputStream;
+import java.util.zip.ZipInputStream;
+import java.util.zip.ZipOutputStream;
 import java.io.*;
 import java.net.*;
 import java.security.*;
@@ -403,10 +407,10 @@ public abstract class BaseHttpProtocolHandler implements IProtocolHandler
 		}
 		
 		int finalContentLength = (msgBytes != null ? msgBytes.length : longMsgLength);
-		boolean willCompress = fZone.getProperties().getCompressionThreshold() > -1 && finalContentLength > fZone.getProperties().getCompressionThreshold();
+		boolean attemptCompress = fZone.getProperties().getCompressionThreshold() > -1 && finalContentLength > fZone.getProperties().getCompressionThreshold();
+		String contentEncoding = null;
 		
-		if (willCompress) {
-			willCompress = false;
+		if (attemptCompress) {
 			SIF_ZoneStatus zoneStatus = fZone.getLastReceivedSIF_ZoneStatus(false);
 			if (zoneStatus != null) {
 				SIF_Protocol sifProtocol = zoneStatus.getSIF_SupportedProtocols().getSIF_Protocol(fTransport.isSecure() ? "HTTPS" : "HTTP");
@@ -415,17 +419,36 @@ public abstract class BaseHttpProtocolHandler implements IProtocolHandler
 						if (!"Accept-Encoding".equals(sifProp.getSIF_Name())) continue;
 						if (sifProp != null && sifProp.getSIF_Value() != null) {
 							List<String> codingPreference = HTTPUtil.derivePreferredCodingFrom(sifProp.getSIF_Value());
-							willCompress = codingPreference.contains("gzip");
+							for (String encoding : codingPreference) {
+								if (encoding.contains("gzip")) {	// gzip or x-gzip
+									contentEncoding = "gzip";
+									break;
+								} else if (encoding.contains("compress")) {	// compress or x-compress
+									contentEncoding = "compress";
+									break;
+								} else if (encoding.contains("deflate")) {	// deflate or x-deflate
+									contentEncoding = "deflate";
+									break;
+								}
+							}
+							break;
 						}
 					}
 				}
 			}
 		}
 		
-		if (willCompress) {
+		if (contentEncoding != null) {
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			try {
-				GZIPOutputStream gzos = new GZIPOutputStream(baos);
+				DeflaterOutputStream gzos;
+				if (contentEncoding.equals("gzip")) {
+					gzos = new GZIPOutputStream(baos);
+				} else if (contentEncoding.equals("compress")) {
+					gzos = new ZipOutputStream(baos);
+				} else {	// deflate
+					gzos = new DeflaterOutputStream(baos);
+				}
 				if (msgBytes != null) {
 					gzos.write(msgBytes);
 				} else {
@@ -455,8 +478,8 @@ public abstract class BaseHttpProtocolHandler implements IProtocolHandler
 		conn.setRequestProperty( "Host", fHttpHost );
 		conn.setRequestProperty( "User-Agent", fHttpUserAgent );
 		conn.setRequestProperty( "Connection", "Keep-Alive" );
-		if (willCompress) {
-			conn.setRequestProperty("Content-Encoding", "gzip");
+		if (contentEncoding != null) {
+			conn.setRequestProperty("Content-Encoding", contentEncoding);
 		}
 
 		OutputStream outStream = null;
@@ -540,7 +563,7 @@ public abstract class BaseHttpProtocolHandler implements IProtocolHandler
 
 		totalBytes = 0;
 		int contentLen = conn.getContentLength();
-		boolean isGzip = "gzip".equalsIgnoreCase(String.valueOf(conn.getContentEncoding()).trim());
+		contentEncoding = String.valueOf(conn.getContentEncoding()).trim().toLowerCase();
 		InputStream in = null;
 		
 		if( contentLen != 0 ) try
@@ -550,8 +573,14 @@ public abstract class BaseHttpProtocolHandler implements IProtocolHandler
 			
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			in = new BufferedInputStream(conn.getInputStream());
-			if (isGzip) {
+			if (!contentEncoding.equals("null")) {
+				if (contentEncoding.contains("gzip")) {	// gzip or x-gzip
 				in = new GZIPInputStream(in);
+				} else if (contentEncoding.contains("compress")) {	// compress or x-compress
+					in = new ZipInputStream(in);
+				} else if (contentEncoding.contains("deflate")) {	// deflate or x-deflate
+					in = new InflaterInputStream(in);
+				}
 			}
 			byte[] byteBuf = new byte[8192];
 			int bytesRead = 0;
