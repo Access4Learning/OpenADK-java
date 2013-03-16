@@ -37,13 +37,13 @@ public interface ServiceObjectOutputStream {
 	 * <p>
 	 *
 	 * See the
-	 * {@link com.edustructures.sifworks.Services.SIFServiceOutputSender} class
+	 * {@link openadk.library.Services.SIFServiceOutputSender} class
 	 * comments for more information about using this method.
 	 * <p>
 	 *
 	 * @param info
 	 *
-	 * @see com.edustructures.sifworks.SIFServiceOutputSender
+	 * @see openadk.library.SIFServiceOutputSender
 	 *
 	 * @since ADK 1.5.1
 	 */

@@ -25,7 +25,7 @@ public class PhoneNumberSurrogate extends AbstractRenderSurrogate implements Ren
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.impl.surrogates.RenderSurrogate#renderRaw(com.edustructures.util.XMLWriter, com.edustructures.sifworks.SIFVersion, com.edustructures.sifworks.Element, com.edustructures.sifworks.SIFFormatter)
+	 * @see openadk.library.impl.surrogates.RenderSurrogate#renderRaw(openadk.util.XMLWriter, openadk.library.SIFVersion, openadk.library.Element, openadk.library.SIFFormatter)
 	 */
 	public void renderRaw(XMLWriter writer, SIFVersion version, Element o,
 			SIFFormatter formatter) throws SIFException {
@@ -53,7 +53,7 @@ public class PhoneNumberSurrogate extends AbstractRenderSurrogate implements Ren
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.impl.surrogates.RenderSurrogate#readRaw(javax.xml.stream.XMLStreamReader, com.edustructures.sifworks.SIFVersion, com.edustructures.sifworks.SIFElement, com.edustructures.sifworks.SIFFormatter)
+	 * @see openadk.library.impl.surrogates.RenderSurrogate#readRaw(javax.xml.stream.XMLStreamReader, openadk.library.SIFVersion, openadk.library.SIFElement, openadk.library.SIFFormatter)
 	 */
 	public boolean readRaw(XMLStreamReader reader, SIFVersion version,
 			SIFElement parent, SIFFormatter formatter) throws ADKParsingException {
@@ -83,7 +83,7 @@ public class PhoneNumberSurrogate extends AbstractRenderSurrogate implements Ren
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.impl.surrogates.RenderSurrogate#lookupBySQP(java.lang.String)
+	 * @see openadk.library.impl.surrogates.RenderSurrogate#lookupBySQP(java.lang.String)
 	 */
 	public ElementDef lookupBySQP(String sqp) {
 		if( sqp.length() == 0 ){

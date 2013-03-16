@@ -20,7 +20,7 @@ import openadk.library.policy.PolicyManagerImpl;
 public class ObjectFactoryImpl extends ObjectFactory {
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.impl.ObjectFactory#createInstance(com.edustructures.sifworks.impl.ObjectFactory.ADKFactoryType, com.edustructures.sifworks.Agent)
+	 * @see openadk.library.impl.ObjectFactory#createInstance(openadk.library.impl.ObjectFactory.ADKFactoryType, openadk.library.Agent)
 	 */
 	@Override
 	public Object createInstance(ADKFactoryType factoryType, Agent agentInstance )

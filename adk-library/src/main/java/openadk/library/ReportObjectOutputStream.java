@@ -37,7 +37,7 @@ public interface ReportObjectOutputStream
 	 * 		the same RefId to identify all SIF_ReportObject instances that comprise the
 	 * 		report data.
 	 * 
-	 * 	@param info A ReportInfo instance from the <code>com.edustructures.sifworks.reporting</code> package
+	 * 	@param info A ReportInfo instance from the <code>openadk.library.reporting</code> package
 	 * 
 	 * 	@param zone The zone that is responding to the SIF_Request for SIF_ReportObjects
 	 * 	

@@ -24,7 +24,7 @@ import java.util.*;
 
 /**
  * A replacement for
- * <code>com.edustructures.sifworks.threadpool.ScheduledThreadPoolExecutor</code>.
+ * <code>openadk.library.threadpool.ScheduledThreadPoolExecutor</code>.
  * The Java 2 platform ScheduledThreadPoolExecutor wraps the Tasks in a
  * private inner class. The inner class wraps the task in a private variable and
  * provides no getters to the wrapped task. The hook methods beforeExecute() and

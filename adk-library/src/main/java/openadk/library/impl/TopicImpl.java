@@ -123,14 +123,14 @@ public class TopicImpl implements Topic
 	}
 	
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Topic#getObjectDef()
+	 * @see openadk.library.Topic#getObjectDef()
 	 */
 	public ElementDef getObjectDef() {
 		return fObjType;
 	}
 	
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Topic#getSIFContext()
+	 * @see openadk.library.Topic#getSIFContext()
 	 */
 	public SIFContext getSIFContext()
 	{
@@ -425,14 +425,14 @@ public class TopicImpl implements Topic
 	}
 	
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Topic#createQuery()
+	 * @see openadk.library.Topic#createQuery()
 	 */
 	public Query createQuery() {
 		return new Query( fObjType );
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Topic#query()
+	 * @see openadk.library.Topic#query()
 	 */
 	public void query() throws ADKException {
 		query( createQuery() );		

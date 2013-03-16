@@ -96,7 +96,7 @@ import org.w3c.dom.Node;
  *  configuration settings. The <code>getProperty</code> and <code>setProperty</code>
  *  methods can also be used to manipulate the <code>&lt;property&gt;</code>
  *  children of an element. Static helper routines from the
- *  com.edustructures.util.XMLUtils class may also be used to get and set
+ *  openadk.util.XMLUtils class may also be used to get and set
  *  element attributes and text values.
  *  <p>
  *

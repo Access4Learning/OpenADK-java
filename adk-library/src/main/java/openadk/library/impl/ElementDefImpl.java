@@ -143,7 +143,7 @@ public class ElementDefImpl implements ElementDef
 	 *      or -1 if a top-level element
 	 *  @param localPackage The name of the package where the corresponding
 	 *      DataObject class is defined, excluding the
-	 *      <code>com.edustructures.sifworks</code> prefix
+	 *      <code>openadk.library</code> prefix
 	 *  @param earliestVersion The earliest version of SIF supported by this
 	 *      element. If the element is supported in any other version of SIF -
 	 *      or is deprecated in a later version - the SDOLibrary class must
@@ -165,7 +165,7 @@ public class ElementDefImpl implements ElementDef
 	 *      or -1 if a top-level element
 	 *  @param localPackage The name of the package where the corresponding
 	 *      DataObject class is defined, excluding the
-	 *      <code>com.edustructures.sifworks</code> prefix
+	 *      <code>openadk.library</code> prefix
 	 *  @param flags One of the following: FD_ATTRIBUTE if this element should
 	 *      be rendered as an attribute of its parent rather than a child
 	 *      element; FD_FIELD if this element is a simple field with no child
@@ -647,7 +647,7 @@ public class ElementDefImpl implements ElementDef
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.ElementDef#hasSimpleContent()
+	 * @see openadk.library.ElementDef#hasSimpleContent()
 	 */
 	public boolean hasSimpleContent() {
 		return fTypeConverter != null;

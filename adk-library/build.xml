@@ -1,0 +1,96 @@
+<?xml version="1.0" ?>
+<project default="buildADK" name="ADK Builder" basedir=".">
+
+    <!-- *************************** -->
+    <!-- Load default property files -->
+    <!-- *************************** -->
+    <property file="${basedir}/ant.properties"/>
+	
+	<property name="parent.dir"              value="${basedir}/.." />
+	<property name="project.dir"             value="${parent.dir}/adk-library"/>
+    <property name="target.dir"              value="${project.dir}/target"/>
+    <property name="classes.dir"             value="${target.dir}/classes"/>
+    <property name="lib.dir"                 value="${parent.dir}/lib"/>
+    <property name="src.dir"                 value="${project.dir}/src/main/java"/>
+    <property name="resources.dir"            value="${project.dir}/src/main/resources"/>
+	<property name="datamodel.base.dir"      value="${src.dir}/openadk/library"/>
+    <property name="generator.datamodel.dir" value="${parent.dir}/adk-generator/target/adkgen/generated-sources/openadk/library"/>
+    <property name="final.lib.name"          value="${library.name}-${library.build.version}-${generator.locale}-${library.dm.version}.jar"/>
+    <!-- Only used to link TinySIS and SIFQuery example projects to a generic library name -->
+	<property name="basic.lib.name"          value="openADK.jar"/>
+
+    <!-- print some varaibles -->
+    <target name="00-env" description="Show Ant variables">
+        <echo message="basedir: ${basedir}"/>
+        <echo message="parent.dir: ${parent.dir}"/>
+        <echo message="target.dir: ${target.dir}"/>
+        <echo message="classes.dir: ${classes.dir}"/>
+        <echo message="src.dir: ${src.dir}"/>
+        <echo message="resources.dir: ${resources.dir}"/>
+        <echo message="datamodel.base.dir: ${datamodel.base.dir}"/>
+        <echo message="generator.datamodel.dir: ${generator.datamodel.dir}"/>
+        <echo message="lib.dir: ${lib.dir}"/>
+    	<echo message="generator.locale: ${generator.locale}"/>
+        <echo message="library.dm.version: ${library.dm.version}"/>
+        <echo message="library.build.version: ${library.build.version}"/>
+        <echo message="library.name: ${library.name}"/>
+        <echo message="final.lib.name: ${final.lib.name}"/>
+        <echo message="basic.lib.name: ${basic.lib.name}"/>
+    </target>
+
+    <property name="verbose" value="true" />
+
+	<path id="classpath">
+	    <fileset dir="${lib.dir}">
+	        <include name="**/*.jar" />
+	    </fileset>
+	    <pathelement path="${classes.dir}" />
+	</path>
+
+    <!--
+        This target is used to initialize properties as well as any other setup that needs to happen before the build process starts
+    -->
+    <target name="clean">
+        <delete dir="${classes.dir}" failonerror="false"/>
+    	<delete>
+    	    <fileset dir="${target.dir}" includes="*.jar"/>
+    	  </delete>
+    	<!-- Delete all data model java classes but NOT the actual ADK classes -->
+    	<delete dir="${datamodel.base.dir}" includeemptydirs="true" excludes="*.java,common/SIF_ExtendedElement.java,impl/**,log/**,policy/**,services/**,threadpool/**,tools/**"/>
+      <!-- Delete SIFDTD.java in library root directory -->
+    	<delete file="${datamodel.base.dir}/SIFDTD.java"/>
+    </target>
+
+    <target name="init" depends="clean">
+    	<mkdir dir="${classes.dir}"/>
+    </target>
+	
+    <target name="buildADK" depends="init" description="Build the final OpenADK JAR file">
+    	<!-- Generate Data Model Classes for the selected locale (ant.properties file!) -->   	
+    	<ant dir="${parent.dir}/adk-generator" inheritAll="false">
+    	    <target name="${generator.locale}"/>
+    	</ant>
+    	<!-- Now we need to copy all the generated data model classes to this source directory -->
+    	<copy todir="${datamodel.base.dir}" overwrite="true">
+    	    <fileset dir="${generator.datamodel.dir}">
+    		</fileset>
+    	</copy>
+    	
+    	<!-- Let's compile and build the lot... -->
+        <echo message="Compile: ${src.dir}"/>
+        <javac destdir="${classes.dir}" source="1.6" target="1.6" debug="on">
+            <classpath refid="classpath" />
+            <src path="${src.dir}/" />
+        </javac>
+        <copy todir="${classes.dir}" overwrite="true">
+          <fileset dir="${resources.dir}">
+          </fileset>
+        </copy>
+        <echo message="Jar: ${target.dir}/${final.lib.name}"/>
+        <jar destfile="${target.dir}/${final.lib.name}">
+            <!-- Classes and resources -->
+            <fileset dir="${classes.dir}"/>
+        </jar>
+    	<copy file="${target.dir}/${final.lib.name}" tofile="${target.dir}/${basic.lib.name}"/>
+    </target>
+</project>

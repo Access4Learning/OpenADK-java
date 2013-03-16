@@ -49,7 +49,7 @@ import openadk.library.tools.mapping.FieldAdaptor;
  *  the $(color) variable to uppercase. This expression would yield the result
  *  "The color is BLUE":
  *
- *  <code>The color is @com.edustructures.sifworks.DefaultValueBuilder.toUpperCase( $(color) )</code>
+ *  <code>The color is @openadk.library.DefaultValueBuilder.toUpperCase( $(color) )</code>
  *
  *  The following static methods are defined by this class:
  *
@@ -404,7 +404,7 @@ public class DefaultValueBuilder implements ValueBuilder
 
 	/**
 	 *  Specifies the default class for Java method calls that do not reference
-	 *  a fully-qualified class name. <code>com.edustructures.sifworks.DefaultValueBuilder</code>
+	 *  a fully-qualified class name. <code>openadk.library.DefaultValueBuilder</code>
 	 *  is used as the default unless this method is called to change it.
 	 *  <p>
 	 *

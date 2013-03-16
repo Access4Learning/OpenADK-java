@@ -47,7 +47,7 @@ public class ComplexStringMapAdaptor extends StringMapAdaptor implements
 	}
 	
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.tools.mapping.ComplexFieldAdaptor#getChildRelationship(java.lang.String, com.edustructures.sifworks.tools.mapping.IterableFieldAdaptor)
+	 * @see openadk.library.tools.mapping.ComplexFieldAdaptor#getChildRelationship(java.lang.String, openadk.library.tools.mapping.IterableFieldAdaptor)
 	 */
 	public IterableFieldAdaptor getChildRelationship( String relationshipName ) {
 		return fChildRelations.get( relationshipName );

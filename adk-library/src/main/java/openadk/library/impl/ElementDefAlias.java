@@ -27,7 +27,7 @@ public class ElementDefAlias extends ElementDefImpl
 	 *      or -1 if a top-level element
 	 *  @param localPackage The name of the package where the corresponding
 	 *      DataObject class is defined, excluding the
-	 *      <code>com.edustructures.sifworks</code> prefix
+	 *      <code>openadk.library</code> prefix
 	 *  @param min The earliest version of SIF supported by this element
 	 *  @param max The latest version of SIF supported by this element
 	 */
@@ -51,7 +51,7 @@ public class ElementDefAlias extends ElementDefImpl
 	 *      or -1 if a top-level element
 	 *  @param localPackage The name of the package where the corresponding
 	 *      DataObject class is defined, excluding the
-	 *      <code>com.edustructures.sifworks</code> prefix
+	 *      <code>openadk.library</code> prefix
 	 *  @param flags One of the following: FD_ATTRIBUTE if this element should
 	 *      be rendered as an attribute of its parent rather than a child
 	 *      element; FD_FIELD if this element is a simple field with no child

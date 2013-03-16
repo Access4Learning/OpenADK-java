@@ -12,7 +12,7 @@ import openadk.library.infra.*;
  *  Methods to assist the TrackQueryResults class in invoking SMB.<p>
  *
  *  SMBHelper is used primarily to protect the integrity of the public API.
- *  TrackQueryResults is in the public com.edustructures.sifworks package, but
+ *  TrackQueryResults is in the public openadk.library package, but
  *  other classes used internally by it for Selective Message Blocking (namely
  *  MessageDispatcher) are in the private .impl package where their members are
  *  protected from agents. By delegating SMB to this class, it can perform

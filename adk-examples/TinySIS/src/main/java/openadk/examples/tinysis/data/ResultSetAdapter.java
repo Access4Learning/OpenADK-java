@@ -50,7 +50,7 @@ public class ResultSetAdapter implements FieldAdaptor {
 	}
 	
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.tools.mapping.FieldAdaptor#getSIFValue(java.lang.String, com.edustructures.sifworks.SIFTypeConverter, com.edustructures.sifworks.tools.mapping.FieldMapping)
+	 * @see openadk.library.tools.mapping.FieldAdaptor#getSIFValue(java.lang.String, openadk.library.SIFTypeConverter, openadk.library.tools.mapping.FieldMapping)
 	 */
 	public SIFSimpleType getSIFValue(String name, SIFTypeConverter typeConverter,
 			FieldMapping fm) {
@@ -60,7 +60,7 @@ public class ResultSetAdapter implements FieldAdaptor {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.tools.mapping.FieldAdaptor#getValue(java.lang.String)
+	 * @see openadk.library.tools.mapping.FieldAdaptor#getValue(java.lang.String)
 	 */
 	public Object getValue(String name) {
 		// If mappings are defined incorrectly, this method could throw lots of exceptions,
@@ -81,14 +81,14 @@ public class ResultSetAdapter implements FieldAdaptor {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.tools.mapping.FieldAdaptor#hasField(java.lang.String)
+	 * @see openadk.library.tools.mapping.FieldAdaptor#hasField(java.lang.String)
 	 */
 	public boolean hasField(String fieldName) {
 		return fColumns.containsKey( fieldName );
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.tools.mapping.FieldAdaptor#setSIFValue(java.lang.String, com.edustructures.sifworks.SIFSimpleType, com.edustructures.sifworks.tools.mapping.FieldMapping)
+	 * @see openadk.library.tools.mapping.FieldAdaptor#setSIFValue(java.lang.String, openadk.library.SIFSimpleType, openadk.library.tools.mapping.FieldMapping)
 	 */
 	public void setSIFValue(String fieldName, SIFSimpleType sifDataElmeent, FieldMapping fm) {
 		// TODO Update of ResultSet not yet supported

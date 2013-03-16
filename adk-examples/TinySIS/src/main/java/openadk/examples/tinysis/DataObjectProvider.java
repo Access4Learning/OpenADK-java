@@ -51,7 +51,7 @@ public class DataObjectProvider implements Publisher {
 	}
 	
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.Publisher#onRequest(com.edustructures.sifworks.DataObjectOutputStream, com.edustructures.sifworks.Query, com.edustructures.sifworks.Zone, com.edustructures.sifworks.MessageInfo)
+	 * @see openadk.library.Publisher#onRequest(openadk.library.DataObjectOutputStream, openadk.library.Query, openadk.library.Zone, openadk.library.MessageInfo)
 	 */
 	public void onRequest(DataObjectOutputStream out, Query query, Zone zone,
 			MessageInfo info) throws ADKException {

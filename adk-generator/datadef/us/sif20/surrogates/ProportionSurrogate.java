@@ -58,7 +58,7 @@ public class ProportionSurrogate extends AbstractRenderSurrogate implements Rend
 	}
 
 	/* (non-Javadoc)
-	 * @see com.edustructures.sifworks.impl.surrogates.RenderSurrogate#getPath()
+	 * @see openadk.library.impl.surrogates.RenderSurrogate#getPath()
 	 */
 	public String getPath() {
 		return "Proportion";

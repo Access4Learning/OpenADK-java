@@ -3,7 +3,7 @@
 <!--     Copyright (c)1998-2011 Pearson Education, Inc. or its affiliate(s)     -->
 <!--     All Rights Reserved                  -->
 <!-- ======================================== -->
-<!--    SIF 2.5 general objects             -->
+<!--    SIF 2.5 system objects             -->
 <!-- ======================================== -->
 <adk package="system" version="2.5" namespace="http://www.sifinfo.org/au/infrastructure/2.x">
 
