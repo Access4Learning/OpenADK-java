@@ -104,8 +104,12 @@
 
   <!--LearningResourceList object-->
   <object name="LearningResourceList">
-    <element name="LearningResourceRefId" type="RefIdObject" flags="MR" />
+    <element name="LearningResourceRefId" type="LearningResourceRefId" flags="MR" />
   </object>
+  
+    <!--LearningResourceRefId object-->
+  <object name="LearningResourceRefId" datatype="IdRefType"/>
+  
 
   <!-- =================== -->
   <!--Sif3Assessment object-->
@@ -168,16 +172,19 @@
 
   <!--AdministrationAssessments object-->
   <object name="AdministrationAssessments">
-    <element name="AdministrationAssessment" type="RefIdObject" flags="MR" />
+    <element name="AdministrationAssessment" type="AdministrationAssessment" flags="MR" />
   </object>
+  
+   <!--AdministrationAssessment object-->
+  <object name="AdministrationAssessment" datatype="IdRefType"/>
 
   <!--Organization object-->
-  <object name="Sif3Organizations">
+  <object name="Sif3Organizations" renderAs="Organizations">
     <element name="Organization" type="Sif3Organization" flags="MR" />
   </object> 
 
   <!--Sif3Organization object-->
-  <object name="Sif3Organization">
+  <object name="Sif3Organization" renderAs="Organization">
     <element name="LEAInfoRefId" type="IdRefType" flags="O" />
     <element name="SchoolInfoRefId" type="IdRefType" flags="O" />
   </object> 
@@ -201,7 +208,7 @@
   </object>
 
   <!--AssetIdentifierList object-->
-  <object name="AssetIdentifierList">
+  <object name="AssetIdentifierList" renderAs="AssetIdentifiers">
     <element name="AssetIdentifier" type="AssetIdentifier" flags="MR" />
   </object>
 
@@ -269,11 +276,15 @@
   
   <!--AssessmentAssetRefIds object-->
   <object name="AssessmentAssetRefIds">
-    <element name="AssessmentAssetRefId" type="RefIdObject" flags="MR" />
+    <element name="AssessmentAssetRefId" type="AssessmentAssetRefId" flags="MR" />
   </object>
+  
+  <!--AssessmentAssetRefId object-->
+  <object name="AssessmentAssetRefId" datatype="IdRefType"/>
+  
 
   <!--AssessmentPlatformList object-->
-  <object name="AssessmentPlatformList">
+  <object name="AssessmentPlatformList" renderAs="AssessmentPlatforms">
     <element name="AssessmentPlatform" type="AssessmentPlatform" flags="MR" />
   </object>
 
@@ -309,8 +320,11 @@
 
   <!--AssessmentItemAssetRefIds object-->
   <object name="AssessmentItemAssetRefIds">
-    <element name="AssessmentItemAssetRefId" type="RefIdObject" flags="MR" />
+    <element name="AssessmentItemAssetRefId" type="AssessmentItemAssetRefId" flags="MR" />
   </object>
+
+  <!--AssessmentItemAssetRefId object-->
+  <object name="AssessmentItemAssetRefId" datatype="IdRefType"/>
 
   <!--Sif3ResponseChoices object-->
   <object name="Sif3ResponseChoices">
@@ -318,7 +332,7 @@
   </object>
 
   <!--Sif3Choices object-->
-  <object name="Sif3Choice">
+  <object name="Sif3Choice" renderAs="Choice">
     <element name="ChoiceLabel" type="Token" flags="O"/>
     <element name="ChoiceContent" type="AbstractContentElementType" flags="M"/>
     <element name="CreditValue" type="float" flags="O"/>
@@ -327,11 +341,14 @@
 
   <!--ItemRubricIds object-->
   <object name="ItemRubricIds">
-    <element name="ItemRubricId" type="RefIdObject" flags="MR" />
+    <element name="ItemRubricId" type="ItemRubricId" flags="MR" />
   </object>
-
+  
+  <!--ItemRubricId object-->
+  <object name="ItemRubricId" datatype="IdRefType"/>
+  
   <!--AssessmentItemBankList object-->
-  <object name="AssessmentItemBankList">
+  <object name="AssessmentItemBankList" renderAs="AssessmentItemBanks">
     <element name="AssessmentItemBank" type="AssessmentItemBank" flags="MR" />
   </object>
 
@@ -342,7 +359,7 @@
   </object>
 
   <!--AssessmentItemPlatformList object-->
-  <object name="AssessmentItemPlatformList">
+  <object name="AssessmentItemPlatformList" renderAs="AssessmentItemPlatforms">
     <element name="AssessmentItemPlatform" type="AssessmentItemPlatform" flags="MR" />
   </object>
 
@@ -391,7 +408,7 @@
   </object>
 
   <!--StudentSpecialEventList object-->
-  <object name="StudentSpecialEventList">
+  <object name="StudentSpecialEventList" renderAs="StudentSpecialEvents">
     <element name="StudentSpecialEvent" type="StudentSpecialEvent" flags="MR" />
   </object>
 
@@ -401,7 +418,7 @@
   </object>
 
   <!--TestingStatusList object-->
-  <object name="TestingStatusList">
+  <object name="TestingStatusList" renderAs="TestingStatuses">
     <element name="TestingStatus" type="TestingStatus" flags="MR" />
   </object>
 
@@ -412,7 +429,7 @@
   </object>
   
   <!--Sif3AssessmentStudentSnapshot object-->
-  <object name="Sif3AssessmentStudentSnapshot">
+  <object name="Sif3AssessmentStudentSnapshot" renderAs="AssessmentStudentSnapshot">
     <element name="Name" type="Name" flags="O" />
     <element name="LocalId" type="String" flags="M" />
     <element name="Name" type="Name" flags="O" />
@@ -433,7 +450,7 @@
   </object>
   
   <!--Sif3HomeEnrollment object-->
-  <object name="Sif3HomeEnrollment">
+  <object name="Sif3HomeEnrollment" renderAs="HomeEnrollment">
     <element name="StudentSchoolEnrollmentRefId" type="IdRefType" flags="O" />
     <element name="SchoolName" type="NormalizedString" flags="O" />
     <element name="SchoolInfoRefId" type="IdRefType" flags="O" />
@@ -447,7 +464,7 @@
   </object>
 
   <!--Sif3Homeroom object-->
-  <object name="Sif3Homeroom" datatype="IdRefType">
+  <object name="Sif3Homeroom" renderAs="Homeroom" datatype="IdRefType">
     <attribute name="SIF_RefObject" enum="Sif3HomeroomRefObjEnum" flags="R"/>
   </object>
 
@@ -475,12 +492,12 @@
   </object>
 
   <!--ScoreList object-->
-  <object name="ScoreList">
+  <object name="ScoreList" renderAs="Scores">
     <element name="Score" type="Sif3Score" flags="MR" />
   </object>
 
   <!--Sif3Score object-->
-  <object name="Sif3Score">
+  <object name="Sif3Score" renderAs="Score">
     <element name="ScoreCode" type="Token" flags="O" />
     <element name="ScoreCodeDefinition" type="AbstractContentElementType" flags="O" />
     <element name="ScoreValue" type="Decimal" flags="O" />
@@ -489,14 +506,14 @@
   </object>
 
   <!--ScoreDescriptions object-->
-  <object name="ScoreDescriptionList">
+  <object name="ScoreDescriptionList" renderAs="ScoreDescriptions">
     <element name="ScoreDescription" type="AbstractContentElementType" flags="MR">
        <desc>An individual statement that defines the specific expectations that the response must illustrate in order to achieve this score point. This is a complex content type in order to support math or other subjects that may require non-text representations of expectations.</desc>
     </element>
   </object>
 
   <!--ScoreCommentList object-->
-  <object name="ScoreCommentList">
+  <object name="ScoreCommentList" renderAs="ScoreComments">
     <element name="ScoreComment" type="ScoreComment" flags="MR" />
   </object>
 
@@ -529,7 +546,7 @@
   </object>
 
   <!--ScoreValueList object-->
-  <object name="ScoreValueList">
+  <object name="ScoreValueList" renderAs="ScoreValues">
     <element name="ScoreValue" type="ScoreValue" flags="MR" />
   </object>
 
@@ -591,11 +608,14 @@
 
   <!--SectionAssets object-->
   <object name="SectionAssets">
-    <element name="SectionAsset" type="RefIdObject" flags="MR" />
+    <element name="SectionAsset" type="SectionAsset" flags="MR" />
   </object>
-
+  
+  <!--SectionAsset object-->
+  <object name="SectionAsset" datatype="IdRefType"/>
+  
   <!--SectionItemList object-->
-  <object name="SectionItemList">
+  <object name="SectionItemList" renderAs="SectionItems">
     <element name="SectionItem" type="SectionItem" flags="MR" />
   </object>
 
@@ -627,7 +647,7 @@
   </object>
 
   <!--UnusualEventsList object-->
-  <object name="UnusualEventsList">
+  <object name="UnusualEventsList" renderAs="UnusualEvents">
     <element name="UnusualEvent" type="UnusualEvent" flags="MR" />
   </object>
 
@@ -638,9 +658,12 @@
   </object>
 
   <!--StaffList object-->
-  <object name="Sif3AssessmentStaffList">
-    <element name="StaffPersonalRefId" type="RefIdObject" flags="MR" />
+  <object name="Sif3AssessmentStaffList" renderAs="StaffPersonalRefIds">
+    <element name="StaffPersonalRefId" type="Sif3StaffPersonalRefId" flags="MR" />
   </object>
+  
+  <!--StaffPersonalRefId object-->
+  <object name="Sif3StaffPersonalRefId" renderAs="StaffPersonalRefId" datatype="IdRefType"/>
 
   <!-- ========================== -->
   <!--Sif3AssessmentSubTest object-->
@@ -684,8 +707,11 @@
 
   <!--Sif3AssessmentSubTestRefIds object-->
   <object name="Sif3AssessmentSubTestRefIds">
-    <element name="AssessmentSubTestRefId" type="RefIdObject" flags="MR" />
+    <element name="AssessmentSubTestRefId" type="Sif3AssessmentSubTestRefId" flags="MR" />
   </object>
+
+  <!--AssessmentSubTestRefId object-->
+  <object name="Sif3AssessmentSubTestRefId" renderAs="AssessmentSubTestRefId" datatype="IdRefType"/>  
 
   <!--Sif3AssessmentItemList object-->
   <object name="Sif3AssessmentItemList">
@@ -693,7 +719,7 @@
   </object>
 
   <!--Sif3AssessmentItem object-->
-  <object name="Sif3AssessmentItem">
+  <object name="Sif3AssessmentItem" renderAs="AssessmentItems">
     <element name="AssessmentItemRefId" type="IdRefType" flags="M" />
     <element name="ItemWeightCorrect" type="decimal" flags="M" />
     <element name="ItemWeightIncorrect" type="decimal" flags="M" />
@@ -717,7 +743,7 @@
   </object>
 
   <!--Sif3Item object-->
-  <object name="Sif3Item">
+  <object name="Sif3Item" renderAs="Item">
     <attribute name="AssessmentItemRefId" type="IdRefType" flags="O"/>
     <element name="Response" type="String" flags="M" />
     <element name="ResponseLocation" type="AnyUri" flags="O" />
@@ -744,7 +770,7 @@
   <!--TraitScore object-->
   <object name="TraitScore">
     <element name="TraitScoreType" type="Token" flags="O" />
-    <element name="TraitScore" type="Token" flags="O" />
+    <element name="TraitScoreValue" renderAs="TraitScore" type="Token" flags="O" />
     <element name="TraitScoreCode" type="Token" flags="O" />
   </object>
   
