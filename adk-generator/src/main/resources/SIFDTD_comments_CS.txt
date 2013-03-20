@@ -1,4 +1,4 @@
-/// <summary>Metadata for the Schools Interoperability Framework (SIF)</summary>
+	/// <summary>Metadata for the Schools Interoperability Framework (SIF)</summary>
 	/// <remarks>
 	/// <para>
 	/// SIFDTD defines global {@linkplain com.edustructures.sifworks.ElementDef} 

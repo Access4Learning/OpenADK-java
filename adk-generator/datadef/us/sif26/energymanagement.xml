@@ -142,9 +142,9 @@
     <enum name="EnergyUnits">
         <value name="DEGREECENTIGRADE" value="DegreeCentigrade" desc="Degree Centigrade"/>
         <value name="KILOWATT_HOUR" value="Kilowatt-Hour" desc="Kilowatt-Hour"/>
-        <value name="$_KILOWATT_HOUR" value="$Kilowatt-Hour" desc="$/Kilowatt-Hour"/>
+        <value name="DOLLAR_KILOWATT_HOUR" value="$Kilowatt-Hour" desc="$/Kilowatt-Hour"/>
         <value name="THOUSAND_CUBIC_FEET" value="ThousandCubicFeet" desc="Thousand Cubic Feet"/>
-        <value name="$_THOUSAND_CUBIC_FEET" value="$ThousandCubicFeet" desc="$/Thousand Cubic Feet"/>
+        <value name="DOLLAR_THOUSAND_CUBIC_FEET" value="$ThousandCubicFeet" desc="$/Thousand Cubic Feet"/>
         <value name="OTHER" value="Other" desc="Other"/>
     </enum>
     <!--ReadingList object-->

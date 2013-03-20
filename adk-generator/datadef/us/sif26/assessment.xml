@@ -1673,7 +1673,7 @@
         <element name="TraitScoreType" type="Token" flags="O">
             <desc>If trait scores are provided, then this identifies the specific trait score that is provided. This value will be program specific (i.e. no standardized list of values available).</desc>
         </element>
-        <element name="TraitScore" type="Token" flags="O">
+        <element name="TraitScoreValue" renderAs="TraitScore" type="Token" flags="O">
             <desc>This will be the numeric trait score value.</desc>
         </element>
         <element name="TraitScoreCode" type="Token" flags="O">
