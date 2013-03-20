@@ -1387,16 +1387,6 @@ public class CSGenerator extends CodeGenerator {
 				out.println();
 				writeDTDAbstractMethods(out);
 	
-				out.println("\tinternal static IDictionary<String,IElementDef> sElementDefs = new Dictionary<String,IElementDef>( " + dtdItemCount + " );");
-				out.println("\tstatic SifDtd()\r\n\t{");
-	
-				// Special case
-				out.println("\t\tsElementDefs[ \"SIF_Message\" ] = SIF_MESSAGE;");
-				out.println("\t\tsElementDefs[ \"SIF_Message_Version\" ] = SIF_MESSAGE_VERSION;");
-				out.println("\t}\r\n");
-	
-				out.println();
-	
 				writeExtras(out, "SIFDTD_Template_CS.txt");
 	
 				out.println("}}");
