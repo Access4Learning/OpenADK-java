@@ -3420,6 +3420,7 @@
     <value name="ACTIVE" value="A" desc="Active" />
     <value name="INACTIVE" value="I" desc="Inactive" />
     <value name="ON_LEAVE" value="O" desc="On Leave" />
+    <value name="SUSPENDED" value="S" desc="Suspended" />
   </enum>
 
   <!--AUCodeSetsAssessmentReportingMethodType enum-->
@@ -3481,6 +3482,11 @@
         <value name="NO" value="no" desc="No" />
     </enum>
     
+    <!--YesNoMixed enum-->
+    <enum name="YesNoMixed">
+        <value name="YES" value="Yes" desc="Yes" />
+        <value name="NO" value="No" desc="No" />
+    </enum>
     <!--YesNoUnkNotProvided enum-->
     <enum name="YesNoUnkNotProvided">
         <value name="YES" value="Y" desc="Yes" />
@@ -3558,6 +3564,8 @@
         <value name="SIF3ASSESSMENTSESSION" value="Sif3AssessmentSession" desc="AssessmentSession SIF 3.0 Version" />
         <value name="SIF3ASSESSMENTSUBTEST" value="Sif3AssessmentSubTest" desc="AssessmentSubTest SIF 3.0 Version" />
         <value name="SIF3STUDENTRESPONSESET" value="Sif3StudentResponseSet" desc="StudentResponseSet SIF 3.0 Version" />    
+        <value name="STUDENTSECTIONENROLLMENT" value="StudentSectionEnrollment " desc="StudentSectionEnrollment  SIF 3.0 Version" />    
+        <value name="SECTIONINFO" value="SectionInfo" desc="SectionInfo SIF 3.0 Version" />    
 
 	</enum>
 

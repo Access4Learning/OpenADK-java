@@ -770,7 +770,7 @@
   <!--TraitScore object-->
   <object name="TraitScore">
     <element name="TraitScoreType" type="Token" flags="O" />
-    <element name="TraitScoreValue" renderAs="TraitScore" type="Token" flags="O" />
+    <element name="TraitScoreValue" type="Token" flags="O" />
     <element name="TraitScoreCode" type="Token" flags="O" />
   </object>
   

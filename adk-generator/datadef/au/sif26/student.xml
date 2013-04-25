@@ -7,6 +7,19 @@
 <!-- ======================================== -->
 <adk package="student" version="2.6" namespace="http://www.sifinfo.org/au/infrastructure/2.x">
 
+  <!-- =============================== -->
+  <!-- StudentSectionEnrollment object -->
+  <!-- =============================== -->
+  <object name="StudentSectionEnrollment" topic="true">
+    <attribute name="RefId" type="IdRefType" flags="R"/>
+    <element name="StudentPersonalRefId" type="IdRefType" flags="M" />
+    <element name="SectionInfoRefId" type="IdRefType" flags="M" />
+    <element name="SchoolYear" type="int" flags="O" />
+    <element name="EntryDate" type="Date" flags="O" />
+    <element name="ExitDate" type="Date" flags="O" />
+  </object>
+
+
   <!--AU0644ExitWithdrawalType-->
   <enum name="AU0644ExitWithdrawalType">
     <value name="1907_STUDENT_IS_INDIFFERENT_PUBLIC_SCHOOL" value="1907" desc="Student is in a different public school in the same district" />

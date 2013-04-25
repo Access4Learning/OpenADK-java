@@ -7,7 +7,55 @@
 <!-- ======================================== -->
 <adk package="school" version="2.6" namespace="http://www.sifinfo.org/au/infrastructure/2.x">
 
-  <!--PersonPicture-->
+  <!-- ================== -->
+  <!-- SectionInfo object -->
+  <!-- ================== -->
+  <object name="SectionInfo" topic="true">
+    <attribute name="RefId" type="IdRefType" flags="R"/>
+    <element name="SchoolCourseInfoRefId" type="IdRefType" flags="M" />
+    <element name="LocalId" type="String" flags="M" />
+    <element name="Description" type="NormalizedString" flags="O" />
+    <element name="SchoolYear" type="int" flags="O" />
+    <element name="TermInfoRefId" type="IdRefType" flags="O" />
+    <element name="MediumOfInstruction" type="MediumOfInstruction" flags="O" />
+    <element name="LanguageOfInstruction" type="LanguageOfInstruction" flags="O" />
+    <element name="LocationOfInstruction" type="LocationOfInstruction" flags="O" />
+    <element name="SummerSchool" enum="YesNoMixed" flags="O" />
+    <element name="SchoolCourseInfoOverride" type="SchoolCourseInfoOverride" flags="O" />
+    <element name="CourseSectionCode" type="NormalizedString" flags="O" />
+    <element name="SectionCode" type="NormalizedString" flags="O" />
+    <element name="CountForAttendance" enum="YesNoMixed" flags="O" />
+  </object>
+
+  <object name="MediumOfInstruction" topic="false">
+    <element name="Code" enum="AUCodeSetsMediumOfInstructionType" flags="M" />
+    <element name="OtherCodeList" type="OtherCodeList" flags="O" />
+  </object>
+
+  <object name="LanguageOfInstruction" topic="false">
+    <element name="Code" enum="AustralianClassificationOfLanguagesType" flags="M" />
+    <element name="OtherCodeList" type="OtherCodeList" flags="O" />
+  </object>
+
+  <object name="LocationOfInstruction" topic="false">
+    <element name="Code" enum="AUCodeSetsReceivingLocationOfInstructionType" flags="M" />
+    <element name="OtherCodeList" type="OtherCodeList" flags="O" />
+  </object>
+
+  <object name="SchoolCourseInfoOverride" topic="false">
+    <attribute name="Override" enum="YesNoMixed" flags="R"/>
+    <element name="CourseCode" type="NormalizedString" flags="O" />
+    <element name="StateCourseCode" type="NormalizedString" flags="O" />
+    <element name="DistrictCourseCode" type="NormalizedString" flags="O" />
+    <element name="SubjectArea" type="SubjectArea" flags="O" />
+    <element name="CourseTitle" type="NormalizedString" flags="O" />
+    <element name="InstructionalLevel" type="NormalizedString" flags="O" />
+    <element name="CourseCredits" type="NormalizedString" flags="O" />
+  </object>
+
+  <!-- ==================== -->
+  <!-- PersonPicture object -->
+  <!-- ==================== -->
   <object name="PersonPicture" topic="true">
     <attribute name="RefId" type="String" flags="R">
       <desc>The ID (GUID) that uniquely identifies the picture.</desc>
@@ -769,6 +817,32 @@
     <value name="STUDENT_PERSONAL" value="StudentPersonal" desc="StudentPersonal" />
     <value name="STAFF_PERSONAL" value="StaffPersonal" desc="StaffPersonal" />
     <value name="TEACHING_GROUP" value="TeachingGroup" desc="TeachingGroup" />
+  </enum>
+  
+  <!--AUCodeSetsMediumOfInstructionType-->
+  <enum name="AUCodeSetsMediumOfInstructionType">
+    <value name="0604_TECH_BASED" value="0603" desc="Technology-based instruction in classroom" />
+    <value name="0605_CORESPONDENCE" value="0604" desc="Corespondence instruction" />
+    <value name="0605_FACE_TO_FACE" value="0605" desc="Face-to-face instruction" />
+    <value name="0608_VIRTUAL" value="0608" desc="Virtual/On-line Distance learning" />
+    <value name="0609_CENTRE_BASED" value="0609" desc="Center-based instruction" />
+    <value name="0610_INDEP_STUDY" value="0610" desc="Independent study" />
+    <value name="0611_INTERNSHIP" value="0611" desc="Internship" />
+    <value name="9999_OTHER" value="9999" desc="Other" />
+  </enum>
+  
+  <!--AUCodeSetsReceivingLocationOfInstructionType-->
+  <enum name="AUCodeSetsReceivingLocationOfInstructionType">
+    <value name="0340_INSCHOOL" value="0340" desc="In school" />
+    <value name="0341_OTHER_K12" value="0341" desc="Other K-12 educational institution" />
+    <value name="0342_POSTSECONDARY" value="0342" desc="Postsecondary facility" />
+    <value name="0752_COMMUNITY" value="0752" desc="Community facility" />
+    <value name="0754_HOSPITAL" value="0754" desc="Hospital" />
+    <value name="0997_BUSINESS" value="0997" desc="Business" />
+    <value name="2192_HOME" value="2192" desc="Home" />
+    <value name="3018_LIBRARY" value="3018" desc="Library/media centre" />
+    <value name="3506_MOBILE" value="3506" desc="Mobile" />
+    <value name="9999_OTHER" value="9999" desc="Other" />
   </enum>
   
 </adk>
