@@ -111,7 +111,54 @@
     <element name="SIF_PublishDeleteAccess" type="SIF_PublishDeleteAccess" flags="O" />
     <element name="SIF_RequestAccess" type="SIF_RequestAccess" flags="O" />
     <element name="SIF_RespondAccess" type="SIF_RespondAccess" flags="O" />
-  </object>
++    <element name="SIF_ProvideService" type="SIF_ProvideService" flags="O" />
++    <element name="SIF_RespondService" type="SIF_RespondService" flags="O" />
++    <element name="SIF_RequestService" type="SIF_RequestService" flags="O" />
++    <element name="SIF_SubscribeService" type="SIF_SubscribeService" flags="O" />
++  </object>
++  
++	<!--SIF_ProvideService object-->
++	<object name="SIF_ProvideService">
++		<element name="SIF_Service" type="SIF_Service" flags="OR"/>
++	</object>
++
++    <!--SIF_RespondService object-->
++   	<object name="SIF_RespondService">
++   		<element name="SIF_Service" type="SIF_Service" flags="OR"/>
++   	</object>
++
++    <!--SIF_RequestService object-->
++   	<object name="SIF_RequestService">
++   		<element name="SIF_Service" type="SIF_ServiceRequestSubscribe" flags="OR"/>
++   	</object>
++
++    <!--SIF_SubscribeService object-->
++   	<object name="SIF_SubscribeService">
++   		<element name="SIF_Service" type="SIF_ServiceRequestSubscribe" flags="OR"/>
++   	</object>
++
++    <!--SIF_Service object-->
++    <object name="SIF_Service">
++        <attribute name="ServiceName" type="token"/>
++        <element name="SIF_Contexts" type="SIF_Contexts"/>
++    </object>
++
++    <!--SIF_ServiceRequestSubscribe object-->
++    <object name="SIF_ServiceRequestSubscribe" renderAs="SIF_Service">
++        <attribute name="ServiceName" type="token"/>
++        <element name="SIF_Contexts" type="SIF_Contexts"/>
++        <element name="SIF_Operations" type="SIF_Operations" flags="O"/>
++    </object>
++
++    <!--SIF_Operations object-->
++     <object name="SIF_Operations">
++         <element name="SIF_Operation" type="SIF_Operation" flags="MR"/>
++     </object>
++
++   <!--SIF_Operation object-->
++   <object name="SIF_Operation" dataType="token"/>
++
+
   <!--SIF_Application object-->
   <object name="SIF_Application">
     <element name="SIF_Vendor" type="NormalizedString" flags="M">
